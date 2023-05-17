@@ -1,0 +1,430 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "type": "process",
+      "text": "Select Material",
+      "left": -300,
+      "top": -480,
+      "width": 240,
+      "height": 160
+    },
+    {
+      "id": "2",
+      "type": "decision",
+      "text": "Is it in the public domain?",
+      "left": -300,
+      "top": -240,
+      "width": 240,
+      "height": 220
+    },
+    {
+      "id": "3",
+      "type": "decision",
+      "text": "Is it Creative Commons?",
+      "left": 60,
+      "top": -240,
+      "width": 240,
+      "height": 220
+    },
+    {
+      "id": "4",
+      "type": "decision",
+      "text": "Is it available from the publisher?",
+      "left": 420,
+      "top": -240,
+      "width": 240,
+      "height": 220
+    },
+    {
+      "id": "5",
+      "type": "decision",
+      "text": "Can it be linked online?",
+      "left": 220,
+      "top": 180,
+      "width": 240,
+      "height": 220
+    },
+    {
+      "id": "6",
+      "type": "process",
+      "text": "Provide link to material",
+      "left": -160,
+      "top": 400,
+      "width": 300,
+      "height": 160
+    },
+    {
+      "id": "7",
+      "type": "process",
+      "text": "Send request to IPO for usage permission",
+      "left": 520,
+      "top": 200,
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "8",
+      "type": "process",
+      "text": "Review license and comply with terms",
+      "left": -160,
+      "top": 60,
+      "width": 300,
+      "height": 160
+    },
+    {
+      "id": "9",
+      "type": "decision",
+      "text": "Can IPO identify the rights holder?",
+      "left": 520,
+      "top": 460,
+      "width": 300,
+      "height": 180
+    },
+    {
+      "id": "10",
+      "type": "terminus",
+      "text": "Copyright cleared",
+      "left": -360,
+      "top": 600,
+      "width": 280,
+      "height": 160
+    }
+  ],
+  "edges": [
+    {
+      "source": "1",
+      "target": "2",
+      "data": {
+        "lineStyle": "targetArrow",
+        "color": "black"
+      }
+    },
+    {
+      "source": "2",
+      "target": "10",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": -330,
+            "y": -165
+          },
+          {
+            "x": -390,
+            "y": -165
+          },
+          {
+            "x": -390,
+            "y": 675
+          }
+        ],
+        "source": {
+          "curX": -300,
+          "curY": -165,
+          "x": 0,
+          "y": 0.5,
+          "ox": -1,
+          "oy": 0
+        },
+        "target": {
+          "curX": -360,
+          "curY": 675,
+          "x": 0,
+          "y": 0.5,
+          "ox": -1,
+          "oy": 0
+        }
+      }
+    },
+    {
+      "source": "2",
+      "target": "3",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      }
+    },
+    {
+      "source": "3",
+      "target": "4",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      }
+    },
+    {
+      "source": "3",
+      "target": "8",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      }
+    },
+    {
+      "source": "4",
+      "target": "1",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 690,
+            "y": -135
+          },
+          {
+            "x": 751,
+            "y": -135
+          },
+          {
+            "x": 751,
+            "y": -510
+          },
+          {
+            "x": -180,
+            "y": -510
+          }
+        ],
+        "source": {
+          "curX": 660,
+          "curY": -135,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        },
+        "target": {
+          "curX": -180,
+          "curY": -480,
+          "x": 0.5,
+          "y": 0,
+          "ox": 0,
+          "oy": -1
+        }
+      }
+    },
+    {
+      "source": "4",
+      "target": "5",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      }
+    },
+    {
+      "source": "5",
+      "target": "6",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 315,
+            "y": 360
+          },
+          {
+            "x": 315,
+            "y": 450
+          },
+          {
+            "x": 150,
+            "y": 450
+          }
+        ],
+        "source": {
+          "curX": 315,
+          "curY": 330,
+          "x": 0.5,
+          "y": 1,
+          "ox": 0,
+          "oy": 1
+        },
+        "target": {
+          "curX": 120,
+          "curY": 450,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        }
+      }
+    },
+    {
+      "source": "5",
+      "target": "7",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      }
+    },
+    {
+      "source": "6",
+      "target": "8",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      }
+    },
+    {
+      "source": "7",
+      "target": "9",
+      "data": {
+        "lineStyle": "targetArrow",
+        "color": "black"
+      }
+    },
+    {
+      "source": "8",
+      "target": "10",
+      "data": {
+        "lineStyle": "targetArrow",
+        "color": "black"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": -180,
+            "y": 135
+          },
+          {
+            "x": -225,
+            "y": 135
+          },
+          {
+            "x": -225,
+            "y": 570
+          }
+        ],
+        "source": {
+          "curX": -150,
+          "curY": 135,
+          "x": 0,
+          "y": 0.5,
+          "ox": -1,
+          "oy": 0
+        },
+        "target": {
+          "curX": -225,
+          "curY": 600,
+          "x": 0.5,
+          "y": 0,
+          "ox": 0,
+          "oy": -1
+        }
+      }
+    },
+    {
+      "source": "9",
+      "target": "1",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 850,
+            "y": 550
+          },
+          {
+            "x": 893,
+            "y": 550
+          },
+          {
+            "x": 893,
+            "y": -400
+          },
+          {
+            "x": -30,
+            "y": -400
+          }
+        ],
+        "source": {
+          "curX": 820,
+          "curY": 550,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        },
+        "target": {
+          "curX": -60,
+          "curY": -400,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        }
+      }
+    },
+    {
+      "source": "9",
+      "target": "10",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "black"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 645,
+            "y": 660
+          },
+          {
+            "x": 645,
+            "y": 675
+          },
+          {
+            "x": -60,
+            "y": 675
+          }
+        ],
+        "source": {
+          "curX": 645,
+          "curY": 630,
+          "x": 0.5,
+          "y": 1,
+          "ox": 0,
+          "oy": 1
+        },
+        "target": {
+          "curX": -90,
+          "curY": 675,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        }
+      }
+    }
+  ]
+}
