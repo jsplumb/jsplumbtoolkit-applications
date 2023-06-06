@@ -88,7 +88,12 @@ export default function FlowchartComponent() {
                     },
                     [EVENT_CLICK]: (params) => {
                         toolkit.setSelection(params.edge)
-                        pathEditor.current.startEditing(params.edge, {})
+                        pathEditor.current.startEditing(params.edge, {
+                            deleteButton:true,
+                            anchorPositionFinder: (el, elxy, vertex) => {
+                                return _$_anchorPositionFinder(el, elxy)
+                            }
+                        })
                     }
                 }
             }
@@ -152,7 +157,7 @@ export default function FlowchartComponent() {
 
     useEffect(() => {
 
-        pathEditor.current = new EdgePathEditor(surfaceComponent.current.surface)
+        pathEditor.current = new EdgePathEditor(surfaceComponent.current.surface, {activeMode:true})
 
         // controls component. needs to be done here as it needs a reference to the surface.
         const c = createRoot(controlsContainer.current)
