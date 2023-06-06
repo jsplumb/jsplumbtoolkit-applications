@@ -1,0 +1,47 @@
+{
+  "name": "flowchart-builder-angular",
+  "version": "6.2.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "npx ng serve",
+    "build": "npx ng build --configuration production --base-href=.",
+    "test": "npx ng test",
+    "lint": "npx ng lint",
+    "update-deps": "rm -rf ./node_modules/@jsplumb*;npm i"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^16.0.1",
+    "@angular/common": "^16.0.1",
+    "@angular/compiler": "^16.0.1",
+    "@angular/core": "^16.0.1",
+    "@angular/forms": "^16.0.1",
+    "@angular/platform-browser": "^16.0.1",
+    "@angular/platform-browser-dynamic": "^16.0.1",
+    "@angular/router": "^16.0.1",
+    "@jsplumbtoolkit/browser-ui-angular": "6.2.0",
+    "rxjs": "~6.5.5",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.0.1",
+    "@angular/cli": "^16.0.1",
+    "@angular/compiler-cli": "^16.0.1",
+    "@types/jasmine": "~3.6.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~6.4.2",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~4.0.0",
+    "ng-packagr": "^16.0.1",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~4.9.5"
+  }
+}

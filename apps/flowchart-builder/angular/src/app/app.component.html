@@ -1,0 +1,37 @@
+
+<div class="jtk-demo-main" id="jtk-demo-flowchart">
+
+    <!-- main drawing area -->
+    <div class="jtk-demo-canvas">
+
+        <jsplumb-surface surfaceId="surface"
+                         toolkitId="toolkitId"
+                         [view]="view"
+                         [renderParams]="renderParams">
+
+        </jsplumb-surface>
+
+
+        <!-- miniview -->
+        <jsplumb-miniview surfaceId="surface"></jsplumb-miniview>
+    </div>
+    <div class="jtk-demo-rhs">
+        <!-- the node palette -->
+        <div class="sidebar node-palette">
+            <jtk-shape-palette surfaceId="surface" [dataGenerator]="dataGenerator"></jtk-shape-palette>
+        </div>
+        <!-- node/edge inspector -->
+        <app-inspector surfaceId="surface"></app-inspector>
+
+        <div class="description">
+            <p>
+                This sample application is a builder for flowcharts.
+            </p>
+        </div>
+    </div>
+
+
+</div>
+
+
+

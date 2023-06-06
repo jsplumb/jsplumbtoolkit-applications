@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css";
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-connector-editors.css";
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-connector-editors-orthogonal.css";
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css";
+@import '../../app.css';
+
+jtk-shape {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: block;
+}
+
+jsplumb-surface {
+  width:100%;
+  height:100%;
+  outline:10px solid red;
+  display:block;
+}
+
+.jtk-surface {
+  height:100%;
+  width:100%;
+}
+
+jsplumb-miniview {
+  position:absolute;
+  top:2rem;
+  right:2rem;
+}
+
+.zone {
+  width:80px;
+  height:80px;
+  background-color:cadetblue;
+}
+
+.ports div {
+  height:60px;
+}

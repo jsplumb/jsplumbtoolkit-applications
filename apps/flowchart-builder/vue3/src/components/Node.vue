@@ -1,14 +1,15 @@
 <script>
 
-    import { BaseNodeComponent } from '@jsplumbtoolkit/browser-ui-vue2'
+    import { BaseNodeComponent } from '@jsplumbtoolkit/browser-ui-vue3'
 
     export default {
-        mixins:[BaseNodeComponent]
+        mixins:[BaseNodeComponent],
+        props:["shapeLibrary"]
     }
 
 </script>
 <template>
-    <div :style="'width:' + obj.width + 'px;height:' + obj.height + 'px;color:' + obj.textColor" class="flowchart-object" data-jtk-target="true" data-jtk-target-port-type="target">
+    <div :style="{width:obj.width + 'px', height:obj.height + 'px'}" class="flowchart-object" data-jtk-target="true" data-jtk-target-port-type="target">
         <span>{{obj.text}}</span>
         <jsplumb-shape :obj="obj" :width="obj.width" :height="obj.height" :shape-library="shapeLibrary"></jsplumb-shape>
         <div class="jtk-connect" data-jtk-anchor-x="0" data-jtk-anchor-y="0.5" data-jtk-orientation-x="-1"  data-jtk-orientation-y="0" data-jtk-source="true" data-jtk-port-type="source" style="left:0;top:50%;transform: translate(-50%, -50%);"></div>

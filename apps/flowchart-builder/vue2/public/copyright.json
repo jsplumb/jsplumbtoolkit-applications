@@ -53,7 +53,8 @@
       "width": 250,
       "height": 250,
       "fill": "#FFFFFF",
-      "outline": "#000000"
+      "outline": "#000000",
+      "textColor": "#000000"
     },
     {
       "id": "6",

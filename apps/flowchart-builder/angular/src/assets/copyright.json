@@ -9,7 +9,8 @@
       "width": 350,
       "height": 150,
       "fill": "#FF2299",
-      "outline": "#000000"
+      "outline": "blue",
+      "outlineWidth": 5
     },
     {
       "id": "2",

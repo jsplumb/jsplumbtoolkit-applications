@@ -4,6 +4,8 @@
     import InspectorComponent from './Inspector.vue'
     import NodeComponent from './Node.vue'
 
+    import { defineComponent } from "vue";
+
     import {
         AbsoluteLayout,
         initializeOrthogonalConnectorEditors,
@@ -18,7 +20,10 @@
         LassoPlugin,
         BackgroundPlugin,
         ShapeLibraryImpl
+
     } from "@jsplumbtoolkit/browser-ui"
+
+    import { loadSurface } from "@jsplumbtoolkit/browser-ui-vue3"
 
     import {
         CLASS_EDGE_LABEL,
@@ -45,35 +50,33 @@
         return [ p.x, p.y, p.ox, p.oy ]
     }
 
-    export default {
+    export default defineComponent({
         name:"flowchart",
         components:{ ControlsComponent, InspectorComponent },
         mounted() {
 
             toolkitComponent = this.$refs.toolkitComponent;
-            toolkit = toolkitComponent.toolkit;
-            surface = toolkitComponent.surface;
 
-            window.tk = toolkit
+            loadSurface("surfaceId", (s) => {
+                surface = s;
+                toolkit = surface.toolkitInstance;
 
-            edgeEditor = new EdgePathEditor(surface, { activeMode:true})
+                window.tk = toolkit
 
-            initializeOrthogonalConnectorEditors()
+                edgeEditor = new EdgePathEditor(surface, { activeMode:true})
+
+                initializeOrthogonalConnectorEditors()
+
+            })
+
+
         },
-        data:() => {
-
-            return {
-                shapeLibrary,
-                dataGenerator:(el) => {
-                    return {
-                        textColor:DEFAULT_TEXT_COLOR,
-                        outline:DEFAULT_STROKE,
-                        fill:DEFAULT_FILL,
-                        text:''
-                    }
-                },
-                toolkitParams:{},
-                view:{
+        methods:{
+            toolkitParams:function() {
+                return {}
+            },
+            viewParams:function() {
+                return {
                     nodes:{
                         default:{
                             component:NodeComponent,
@@ -82,10 +85,10 @@
                                     edgeEditor.stopEditing()
                                     // if zero nodes currently selected, or the shift key wasnt pressed, make this node the only one in the selection.
                                     if (toolkit.getSelection()._nodes.length < 1 || params.e.shiftKey !== true) {
-                                      toolkit.setSelection(params.obj)
+                                        toolkit.setSelection(params.obj)
                                     } else {
-                                      // if multiple nodes already selected, or shift was pressed, add this node to the current selection.
-                                      toolkit.addToSelection(params.obj)
+                                        // if multiple nodes already selected, or shift was pressed, add this node to the current selection.
+                                        toolkit.addToSelection(params.obj)
                                     }
                                 }
                             },
@@ -133,8 +136,10 @@
                             isTarget: true
                         }
                     }
-                },
-                renderParams:{
+                }
+            },
+            renderParams:function() {
+                return {
                     layout:{
                         type:AbsoluteLayout.type
                     },
@@ -177,8 +182,21 @@
                     zoomToFit:true
                 }
             }
+        },
+        data:() => {
+            return {
+                shapeLibrary,
+                dataGenerator:(el) => {
+                    return {
+                        textColor:DEFAULT_TEXT_COLOR,
+                        outline:DEFAULT_STROKE,
+                        fill:DEFAULT_FILL,
+                        text:''
+                    }
+                }
+            }
         }
-    }
+    })
 </script>
 <template>
     <div id="app">
@@ -189,24 +207,23 @@
 
             <jsplumb-toolkit ref="toolkitComponent"
                              surface-id="surfaceId"
-                             v-bind:render-params="renderParams"
-                             v-bind:view="view"
-                             v-bind:toolkit-params="toolkitParams"
-                             url="copyright.json"
-            >
-
+                             :render-params="this.renderParams()"
+                             :view="this.viewParams()"
+                             :toolkit-params="this.toolkitParams()"
+                             url="copyright.json">
             </jsplumb-toolkit>
 
             <!-- miniview -->
             <jsplumb-miniview surface-id="surfaceId"></jsplumb-miniview>
         </div>
         <div class="jtk-demo-rhs">
-            <!-- the node palette -->
+            <!-- the node palette-->
             <div class="sidebar node-palette">
                 <jsplumb-shape-palette surface-id="surfaceId"
                                        :shape-library="shapeLibrary"
                                        :data-generator="dataGenerator"/>
             </div>
+
             <!-- node/edge inspector -->
             <InspectorComponent surface-id="surfaceId"/>
 
