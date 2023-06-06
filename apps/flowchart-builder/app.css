@@ -252,8 +252,6 @@ svg.jtk-drag-drop-hover path {
 }
 
 
-
-/* NEW */
 /*
   The small discs from which the user can drag new connections. TODO not scoped to flowchart really.
  */
@@ -414,6 +412,10 @@ Applied to the drop down that lets the user pick their current shape set.
     bottom: -0.3rem;
     right: -0.3rem;
     cursor: se-resize;
+}
+
+.jtk-anchor-placeholder {
+    z-index:13;
 }
 
 /* ------------------ INSPECTOR ------------------------------------------------- */
