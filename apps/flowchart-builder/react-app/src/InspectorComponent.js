@@ -24,10 +24,6 @@ export default function InspectorComponent({surface}) {
 
     return <div ref={container}>
 
-        {currentType === '' &&
-            <h1>not set</h1>
-        }
-
     { currentType === Node.objectType &&
         <div className="jtk-inspector jtk-node-inspector">
             <div className="jtk-inspector-section">
