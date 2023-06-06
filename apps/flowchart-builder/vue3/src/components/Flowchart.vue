@@ -191,7 +191,8 @@
                         textColor:DEFAULT_TEXT_COLOR,
                         outline:DEFAULT_STROKE,
                         fill:DEFAULT_FILL,
-                        text:''
+                        text:'',
+                        outlineWidth:2
                     }
                 }
             }
