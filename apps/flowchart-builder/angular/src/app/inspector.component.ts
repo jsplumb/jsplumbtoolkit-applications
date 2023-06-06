@@ -49,7 +49,7 @@ import {Base, Inspector, Edge} from "@jsplumbtoolkit/browser-ui"
 })
 export class InspectorComponent implements AfterViewInit {
 
-    currentType:string = 'foo'
+    currentType:string = ''
 
     @Input() surfaceId:string
 
@@ -65,7 +65,6 @@ export class InspectorComponent implements AfterViewInit {
                     this.currentType = ''
                 },
                 _refresh:(obj:Base, cb:() => void) => {
-                    debugger
                     this.currentType = obj.objectType
                     setTimeout(cb, 0)
                     this.changeDetector.detectChanges()
