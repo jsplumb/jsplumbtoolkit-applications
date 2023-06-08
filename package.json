@@ -1,0 +1,26 @@
+{
+  "name": "jsplumbtoolkit-applications",
+  "version": "1.0.0",
+  "description": "Starter applications built with the jsPlumb Toolkit",
+  "main": "index.js",
+  "scripts": {
+    "clean": "node ./scripts/clean.js",
+    "install:angular": "node ./scripts/install angular",
+    "install:svelte": "node ./scripts/install svelte",
+    "install:react": "node ./scripts/install react",
+    "install:vue2": "node ./scripts/install vue2",
+    "install:vue3": "node ./scripts/install vue3",
+    "install:vanilla": "node ./scripts/install vanilla"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsplumb/jsplumbtoolkit-applications.git"
+  },
+  "author": "jsPlumb <hello@jsplumbtoolkit.com> (https://jsplumbtoolkit.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsplumb/jsplumbtoolkit-applications/issues"
+  },
+  "homepage": "https://github.com/jsplumb/jsplumbtoolkit-applications#readme",
+  "libs": ["angular", "vanilla", "vue2", "vue3"]
+}
