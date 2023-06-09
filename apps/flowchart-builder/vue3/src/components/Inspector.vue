@@ -4,41 +4,26 @@
         <h1 v-if="currentType===''"></h1>
 
         <div v-if="currentType === 'Node'" class="jtk-inspector jtk-node-inspector">
-            <div class="jtk-inspector-section">
-                <div>Text</div>
-                <input type="text" jtk-att="text" jtk-focus/>
-            </div>
+            <div>Text</div>
+            <input type="text" jtk-att="text" jtk-focus/>
 
-            <div class="jtk-inspector-section">
-                <div>Fill</div>
-                <input type="color" jtk-att="fill"/>
-            </div>
+            <div>Fill</div>
+            <input type="color" jtk-att="fill"/>
 
-            <div class="jtk-inspector-section">
-                <div>Color</div>
-                <input type="color" jtk-att="textColor"/>
-            </div>
+            <div>Color</div>
+            <input type="color" jtk-att="textColor"/>
 
-            <div class="jtk-inspector-section">
-                <div>Outline</div>
-                <input type="color" jtk-att="outline"/>
-            </div>
+            <div>Outline</div>
+            <input type="color" jtk-att="outline"/>
         </div>
 
         <div v-if="currentType === 'Edge'" class="jtk-inspector jtk-edge-inspector">
-            <div class="jtk-inspector-section">
-                <div>Label</div>
-                <input type="text" jtk-att="label"/>
-            </div>
-            <div class="jtk-inspector-section">
-                <div>Line style</div>
-                <!--jtk-line-style current="{{lineStyle}}" jtk-att="lineStyle"></jtk-line-style-->
-            </div>
-
-            <div class="jtk-inspector-section">
-                <div>Color</div>
-                <input type="color" jtk-att="color"/>
-            </div>
+            <div>Label</div>
+            <input type="text" jtk-att="label"/>
+            <div>Line style</div>
+            <!--jtk-line-style current="{{lineStyle}}" jtk-att="lineStyle"></jtk-line-style-->
+            <div>Color</div>
+            <input type="color" jtk-att="color"/>
         </div>
 
 
@@ -68,8 +53,8 @@
                 new Inspector({
                     container:this.$refs.container,
                     surface,
-                    _renderEmptyContainer:() => this.currentType = '',
-                    _refresh:(obj, cb) => {
+                    renderEmptyContainer:() => this.currentType = '',
+                    refresh:(obj, cb) => {
                         this.currentType = obj.objectType
                         nextTick(cb)
                     }
