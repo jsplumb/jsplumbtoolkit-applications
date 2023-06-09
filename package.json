@@ -5,6 +5,12 @@
   "main": "index.js",
   "scripts": {
     "clean": "node ./scripts/clean.js",
+    "clean:angular": "node ./scripts/clean angular",
+    "clean:svelte": "node ./scripts/clean svelte",
+    "clean:react": "node ./scripts/clean react",
+    "clean:vue2": "node ./scripts/clean vue2",
+    "clean:vue3": "node ./scripts/clean vue3",
+    "clean:vanilla": "node ./scripts/clean vanilla",
     "install:angular": "node ./scripts/install angular",
     "install:svelte": "node ./scripts/install svelte",
     "install:react": "node ./scripts/install react",
