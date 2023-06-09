@@ -26,23 +26,33 @@ const cleaners = {
     }
 }
 
-g.ls("./apps").forEach(d => {
-    console.log(d)
-    p.libs.forEach(lib => {
+function clean(app, lib) {
+    const appDir = `./apps/${app}`,
+        libDir = `${appDir}/${lib}`
 
-        const appDir = `./apps/${d}`,
-            libDir = `${appDir}/${lib}`
-
-        if(g.exists(libDir)) {
-            try {
-                cleaners[lib](libDir)
-                console.log(`Cleaned ${libDir}`)
-            } catch (e) {
-                console.log(`Could not clean ${libDir}`)
-            }
-        } else {
-            console.log(`${libDir} not found`)
+    if(g.exists(libDir)) {
+        try {
+            cleaners[lib](libDir)
+            console.log(`  Cleaned ${libDir}`)
+        } catch (e) {
+            console.log(`Could not clean ${libDir}`)
         }
-    })
+    } else {
+        console.log(`${libDir} not found`)
+    }
+}
+
+const lib = process.argv[2]
+
+g.ls("./apps").forEach(d => {
+
+    if (lib == null) {
+        console.log(`Cleaning all libs for app ${d}`)
+        p.libs.forEach(lib => {
+            clean(d, lib)
+        })
+    } else {
+        clean(d, lib)
+    }
 
 })
