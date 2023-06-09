@@ -7,42 +7,27 @@ import {Base, Inspector, Edge} from "@jsplumbtoolkit/browser-ui"
         
         <div *ngIf="currentType === ''"></div>
         
-        <div *ngIf="currentType === 'Edge'">
-            <div class="jtk-inspector-section">
-                <div>Label</div>
-                <input type="text" jtk-att="label"/>
-            </div>
-            <div class="jtk-inspector-section">
-                <div>Line style</div>
-                <!--jtk-line-style current="{{lineStyle}}" jtk-att="lineStyle"></jtk-line-style-->
-            </div>
-
-            <div class="jtk-inspector-section">
-                <div>Color</div>
-                <input type="color" jtk-att="color"/>
-            </div>
+        <div *ngIf="currentType === 'Edge'" class="jtk-inspector jtk-edge-inspector">
+            <div>Label</div>
+            <input type="text" jtk-att="label"/>
+            <div>Line style</div>
+            <!--jtk-line-style current="{{lineStyle}}" jtk-att="lineStyle"></jtk-line-style-->
+            <div>Color</div>
+            <input type="color" jtk-att="color"/>
         </div>
         
         <div *ngIf="currentType === 'Node'" class="jtk-inspector jtk-node-inspector">
-            <div class="jtk-inspector-section">
-                <div>Text</div>
-                <input type="text" jtk-att="text" jtk-focus/>
-            </div>
+            <div>Text</div>
+            <input type="text" jtk-att="text" jtk-focus/>
 
-            <div class="jtk-inspector-section">
-                <div>Fill</div>
-                <input type="color" jtk-att="fill"/>
-            </div>
+            <div>Fill</div>
+            <input type="color" jtk-att="fill"/>
 
-            <div class="jtk-inspector-section">
-                <div>Color</div>
-                <input type="color" jtk-att="textColor"/>
-            </div>
+            <div>Color</div>
+            <input type="color" jtk-att="textColor"/>
 
-            <div class="jtk-inspector-section">
-                <div>Outline</div>
-                <input type="color" jtk-att="outline"/>
-            </div>
+            <div>Outline</div>
+            <input type="color" jtk-att="outline"/>
         </div>
     </div>`,
     selector:"app-inspector"
@@ -61,10 +46,10 @@ export class InspectorComponent implements AfterViewInit {
             new Inspector({
                 container:this.el.nativeElement,
                 surface,
-                _renderEmptyContainer:() => {
+                renderEmptyContainer:() => {
                     this.currentType = ''
                 },
-                _refresh:(obj:Base, cb:() => void) => {
+                refresh:(obj:Base, cb:() => void) => {
                     this.currentType = obj.objectType
                     setTimeout(cb, 0)
                     this.changeDetector.detectChanges()
