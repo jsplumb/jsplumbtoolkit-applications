@@ -6,9 +6,8 @@
         <meta http-equiv="content-type" content="text/html;charset=utf-8" />
         <!-- CSS -->
         <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
-        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-dialogs.css">
         <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-connector-editors.css">
-        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css">
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css">
 
         <!-- /CSS -->
         <link rel="stylesheet" href="../app.css">
@@ -21,13 +20,13 @@
             <!-- main drawing area -->
             <div class="jtk-demo-canvas">
                 <!-- controls -->
-                <div class="controls" can-undo="false" can-redo="false">
-                    <i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode"></i>
-                    <i class="fa fa-pencil" mode="select" title="Select Mode"></i>
-                    <i class="fa fa-home" reset title="Zoom To Fit"></i>
-                    <i class="fa fa-undo" undo title="Undo last action"></i>
-                    <i class="fa fa-repeat" redo title="Redo last action"></i>
-                    <i class="fa fa-times" clear title="Clear flowchart"></i>
+                <div class="jtk-controls" can-undo="false" can-redo="false">
+                    <i class="jtk-pan-mode jtk-selected-mode" mode="pan" title="Pan Mode"></i>
+                    <i class="jtk-select-mode" mode="select" title="Select Mode"></i>
+                    <i class="jtk-zoom-to-fit" reset title="Zoom To Fit"></i>
+                    <i class="jtk-undo" undo title="Undo last action"></i>
+                    <i class="jtk-redo" redo title="Redo last action"></i>
+                    <i class="jtk-clear-dataset" clear title="Clear flowchart"></i>
                 </div>
                 <!-- miniview -->
                 <div class="miniview"></div>
@@ -43,6 +42,7 @@
                     <p>
                         This sample application is a builder for flowcharts.
                     </p>
+                    <div id="linePicker"></div>
                 </div>
             </div>
 
