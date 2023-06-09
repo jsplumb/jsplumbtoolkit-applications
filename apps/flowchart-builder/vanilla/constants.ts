@@ -40,6 +40,8 @@ export const DEFAULT_TEXT_COLOR = "#000000"
  */
 export const DEFAULT_OUTLINE = "#000000"
 
+export const DEFAULT_OUTLINE_WIDTH = 2
+
 export const GRID_SIZE = {
     w:50,
     h:50
