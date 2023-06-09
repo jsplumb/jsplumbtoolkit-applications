@@ -9,7 +9,7 @@
       "width": 350,
       "height": 150,
       "fill": "#FF2299",
-      "outline": "blue",
+      "outline": "#0000FF",
       "textColor": "#000000"
     },
     {
@@ -173,7 +173,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -219,7 +219,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -265,7 +265,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -307,7 +307,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -349,7 +349,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -395,7 +395,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -441,7 +441,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -483,7 +483,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -529,7 +529,7 @@
         "label": "",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "blue"
+        "color": "#0000FF"
       },
       "geometry": {
         "segments": [
@@ -569,7 +569,7 @@
       "target": "9",
       "data": {
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#0000FF"
       },
       "geometry": {
         "segments": [
@@ -609,7 +609,7 @@
       "target": "10",
       "data": {
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#0000FF"
       },
       "geometry": {
         "segments": [
@@ -651,7 +651,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#0000FF"
       },
       "geometry": {
         "segments": [
@@ -697,7 +697,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#0000FF"
       },
       "geometry": {
         "segments": [
