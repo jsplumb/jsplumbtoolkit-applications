@@ -14,6 +14,8 @@ import {
     PROPERTY_OUTLINE,
     PROPERTY_TEXT_COLOR
 } from "./constants"
+import {EdgeTypePicker} from "./edge-type-picker"
+import edgeMappings from "./edge-mappings"
 
 const TMPL_NODE_INSPECTOR = "tmplNodeInspector"
 const TMPL_EDGE_INSPECTOR = "tmplEdgeInspector"
@@ -50,18 +52,12 @@ const inspectorTemplates = {
             </div>`,
     [TMPL_EDGE_INSPECTOR] : `
             <div class="jtk-inspector jtk-edge-inspector">
-                <div class="jtk-inspector-section">
-                    <div>Label</div>
-                    <input type="text" jtk-att="${PROPERTY_LABEL}"/>
-                </div>
-                <div class="jtk-inspector-section">
-                    <div>Line style</div>
-                    <jtk-line-style current="{{lineStyle}}" jtk-att="${PROPERTY_LINE_STYLE}"></jtk-line-style>                    
-                </div>
-                <div class="jtk-inspector-section">
-                    <div>Color</div>
-                    <input type="color" jtk-att="${PROPERTY_COLOR}"/>
-                </div>
+                <div>Label</div>
+                <input type="text" jtk-att="${PROPERTY_LABEL}"/>
+                <div>Line style</div>
+                <jtk-line-style value="{{lineStyle}}" jtk-att="${PROPERTY_LINE_STYLE}"></jtk-line-style>
+                <div>Color</div>
+                <input type="color" jtk-att="${PROPERTY_COLOR}"/>
             </div>`
 }
 
@@ -81,5 +77,20 @@ export class FlowchartBuilderInspector extends VanillaInspector {
                 }
             }
         }))
+
+        ;(this as any).templateRenderer.registerTag("jtk-line-style", {
+            template:`<div class="jtk-line-style-picker" value="{{lineStyle}}"/>`,
+            rendered:(el) => {
+                const current = el.getAttribute("value")
+                new EdgeTypePicker(el, edgeMappings(), (v:string) => {
+                    alert(`${v} was clicked`)
+                }).render(PROPERTY_LINE_STYLE)
+                const currentEl = el.querySelector(`[data-value='${current}']`)
+                if (currentEl) {
+                    currentEl.classList.add("jtk-line-style-picker-selected")
+                }
+            }
+        })
+
     }
 }
