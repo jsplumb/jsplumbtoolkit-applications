@@ -26,41 +26,24 @@ export default function InspectorComponent({surface}) {
 
     { currentType === Node.objectType &&
         <div className="jtk-inspector jtk-node-inspector">
-            <div className="jtk-inspector-section">
             <div>Text</div>
-                <input type="text" jtk-att="text" jtk-focus/>
-            </div>
-
-            <div className="jtk-inspector-section">
-                <div>Fill</div>
-                <input type="color" jtk-att="fill"/>
-            </div>
-
-            <div className="jtk-inspector-section">
-                <div>Color</div>
-                <input type="color" jtk-att="textColor"/>
-            </div>
-
-            <div className="jtk-inspector-section">
-                <div>Outline</div>
-                <input type="color" jtk-att="outline"/>
-            </div>
+            <input type="text" jtk-att="text" jtk-focus="true"/>
+            <div>Fill</div>
+            <input type="color" jtk-att="fill"/>
+            <div>Color</div>
+            <input type="color" jtk-att="textColor"/>
+            <div>Outline</div>
+            <input type="color" jtk-att="outline"/>
         </div>
     }
 
     { currentType === Edge.objectType &&
         <div className="jtk-inspector jtk-edge-inspector">
-            <div className="jtk-inspector-section">
-                <div>Label</div>
-                <input type="text" jtk-att="label"/>
-            </div>
-            <div className="jtk-inspector-section">
-                <div>Line style</div>
-            </div>
-            <div className="jtk-inspector-section">
-                <div>Color</div>
-                <input type="color" jtk-att="color"/>
-            </div>
+            <div>Label</div>
+            <input type="text" jtk-att="label"/>
+            <div>Line style</div>
+            <div>Color</div>
+            <input type="color" jtk-att="color"/>
         </div>
     }
 
