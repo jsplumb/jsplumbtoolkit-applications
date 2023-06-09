@@ -4,40 +4,22 @@
         <div v-if="currentType === ''"></div>
 
         <div v-if="currentType === 'Node'" class="jtk-inspector jtk-node-inspector">
-            <div class="jtk-inspector-section">
-                <div>Text</div>
-                <input type="text" jtk-att="text" jtk-focus/>
-            </div>
-            <div class="jtk-inspector-section">
-                <div>Fill</div>
-                <input type="color" jtk-att="fill"/>
-            </div>
-
-            <div class="jtk-inspector-section">
-                <div>Color</div>
-                <input type="color" jtk-att="textColor"/>
-            </div>
-
-            <div class="jtk-inspector-section">
-                <div>Outline</div>
-                <input type="color" jtk-att="outline"/>
-            </div>
+            <div>Text</div>
+            <input type="text" jtk-att="text" jtk-focus/>
+            <div>Fill</div>
+            <input type="color" jtk-att="fill"/>
+            <div>Color</div>
+            <input type="color" jtk-att="textColor"/>
+            <div>Outline</div>
+            <input type="color" jtk-att="outline"/>
         </div>
 
         <div v-if="currentType === 'Edge'" class="jtk-inspector jtk-edge-inspector">
-            <div class="jtk-inspector-section">
-                <div>Label</div>
-                <input type="text" jtk-att="label"/>
-            </div>
-            <div class="jtk-inspector-section">
-                <div>Line style</div>
-
-            </div>
-
-            <div class="jtk-inspector-section">
-                <div>Color</div>
-                <input type="color" jtk-att="color"/>
-            </div>
+            <div>Label</div>
+            <input type="text" jtk-att="label"/>
+            <div>Line style</div>
+            <div>Color</div>
+            <input type="color" jtk-att="color"/>
         </div>
 
 
@@ -67,10 +49,10 @@
                 new Inspector({
                     container:this.$refs.container,
                     surface,
-                    _renderEmptyContainer:() => {
+                    renderEmptyContainer:() => {
                         this.currentType = ''
                     },
-                    _refresh:(obj, cb) => {
+                    refresh:(obj, cb) => {
                         this.currentType = obj.objectType
                         Vue.nextTick(cb)
                     }
