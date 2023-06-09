@@ -214,6 +214,12 @@ body {
     background-color: orangered;
     color:white;
 }
+/**
+Styles for a dashed edge.
+ */
+.jtk-flowchart-dashed-edge path {
+    stroke-dasharray: 2 4;
+}
 
 /* styles for drag + drop */
 
@@ -269,6 +275,30 @@ svg.jtk-drag-drop-hover path {
     border-radius: 50%;
     opacity:0.8;
     display: none;
+}
+
+.jtk-connect-left {
+    left:0;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+
+.jtk-connect-right {
+    right:0;
+    top:50%;
+    transform: translate(50%, -50%);
+}
+
+.jtk-connect-top {
+    left:50%;
+    top:0;
+    transform: translate(-50%, -50%);
+}
+
+.jtk-connect-bottom {
+    left:50%;
+    bottom:0;
+    transform: translate(-50%, 50%);
 }
 
 /**
@@ -424,17 +454,22 @@ Applied to the drop down that lets the user pick their current shape set.
     display:flex;
     flex-direction: column;
     padding:1rem;
+    background-color: #e7e7e7;
+    margin: 5px;
 }
 
-.jtk-inspector-section {
-    display:flex;
-    margin:0.5rem 0;
-    align-items: center;
-}
 
-.jtk-inspector-section input {
-    flex-basis: 75%;
-    flex-grow: 0;
-    margin-left: auto;
+.jtk-inspector input {
+    width:100%;
     height: 2rem;
+    margin:5px 0;
+}
+
+.jtk-line-style-picker > div {
+    padding:5px;
+    margin:5px 0;
+}
+
+.jtk-line-style-picker-selected {
+    background-color:white;
 }
