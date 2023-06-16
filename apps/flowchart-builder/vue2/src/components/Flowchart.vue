@@ -59,6 +59,7 @@
         data:() => {
 
             return {
+                edgeMappings:edgeMappings(),
                 shapeLibrary,
                 dataGenerator:(el) => {
                     return {
@@ -202,7 +203,7 @@
                                        :data-generator="dataGenerator"/>
             </div>
             <!-- node/edge inspector -->
-            <InspectorComponent surface-id="surfaceId"/>
+            <InspectorComponent surface-id="surfaceId" v-bind:edge-mappings="edgeMappings"/>
 
             <div class="description">
                 <p>

@@ -21,7 +21,7 @@
             <div>Label</div>
             <input type="text" jtk-att="label"/>
             <div>Line style</div>
-            <!--jtk-line-style current="{{lineStyle}}" jtk-att="lineStyle"></jtk-line-style-->
+            <jsplumb-edge-type-picker v-bind:edgeMappings="edgeMappings" v-bind:inspector="inspector" property-name="lineStyle"/>
             <div>Color</div>
             <input type="color" jtk-att="color"/>
         </div>
@@ -38,10 +38,14 @@
 
     export default {
         data:() => {
-            return { currentType:'' }
+            return {
+                currentType:'',
+                inspector:null
+            }
         },
         props:{
-            surfaceId:String
+            surfaceId:String,
+            edgeMappings:Array
         },
         mounted() {
             const self = this
@@ -50,7 +54,7 @@
                 // create an inspector and give it the container element
                 // and the surface.
 
-                new Inspector({
+                this.inspector = new Inspector({
                     container:this.$refs.container,
                     surface,
                     renderEmptyContainer:() => this.currentType = '',

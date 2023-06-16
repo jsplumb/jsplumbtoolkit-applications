@@ -18,6 +18,7 @@
             <div>Label</div>
             <input type="text" jtk-att="label"/>
             <div>Line style</div>
+            <jsplumb-edge-type-picker v-bind:edgeMappings="edgeMappings" v-bind:inspector="inspector" property-name="lineStyle"/>
             <div>Color</div>
             <input type="color" jtk-att="color"/>
         </div>
@@ -33,10 +34,14 @@
 
     export default {
         data:() => {
-            return { currentType:'add' }
+            return {
+                currentType:'',
+                inspector:null
+            }
         },
         props:{
-            surfaceId:String
+            surfaceId:String,
+            edgeMappings:Array
         },
         mounted() {
             getSurface(this.surfaceId, (surface) => {
@@ -46,7 +51,7 @@
                 // empty container (no selection) and to render an editor.
                 // here we toggle `currentType` and let the template draw what
                 // it needs to.
-                new Inspector({
+                this.inspector = new Inspector({
                     container:this.$refs.container,
                     surface,
                     renderEmptyContainer:() => {
