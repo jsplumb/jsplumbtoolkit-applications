@@ -34,16 +34,12 @@
 
     const shapeLibrary = new ShapeLibraryImpl([FLOWCHART_SHAPES])
 
-    function _$_anchorPositionFinder (el, elxy) {
-        const point = findClosestPoint(elxy, {w:1, h:1}, [
-            {x:0, y:0.5, ox:-1, oy:0},
-            {x:1, y:0.5, ox:1, oy:0},
-            {x:0.5, y:0, ox:0, oy:-1},
-            {x:0.5, y:1, ox:0, oy:1}
-        ])
-        const p = point.p
-        return [ p.x, p.y, p.ox, p.oy ]
-    }
+    export const anchorPositions = [
+        {x:0, y:0.5, ox:-1, oy:0, id:"left"},
+        {x:1, y:0.5, ox:1, oy:0, id:"right"},
+        {x:0.5, y:0, ox:0, oy:-1, id:"top"},
+        {x:0.5, y:1, ox:0, oy:1, id:"bottom"}
+    ]
 
     export default {
         name:"flowchart",
@@ -91,7 +87,8 @@
                                 }
                             },
                             inject:{
-                                shapeLibrary:shapeLibrary
+                                shapeLibrary:shapeLibrary,
+                                anchorPositions:anchorPositions
                             }
                         }
                     },
@@ -114,9 +111,7 @@
                                     toolkit.setSelection(p.edge)
                                     edgeEditor.startEditing(p.edge, {
                                         deleteButton:true,
-                                        anchorPositionFinder: (el, elxy, vertex) => {
-                                            return _$_anchorPositionFinder(el, elxy)
-                                        }
+                                        anchorPositions
                                     })
                                 }
                             }
@@ -127,9 +122,7 @@
                             maxConnections: -1
                         },
                         target: {
-                            anchorPositionFinder:(el, elxy) => {
-                                return _$_anchorPositionFinder(el, elxy)
-                            },
+                            anchorPositions,
                             maxConnections: -1,
                             isTarget: true
                         }
