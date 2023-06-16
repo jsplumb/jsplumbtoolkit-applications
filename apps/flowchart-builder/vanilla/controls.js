@@ -13,36 +13,36 @@ export class FlowchartBuilderControls {
             container.setAttribute("can-redo", state.redoCount > 0 ? "true" : "false");
         })
 
-        renderer.on(container, EVENT_TAP, "[undo]",  function() {
+        renderer.on(container, EVENT_TAP, "[data-undo]",  function() {
             toolkit.undo()
         })
 
-        renderer.on(container, EVENT_TAP, "[redo]", function() {
+        renderer.on(container, EVENT_TAP, "[data-redo]", function() {
             toolkit.redo()
         })
 
         // listener for mode change on renderer.
         renderer.bind(EVENT_SURFACE_MODE_CHANGED, function(mode) {
-            forEach(container.querySelectorAll("[mode]"), function(e) {
+            forEach(container.querySelectorAll("[data-mode]"), function(e) {
                 renderer.removeClass(e, "selected-mode")
             })
 
-            renderer.addClass(container.querySelector("[mode='" + mode + "']"), "selected-mode")
+            renderer.addClass(container.querySelector("[data-mode='" + mode + "']"), "selected-mode")
         })
 
         // pan mode/select mode
-        renderer.on(container, EVENT_TAP, "[mode]", (e, eventTarget) => {
-            renderer.setMode(eventTarget.getAttribute("mode"))
+        renderer.on(container, EVENT_TAP, "[data-mode]", (e, eventTarget) => {
+            renderer.setMode(eventTarget.getAttribute("data-mode"))
         });
 
         // on home button click, zoom content to fit.
-        renderer.on(container, EVENT_TAP, "[reset]",  (e, eventTarget) => {
+        renderer.on(container, EVENT_TAP, "[data-reset]",  (e, eventTarget) => {
             toolkit.clearSelection()
             renderer.zoomToFit()
         })
 
         // on clear button, perhaps clear the Toolkit
-        renderer.on(container, EVENT_TAP, "[clear]", (e, eventTarget) => {
+        renderer.on(container, EVENT_TAP, "[data-clear]", (e, eventTarget) => {
             if (toolkit.getNodeCount() === 0 || confirm("Clear flowchart?")) {
                 toolkit.clear()
             }
