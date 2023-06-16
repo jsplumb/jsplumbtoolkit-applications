@@ -53,18 +53,6 @@ body {
     align-items: center;
 }
 
-.sidebar-item {
-    background-color: #CCC;
-    border-radius: 11px;
-    color: #585858;
-    cursor: move;
-    padding: 8px;
-    width: 128px;
-    text-align: center;
-    margin: 10px;
-    outline: none;
-}
-
 .miniview {
     position: absolute;
     top: 25px;
@@ -198,6 +186,7 @@ body {
     background-color:white;
     padding:2px;
     border-radius:5px;
+    z-index:10;
 }
 
 /* --------------------------- / overlays --------------------------------- */
@@ -249,13 +238,9 @@ svg.jtk-drag-drop-hover path {
 
 .jtk-drag-drop-current {
     outline:2px solid pink;
-    /*width:150px !important;
-    height:100px !important;*/
 }
 
-.fa-times:after {
-    content:"✖"
-}
+
 
 
 /*
@@ -458,18 +443,35 @@ Applied to the drop down that lets the user pick their current shape set.
     margin: 5px;
 }
 
-
 .jtk-inspector input {
     width:100%;
-    height: 2rem;
+    height: 1.5rem;
     margin:5px 0;
 }
 
-.jtk-line-style-picker > div {
-    padding:5px;
-    margin:5px 0;
+.jtk-edge-type-picker {
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
 }
 
-.jtk-line-style-picker-selected {
+.jtk-edge-type-picker > div {
+    margin:5px 0;
+    height:1.5rem;
+    width:100%;
+    position:relative;
+}
+
+.jtk-edge-type-picker > div > div {
+    top:5px;
+    bottom:5px;
+    position:absolute;
+}
+
+.jtk-edge-type-picker > svg {
+    z-index:1;
+}
+
+.jtk-edge-type-picker-selected {
     background-color:white;
 }
