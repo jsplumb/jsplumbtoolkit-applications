@@ -3,7 +3,7 @@ import {
     isNode,
     isEdge,
     VanillaInspectorOptions,
-    VanillaInspector
+    VanillaInspector, createEdgeTypePickerTag
 } from "@jsplumbtoolkit/browser-ui"
 
 import {
@@ -78,19 +78,9 @@ export class FlowchartBuilderInspector extends VanillaInspector {
             }
         }))
 
-        ;(this as any).templateRenderer.registerTag("jtk-line-style", {
-            template:`<div class="jtk-line-style-picker" value="{{lineStyle}}"/>`,
-            rendered:(el) => {
-                const current = el.getAttribute("value")
-                new EdgeTypePicker(el, edgeMappings(), (v:string) => {
-                    alert(`${v} was clicked`)
-                }).render(PROPERTY_LINE_STYLE)
-                const currentEl = el.querySelector(`[data-value='${current}']`)
-                if (currentEl) {
-                    currentEl.classList.add("jtk-line-style-picker-selected")
-                }
-            }
-        })
+        this.registerTag("jtk-line-style", createEdgeTypePickerTag(PROPERTY_LINE_STYLE, edgeMappings(), (v:string) => {
+            this.setValue(PROPERTY_LINE_STYLE, v)
+        }))
 
     }
 }
