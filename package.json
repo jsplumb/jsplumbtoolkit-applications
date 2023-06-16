@@ -11,6 +11,7 @@
     "clean:vue2": "node ./scripts/clean vue2",
     "clean:vue3": "node ./scripts/clean vue3",
     "clean:vanilla": "node ./scripts/clean vanilla",
+    "install": "node ./scripts/install",
     "install:angular": "node ./scripts/install angular",
     "install:svelte": "node ./scripts/install svelte",
     "install:react": "node ./scripts/install react",
