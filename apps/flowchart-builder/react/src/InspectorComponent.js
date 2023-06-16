@@ -1,26 +1,28 @@
 import React, {useEffect, useRef, useState} from "react";
 
 import { Node, Edge, Inspector} from "@jsplumbtoolkit/browser-ui"
+import { EdgeTypePickerComponent } from "@jsplumbtoolkit/browser-ui-react";
 
-export default function InspectorComponent({surface}) {
+export default function InspectorComponent({surface, edgeMappings}) {
 
     const container = useRef(null)
     const [currentType, setCurrentType] = useState('')
+    const [inspector, setInspector] = useState(null)
 
     useEffect(() => {
 
-        new Inspector({
+        setInspector(new Inspector({
             container:container.current,
             surface,
-            _renderEmptyContainer:() => setCurrentType(''),
-            _refresh:(obj, cb) => {
+            renderEmptyContainer:() => setCurrentType(''),
+            refresh:(obj, cb) => {
                 setCurrentType(obj.objectType)
                 // next tick
                 setTimeout(cb)
             }
-        })
+        }))
 
-    })
+    }, [])
 
     return <div ref={container}>
 
@@ -42,6 +44,7 @@ export default function InspectorComponent({surface}) {
             <div>Label</div>
             <input type="text" jtk-att="label"/>
             <div>Line style</div>
+            <EdgeTypePickerComponent edgeMappings={edgeMappings} propertyName="lineStyle" inspector={inspector}/>
             <div>Color</div>
             <input type="color" jtk-att="color"/>
         </div>

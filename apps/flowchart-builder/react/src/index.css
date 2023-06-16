@@ -1,6 +1,7 @@
 @import '../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css';
 @import '../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-connector-editors.css';
-@import '../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css';
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-connector-editors-orthogonal.css";
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css";
 
 :root {
 
@@ -55,18 +56,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.sidebar-item {
-  background-color: #CCC;
-  border-radius: 11px;
-  color: #585858;
-  cursor: move;
-  padding: 8px;
-  width: 128px;
-  text-align: center;
-  margin: 10px;
-  outline: none;
 }
 
 .miniview {
@@ -202,6 +191,7 @@ body {
   background-color:white;
   padding:2px;
   border-radius:5px;
+  z-index:10;
 }
 
 /* --------------------------- / overlays --------------------------------- */
@@ -217,6 +207,13 @@ body {
 .jtk-edge-delete {
   background-color: orangered;
   color:white;
+}
+
+/**
+Styles for a dashed edge.
+ */
+.jtk-flowchart-dashed-edge path {
+  stroke-dasharray: 2 4;
 }
 
 /* styles for drag + drop */
@@ -247,12 +244,6 @@ svg.jtk-drag-drop-hover path {
 
 .jtk-drag-drop-current {
   outline:2px solid pink;
-  /*width:150px !important;
-  height:100px !important;*/
-}
-
-.fa-times:after {
-  content:"✖"
 }
 
 
@@ -273,6 +264,30 @@ svg.jtk-drag-drop-hover path {
   border-radius: 50%;
   opacity:0.8;
   display: none;
+}
+
+.jtk-connect-left {
+  left:0;
+  top:50%;
+  transform: translate(-50%, -50%);
+}
+
+.jtk-connect-right {
+  right:0;
+  top:50%;
+  transform: translate(50%, -50%);
+}
+
+.jtk-connect-top {
+  left:50%;
+  top:0;
+  transform: translate(-50%, -50%);
+}
+
+.jtk-connect-bottom {
+  left:50%;
+  bottom:0;
+  transform: translate(-50%, 50%);
 }
 
 /**
@@ -424,21 +439,45 @@ Applied to the drop down that lets the user pick their current shape set.
 
 /* ------------------ INSPECTOR ------------------------------------------------- */
 
+/* ------------------ INSPECTOR ------------------------------------------------- */
+
 .jtk-inspector {
   display:flex;
   flex-direction: column;
   padding:1rem;
+  background-color: #e7e7e7;
+  margin: 5px;
 }
 
-.jtk-inspector-section {
+.jtk-inspector input {
+  width:100%;
+  height: 1.5rem;
+  margin:5px 0;
+}
+
+.jtk-edge-type-picker {
   display:flex;
-  margin:0.5rem 0;
-  align-items: center;
+  flex-direction:column;
+  flex-grow:1;
 }
 
-.jtk-inspector-section input {
-  flex-basis: 75%;
-  flex-grow: 0;
-  margin-left: auto;
-  height: 2rem;
+.jtk-edge-type-picker > div {
+  margin:5px 0;
+  height:1.5rem;
+  width:100%;
+  position:relative;
+}
+
+.jtk-edge-type-picker > div > div {
+  top:5px;
+  bottom:5px;
+  position:absolute;
+}
+
+.jtk-edge-type-picker > svg {
+  z-index:1;
+}
+
+.jtk-edge-type-picker-selected {
+  background-color:white;
 }

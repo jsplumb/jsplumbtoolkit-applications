@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client';
 
 import {JsPlumbToolkitSurfaceComponent,
     JsPlumbToolkitMiniviewComponent,
-    ShapeLibraryPaletteComponent
+    ShapeLibraryPaletteComponent,
+    ControlsComponent
 } from "@jsplumbtoolkit/browser-ui-react";
 
 import { newInstance, DEFAULT, EVENT_DBL_CLICK, EVENT_CLICK, EVENT_TAP,
@@ -11,28 +12,22 @@ import { newInstance, DEFAULT, EVENT_DBL_CLICK, EVENT_CLICK, EVENT_TAP,
     BackgroundPlugin,
 LassoPlugin, DrawingToolsPlugin,
 AbsoluteLayout, EVENT_CANVAS_CLICK,
-    findClosestPoint,
     EdgePathEditor,
     ShapeLibraryImpl,
     FLOWCHART_SHAPES
 } from "@jsplumbtoolkit/browser-ui"
 
 import Inspector from './InspectorComponent'
-import ControlsComponent from './ControlsComponent'
 import NodeComponent from './NodeComponent'
-import {GRID_BACKGROUND_OPTIONS, GRID_SIZE} from "./constants";
+import {DEFAULT_FILL, DEFAULT_STROKE, DEFAULT_TEXT_COLOR,CLASS_EDGE_LABEL, CLASS_FLOWCHART_EDGE, GRID_BACKGROUND_OPTIONS, GRID_SIZE} from "./constants";
 import edgeMappings from "./edge-mappings";
 
-function _$_anchorPositionFinder (el, elxy) {
-    const point = findClosestPoint(elxy, {w:1, h:1}, [
-        {x:0, y:0.5, ox:-1, oy:0},
-        {x:1, y:0.5, ox:1, oy:0},
-        {x:0.5, y:0, ox:0, oy:-1},
-        {x:0.5, y:1, ox:0, oy:1}
-    ])
-    const p = point.p
-    return [ p.x, p.y, p.ox, p.oy ]
-}
+export const anchorPositions = [
+    {x:0, y:0.5, ox:-1, oy:0, id:"left" },
+    {x:1, y:0.5, ox:1, oy:0, id:"right" },
+    {x:0.5, y:0, ox:0, oy:-1, id:"top" },
+    {x:0.5, y:1, ox:0, oy:1, id:"bottom" }
+]
 
 export default function FlowchartComponent() {
 
@@ -74,14 +69,16 @@ export default function FlowchartComponent() {
         edges: {
             [DEFAULT]: {
                 endpoint: BlankEndpoint.type,
-                connector: {type: OrthogonalConnector.type, options: {cornerRadius: 5}},
-                paintStyle: {
-                    strokeWidth: 2,
-                    stroke: "rgb(132, 172, 179)",
-                    outlineWidth: 3,
-                    outlineStroke: "transparent"
-                },	//	paint style for this edge type.
-                hoverPaintStyle: {strokeWidth: 2, stroke: "rgb(67,67,67)"}, // hover paint style for this edge type.
+                connector: {
+                    type: OrthogonalConnector.type,
+                    options: {
+                        cornerRadius: 5
+                    }
+                },
+                cssClass:CLASS_FLOWCHART_EDGE,
+                labelClass:CLASS_EDGE_LABEL,
+                label:"{{label}}",
+                outlineWidth:10,
                 events: {
                     [EVENT_DBL_CLICK]: (params) => {
                         toolkit.removeEdge(params.edge)
@@ -90,22 +87,15 @@ export default function FlowchartComponent() {
                         toolkit.setSelection(params.edge)
                         pathEditor.current.startEditing(params.edge, {
                             deleteButton:true,
-                            anchorPositionFinder: (el, elxy, vertex) => {
-                                return _$_anchorPositionFinder(el, elxy)
-                            }
+                            anchorPositions
                         })
                     }
                 }
             }
         },
         ports: {
-            source: {
-                maxConnections: -1
-            },
             target: {
-                anchorPositionFinder:(el, elxy) => {
-                    return _$_anchorPositionFinder(el, elxy)
-                },
+                anchorPositions,
                 maxConnections: -1,
                 isTarget: true
             }
@@ -155,6 +145,18 @@ export default function FlowchartComponent() {
         zoomToFit:true
     }
 
+    /**
+     * Generator for data for nodes dragged from palette.
+     * @param el
+     */
+    const dataGenerator = (el) => {
+        return {
+            fill:DEFAULT_FILL,
+            outline:DEFAULT_STROKE,
+            textColor:DEFAULT_TEXT_COLOR
+        }
+    }
+
     useEffect(() => {
 
         pathEditor.current = new EdgePathEditor(surfaceComponent.current.surface, {activeMode:true})
@@ -169,12 +171,15 @@ export default function FlowchartComponent() {
             <JsPlumbToolkitMiniviewComponent surface={surfaceComponent.current.surface}/>
         );
 
+        // palette from which to drag new shapes onto the canvas
         const slp = createRoot(paletteContainer.current)
-        slp.render(<ShapeLibraryPaletteComponent surface={surfaceComponent.current.surface} shapeLibrary={shapeLibrary} container={paletteContainer.current}/>);
+        slp.render(<ShapeLibraryPaletteComponent surface={surfaceComponent.current.surface} shapeLibrary={shapeLibrary} container={paletteContainer.current} dataGenerator={dataGenerator}/>);
 
+        // node/edge inspector.
         const ic = createRoot(inspectorContainer.current)
-        ic.render(<Inspector surface={surfaceComponent.current.surface} container={inspectorContainer.current}/>)
+        ic.render(<Inspector surface={surfaceComponent.current.surface} container={inspectorContainer.current} edgeMappings={edgeMappings()}/>)
 
+        // load an initial dataset
         toolkit.load({url:"/copyright.json"})
     }, [])
 
