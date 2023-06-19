@@ -32,8 +32,6 @@ export default function edgeMappings(arrowWidth?:number, arrowLength?:number) {
                     overlays:[ { type:ArrowOverlay.type, options:{location:1, width:arrowWidth, length:arrowLength} } ]
                 },
                 [EDGE_TYPE_BOTH_ARROWS]:{
-                    // should be able to say
-                    //parent: [ EDGE_TYPE_SOURCE_ARROW, EDGE_TYPE_TARGET_ARROW ],
                     overlays:[ {
                         type:ArrowOverlay.type,
                         options:{
