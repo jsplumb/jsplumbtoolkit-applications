@@ -13,13 +13,11 @@ import {
     EVENT_CANVAS_CLICK,
     AbsoluteLayout,
     initializeOrthogonalConnectorEditors,
-    AnchorLocations,
     BackgroundPlugin,
     SelectionModes,
-    ShapeLibraryImpl, ShapeLibraryPalette, FLOWCHART_SHAPES
+    ShapeLibraryImpl, ShapeLibraryPalette, FLOWCHART_SHAPES, ControlsComponent
 } from "@jsplumbtoolkit/browser-ui"
 
-import { FlowchartBuilderControls } from './controls'
 import edgeMappings from './edge-mappings'
 import {
     CLASS_EDGE_LABEL,
@@ -60,7 +58,7 @@ ready(() => {
         canvasElement = mainElement.querySelector(".jtk-demo-canvas"),
         miniviewElement = mainElement.querySelector(".miniview"),
         nodePaletteElement = mainElement.querySelector(".node-palette"),
-        controlsElement = mainElement.querySelector(".jtk-controls"),
+        controlsElement = mainElement.querySelector(".jtk-controls-container"),
         inspectorElement = mainElement.querySelector(".inspector")
 
     // Declare an instance of the Toolkit and supply a beforeStartConnect interceptor, used
@@ -239,7 +237,7 @@ ready(() => {
     edgeEditor = new EdgePathEditor(renderer, {activeMode: true})
 
     // handler for mode change (pan/zoom vs lasso), clear dataset, zoom to fit etc.
-    new FlowchartBuilderControls(controlsElement, toolkit, renderer)
+    new ControlsComponent(controlsElement, renderer)
 
     // the palette displays a list of shapes that can be dragged on to the canvas
     new ShapeLibraryPalette ({
