@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jsPlumbToolkit - Schema Builder Example</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-connector-editors.css">
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css">
+
+        <!-- /CSS -->
+        <link rel="stylesheet" href="../app.css">
+        <link rel="stylesheet" href="../theme.default.css">
+
+    </head>
+    <body>
+
+        <div class="jtk-demo-main" id="jtk-demo-schema">
+
+            <!-- main drawing area -->
+            <div class="jtk-demo-canvas">
+                <!-- controls -->
+                <div class="jtk-controls" can-undo="false" can-redo="false">
+                    <i class="jtk-pan-mode jtk-selected-mode" data-mode="pan" title="Pan Mode"></i>
+                    <i class="jtk-select-mode" data-mode="select" title="Select Mode"></i>
+                    <i class="jtk-zoom-to-fit" data-reset title="Zoom To Fit"></i>
+                    <i class="jtk-undo" data-undo title="Undo last action"></i>
+                    <i class="jtk-redo" data-redo title="Redo last action"></i>
+                    <i class="jtk-clear-dataset" data-clear title="Clear schema"></i>
+                </div>
+                <!-- miniview -->
+                <div class="miniview"></div>
+            </div>
+            <div class="jtk-demo-rhs">
+
+                <div id="palette" class="jtk-schema-palette">
+                    <div data-type="table" class="jtk-schema-palette-item">Table</div>
+                    <div data-type="view" class="jtk-schema-palette-item">View</div>
+                </div>
+                <div id="inspector"></div>
+
+                <div class="description">
+                    <p>
+                        This sample application is a builder for database schemas.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- the demo code -->
+        <script src="bundle.js"></script>
+
+    </body>
+</html>

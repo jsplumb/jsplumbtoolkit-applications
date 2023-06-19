@@ -1,0 +1,215 @@
+{
+    "nodes": [
+        {
+            "id": "book",
+            "name": "Book",
+            "type": "table",
+            "columns": [
+                {
+                    "id": "id",
+                    "name": "id",
+                    "datatype": "integer",
+                    "primaryKey": true
+                },
+                {
+                    "id": "isbn",
+                    "name": "isbn",
+                    "datatype": "varchar"
+                },
+                {
+                    "id": "title",
+                    "name": "title",
+                    "datatype": "varchar"
+                }
+            ]
+        },
+        {
+            "id": "book_author",
+            "name": "BookAuthor",
+            "type": "table",
+            "columns": [
+                {
+                    "id": "book_id",
+                    "name": "book_id",
+                    "datatype": "integer"
+                },
+                {
+                    "id": "author_id",
+                    "name": "author_id",
+                    "datatype": "integer"
+                }
+            ]
+        },
+        {
+            "id": "author",
+            "name": "Author",
+            "type": "table",
+            "columns": [
+                {
+                    "id": "id",
+                    "name": "id",
+                    "datatype": "integer",
+                    "primaryKey": true
+                },
+                {
+                    "id": "name",
+                    "name": "name",
+                    "datatype": "varchar"
+                },
+                {
+                    "id": "contact_id",
+                    "name": "contact_id",
+                    "datatype": "varchar"
+                }
+            ]
+        },
+        {
+            "id": "publisher",
+            "name": "Publisher",
+            "type": "table",
+            "columns": [
+                {
+                    "id": "id",
+                    "name": "id",
+                    "datatype": "integer",
+                    "primaryKey": true
+                },
+                {
+                    "id": "name",
+                    "name": "name",
+                    "datatype": "varchar"
+                },
+                {
+                    "id": "created",
+                    "name": "created",
+                    "datatype": "date"
+                },
+                {
+                    "id": "preferred",
+                    "name": "preferred",
+                    "datatype": "integer"
+                },
+                {
+                    "id": "region",
+                    "name": "region",
+                    "datatype": "varchar"
+                },
+                {
+                    "id": "currency",
+                    "name": "currency",
+                    "datatype": "varchar"
+                },
+                {
+                    "id": "contact_id",
+                    "name": "contact_id",
+                    "datatype": "varchar"
+                }
+            ]
+        },
+        {
+            "id": "contacts",
+            "name": "contacts",
+            "type": "table",
+            "columns": [
+                {
+                    "id":"id",
+                    "primaryKey": true,
+                    "name": "id",
+                    "datatype": "varchar"
+                },
+                {
+                    "id": "first_name",
+                    "name": "first_name",
+                    "datatype": "varchar"
+                },
+                {
+                    "id": "last_name",
+                    "name": "last_name",
+                    "datatype": "varchar"
+                },
+                {
+                    "id": "email",
+                    "name": "email",
+                    "datatype": "varchar"
+                },
+                {
+                    "id": "created",
+                    "name": "created",
+                    "datatype": "date"
+                },
+                {
+                    "id": "type",
+                    "name": "contact_type",
+                    "datatype": "varchar"
+                }
+            ]
+        },
+        {
+            "id": "book_publisher",
+            "name": "BookPublisher",
+            "type": "table",
+            "columns": [
+                {
+                    "id": "book_id",
+                    "name": "book_id",
+                    "datatype": "integer"
+                },
+                {
+                    "id": "publisher_id",
+                    "name": "publisher_id",
+                    "datatype": "integer"
+                }
+            ]
+        },
+        {
+            "id": "books_by_author",
+            "name": "Books By Author",
+            "type": "view",
+            "query": "SELECT * FROM book b INNER JOIN book_author ba ON b.id = ba.book_id GROUP BY ba.author_id"
+        }
+    ],
+    "edges": [
+        {
+            "source": "book.id",
+            "target": "book_author.book_id",
+            "data": {
+                "cardinality": "1:N"
+            }
+        },
+        {
+            "source": "author.id",
+            "target": "book_author.author_id",
+            "data": {
+                "cardinality": "1:1"
+            }
+        },
+        {
+            "source": "book.id",
+            "target": "book_publisher.book_id",
+            "data": {
+                "cardinality": "1:1"
+            }
+        },
+        {
+            "source": "publisher.id",
+            "target": "book_publisher.publisher_id",
+            "data": {
+                "cardinality": "1:1"
+            }
+        },
+        {
+            "source": "publisher.contact_id",
+            "target": "contacts.id",
+            "data": {
+                "cardinality": "1:1"
+            }
+        },
+        {
+            "source": "author.contact_id",
+            "target": "contacts.id",
+            "data": {
+                "cardinality": "1:1"
+            }
+        }
+    ]
+}
