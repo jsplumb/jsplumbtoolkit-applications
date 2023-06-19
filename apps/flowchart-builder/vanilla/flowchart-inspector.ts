@@ -20,11 +20,7 @@ import edgeMappings from "./edge-mappings"
 const TMPL_NODE_INSPECTOR = "tmplNodeInspector"
 const TMPL_EDGE_INSPECTOR = "tmplEdgeInspector"
 
-export type LineStyle = {id:string, svg:string}
-
-export interface FlowchartInspectorOptions extends VanillaInspectorOptions {
-    lineStyles:Array<LineStyle>
-}
+export interface FlowchartInspectorOptions extends VanillaInspectorOptions { }
 
 const inspectorTemplates = {
     [TMPL_NODE_INSPECTOR] : `
