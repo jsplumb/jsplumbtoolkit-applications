@@ -75,6 +75,14 @@ body {
     margin: 3px 0;
 }
 
+.jtk-controls-container {
+    top: 25px;
+    position: absolute;
+    left: 25px;
+    z-index: 1;
+    font-size:14px;
+}
+
 
 /* ----------------------- drag/drop interactions -------------- */
 .drop-hover {
