@@ -48,8 +48,6 @@ export const GRID_SIZE = {
 }
 
 export const GRID_BACKGROUND_OPTIONS = {
-    // cellWidth:50,
-    // cellHeight:50,
     dragOnGrid:true,
     showGrid:true,
     showBorder:false,
@@ -59,6 +57,5 @@ export const GRID_BACKGROUND_OPTIONS = {
     minHeight:10000,
     maxHeight:null,
     showTickMarks:false,
-    //tickMarksPerCell:5,
     type:GeneratedGridBackground.type
 }
