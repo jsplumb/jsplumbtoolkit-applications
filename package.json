@@ -1,7 +1,7 @@
 {
   "name": "jsplumbtoolkit-applications",
-  "version": "1.0.0",
-  "description": "Starter applications built with the jsPlumb Toolkit",
+  "version": "6.2.4",
+  "description": "Starter applications built with the jsPlumb Toolkit, for use with Toolkit version 6.2.4 or later.",
   "main": "index.js",
   "scripts": {
     "clean": "node ./scripts/clean.js",
@@ -17,7 +17,12 @@
     "install:react": "node ./scripts/install react",
     "install:vue2": "node ./scripts/install vue2",
     "install:vue3": "node ./scripts/install vue3",
-    "install:vanilla": "node ./scripts/install vanilla"
+    "install:vanilla": "node ./scripts/install vanilla",
+    "build:vanilla": "node ./scripts/build vanilla",
+    "build:angular": "node ./scripts/build angular",
+    "build:react": "node ./scripts/build react",
+    "build:vue2": "node ./scripts/build vue2",
+    "build:vue3": "node ./scripts/build vue3"
   },
   "repository": {
     "type": "git",
@@ -29,5 +34,5 @@
     "url": "https://github.com/jsplumb/jsplumbtoolkit-applications/issues"
   },
   "homepage": "https://github.com/jsplumb/jsplumbtoolkit-applications#readme",
-  "libs": ["angular", "vanilla", "vue2", "vue3"]
+  "libs": ["angular", "vanilla", "vue2", "vue3", "react"]
 }
