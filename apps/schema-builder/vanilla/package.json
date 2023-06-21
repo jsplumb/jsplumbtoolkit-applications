@@ -1,6 +1,6 @@
 {
     "name": "schema-builder",
-    "version": "6.1.1",
+    "version": "6.2.4",
     "description": "",
     "scripts": {
         "build-es6": "./node_modules/.bin/esbuild demo.ts --target=es2016 --bundle --format=iife --outfile=bundle.js",
@@ -8,7 +8,8 @@
         "transpile-es5": "npx babel bundle.js -o bundle-es5.js",
         "transpile-es5-min": "npx babel bundle-min.js -o bundle-min-es5.js",
         "build": "npm run build-es6;npm run transpile-es5",
-        "build-min": "npm run build-es6-min;npm run transpile-es5-min"
+        "build-min": "npm run build-es6-min;npm run transpile-es5-min",
+        "serve": "npx http-server ./"
     },
     "repository": {
         "type": "git",
@@ -21,9 +22,12 @@
     },
     "homepage": "https://github.com/jsplumb/jsplumbtoolkit-application#readme",
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "6.2.0",
+        "@jsplumbtoolkit/browser-ui": "^6.2.4",
         "babel-cli": "^6.26.0",
         "babel-preset-env": "^1.7.0",
         "esbuild": "0.17.18"
+    },
+    "devDependencies": {
+        "http-server": "14.1.1"
     }
 }

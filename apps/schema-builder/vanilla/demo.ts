@@ -11,15 +11,25 @@ import {
     StateMachineConnector,
     AnchorLocations,
     EVENT_TAP,
-    Edge, LabelOverlay, consume, Vertex, isPort, ObjectData, EVENT_CLICK, SurfaceDropManager, SurfaceObjectInfo, Port
+    Edge,
+    LabelOverlay,
+    consume,
+    Vertex,
+    isPort,
+    ObjectData,
+    EVENT_CLICK,
+    SurfaceDropManager,
+    SurfaceObjectInfo,
+    Port, Node,
+    ControlsComponent,
+    uuid, MiniviewPlugin
 } from "@jsplumbtoolkit/browser-ui"
 
-import { SchemaBuilderControls } from './controls'
 import {cardinalities, Cardinality, Datatype, Relationship} from './definitions'
 import {
     CLASS_SCHEMA_RELATIONSHIP_CARDINALITY,
     COLUMNS,
-    COMMON,
+    COMMON, DATATYPE_VARCHAR,
     PROPERTY_CARDINALITY, TABLE
 } from "./constants"
 import {SchemaBuilderInspector} from "./schema-inspector"
@@ -44,9 +54,10 @@ cardinalities.forEach(c => {
 ready(() => {
 
     const canvasElement = document.querySelector(".jtk-demo-canvas"),
-        controlsElement = document.querySelector(".jtk-controls"),
+        controlsElement = document.querySelector(".jtk-controls-container") as HTMLElement,
         inspectorElement = document.getElementById("inspector"),
-        paletteElement = document.getElementById("palette")
+        paletteElement = document.getElementById("palette"),
+        miniviewElement = document.querySelector(".miniview")
 
     const toolkit = newInstance({
         // the name of the property in each node's data that is the key for the data for the ports for that node.
@@ -66,38 +77,23 @@ ready(() => {
         //
         beforeConnect:(source:Vertex, target:Vertex) => {
             return isPort(source) && isPort(target) && source !== target && source.getParent() !== target.getParent()
-        },
-
-        // /**
-        //  * Set a name for newly dragged tables/views
-        //  * @param type
-        //  * @param data
-        //  * @param continueCallback
-        //  * @param abortCallback
-        //  * @param params
-        //  */
-        // nodeFactory:(type: string, data: any, continueCallback: (o: ObjectData) => any, abortCallback: () => any, params?: any) => {
-        //     data.name = type === TABLE ? "Table" : "View"
-        //     continueCallback(data)
-        //     return true
-        // }
+        }
 
     })
 
     const renderParams:VanillaSurfaceRenderOptions = {
         dragOptions: {
-            // filter:[
-            //     `.${CLASS_VIEW} ${CLASS_BUTTONS}`,
-            //     `.${CLASS_TABLE} ${CLASS_BUTTONS}`,
-            //     `.${CLASS_TABLE_COLUMN} *`,
-            //     `.${CLASS_VIEW_DELETE}`,
-            //     `.${CLASS_EDIT_NAME}`,
-            //     `.${CLASS_TABLE_COLUMN_EDIT}`,
-            //     `.${CLASS_DELETE}`,
-            //     `.${CLASS_NEW_COLUMN}`
-            // ].join(",")
+            filter:[
+                "jtk-delete-button", "jtk-add-button", "jtk-schema-add"
+            ].join(",")
         },
         plugins:[
+            {
+                type:MiniviewPlugin.type,
+                options:{
+                    container:miniviewElement
+                }
+            },
             LassoPlugin.type
         ],
         propertyMappings:{
@@ -117,7 +113,6 @@ ready(() => {
         layout:{
             type: ForceDirectedLayout.type,
             options: {
-                iterations:15,
                 padding: {x:150, y:150}
             }
         },
@@ -134,7 +129,7 @@ ready(() => {
                 table:{
                     template:`<div class="jtk-schema-table jtk-schema-element">
                             <div class="jtk-schema-element-name">
-                                <div class="jtk-schema-delete" title="Delete table"/>
+                                <div class="jtk-schema-delete jtk-schema-delete-vertex" title="Delete table"/>
                                 <span>{{name}}</span>
                                 <div class="jtk-schema-buttons">
                                     <div class="jtk-schema-edit-name jtk-schema-edit" title="Edit table name"/>
@@ -151,7 +146,7 @@ ready(() => {
                 view:{
                     template:`<div class="jtk-schema-view jtk-schema-element">
                                 <div class="jtk-schema-element-name">
-                                    <div class="jtk-schema-view-delete jtk-schema-delete" title="Delete view"/>
+                                    <div class="jtk-schema-view-delete jtk-schema-delete jtk-schema-delete-vertex" title="Delete view"/>
                                     <span>{{name}}</span>
                                     <div class="jtk-schema-buttons">
                                         <div class="jtk-schema-edit-name jtk-schema-edit" title="Edit view name"/>                                            
@@ -203,7 +198,7 @@ ready(() => {
         templates:{
             tmplColumn:`<div class="jtk-schema-table-column" data-type="{{datatype}}" 
                                 data-primary-key="{{primaryKey}}" data-jtk-port="{{id}}" data-jtk-scope="{{datatype}}" data-jtk-source="true" data-jtk-target="true">
-                            <div class="jtk-schema-table-column-delete"/>
+                            <div class="jtk-schema-table-column-delete jtk-schema-delete"/>
                             <div><span>{{name}}</span></div>
                             <div class="jtk-schema-table-column-edit jtk-schema-edit"/>
                         </div>`
@@ -222,14 +217,40 @@ ready(() => {
                 callback:(event: Event, eventTarget: HTMLElement, modelObject: SurfaceObjectInfo<Port>) => {
                     toolkit.setSelection(modelObject.obj)
                 }
+            },
+            {
+                event:EVENT_TAP,
+                selector:".jtk-schema-delete-vertex",
+                callback:(event: Event, eventTarget: HTMLElement, modelObject: SurfaceObjectInfo<Vertex>) => {
+                    toolkit.removeNode(modelObject.obj)
+                }
+            },
+            {
+                event:EVENT_TAP,
+                selector:".jtk-schema-table-column-delete",
+                callback:(event: Event, eventTarget: HTMLElement, modelObject: SurfaceObjectInfo<Port>) => {
+                    toolkit.removePort(modelObject.obj)
+                }
+            },
+            {
+                event:EVENT_TAP,
+                selector:'.jtk-schema-new-column',
+                callback:(event: Event, eventTarget: HTMLElement, modelObject: SurfaceObjectInfo<Node>) => {
+                    toolkit.setSelection(toolkit.addPort(modelObject.obj, {
+                        id:uuid(),
+                        name:"new column",
+                        datatype:DATATYPE_VARCHAR
+                    }))
+                }
             }
-        ]
+        ],
+        consumeRightClick:false
     }
 
     const surface = toolkit.render(canvasElement, renderParams)
 
     // handler for mode change (pan/zoom vs lasso), clear dataset, zoom to fit etc.
-    new SchemaBuilderControls(controlsElement, toolkit, surface)
+    new ControlsComponent(controlsElement, surface)
 
     new SurfaceDropManager({
         surface,
@@ -253,7 +274,6 @@ ready(() => {
 
     const inspector = new SchemaBuilderInspector({
         surface,
-        toolkit,
         container:inspectorElement
     })
 

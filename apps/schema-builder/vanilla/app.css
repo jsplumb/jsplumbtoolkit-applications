@@ -38,6 +38,14 @@ body {
     z-index: 100;
 }
 
+.jtk-controls-container {
+    top: 25px;
+    position: absolute;
+    left: 25px;
+    z-index: 1;
+    font-size:14px;
+}
+
 .jtk-demo-main .description {
     font-size: 13px;
     padding: 13px;
@@ -65,15 +73,19 @@ body {
     padding-bottom: 2px;
 }
 
-.aDeleteButton:after {
+.jtk-schema-delete {
+    cursor:pointer;
+}
+
+.jtk-schema-delete:after {
      content:"x";
 }
 
-.anAddButton:hover {
+.jtk-schema-add:hover {
      color: #ff8000;
  }
 
-.anAddButton:after {
+.jtk-schema-add:after {
      content:"+";
 }
 

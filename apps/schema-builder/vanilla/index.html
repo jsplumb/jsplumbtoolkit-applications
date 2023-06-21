@@ -10,8 +10,8 @@
         <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css">
 
         <!-- /CSS -->
-        <link rel="stylesheet" href="../app.css">
-        <link rel="stylesheet" href="../theme.default.css">
+        <link rel="stylesheet" href="./app.css">
+        <link rel="stylesheet" href="./theme.default.css">
 
     </head>
     <body>
@@ -21,14 +21,7 @@
             <!-- main drawing area -->
             <div class="jtk-demo-canvas">
                 <!-- controls -->
-                <div class="jtk-controls" can-undo="false" can-redo="false">
-                    <i class="jtk-pan-mode jtk-selected-mode" data-mode="pan" title="Pan Mode"></i>
-                    <i class="jtk-select-mode" data-mode="select" title="Select Mode"></i>
-                    <i class="jtk-zoom-to-fit" data-reset title="Zoom To Fit"></i>
-                    <i class="jtk-undo" data-undo title="Undo last action"></i>
-                    <i class="jtk-redo" data-redo title="Redo last action"></i>
-                    <i class="jtk-clear-dataset" data-clear title="Clear schema"></i>
-                </div>
+                <div class="jtk-controls-container"></div>
                 <!-- miniview -->
                 <div class="miniview"></div>
             </div>
