@@ -3,6 +3,7 @@
     "version": "6.2.4",
     "description": "",
     "scripts": {
+        "tsc": "tsc",
         "build-es6": "./node_modules/.bin/esbuild demo.ts --target=es2016 --bundle --format=iife --outfile=bundle.js",
         "build-es6-min": "./node_modules/.bin/esbuild demo.ts --target=es2016 --bundle --minify --format=iife --outfile=bundle-min.js",
         "transpile-es5": "npx babel bundle.js -o bundle-es5.js",
@@ -28,6 +29,7 @@
         "esbuild": "0.17.18"
     },
     "devDependencies": {
-        "http-server": "14.1.1"
+        "http-server": "14.1.1",
+        "typescript": "^4.0.0"
     }
 }
