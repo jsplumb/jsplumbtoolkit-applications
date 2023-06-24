@@ -3,12 +3,9 @@ import {
     isNode,
     isEdge,
     VanillaInspectorOptions,
-    VanillaInspector, isPort
+    VanillaInspector, isPort, Surface
 } from "@jsplumbtoolkit/browser-ui"
 import {
-    DATATYPE_DATE,
-    DATATYPE_INTEGER,
-    DATATYPE_VARCHAR,
     N_TO_M,
     N_TO_M_NAME,
     ONE_TO_N,
@@ -27,9 +24,12 @@ const TMPL_EDGE_INSPECTOR = "tmplEdgeInspector"
 const TMPL_COLUMN_INSPECTOR = "tmplColumnInspector"
 
 /**
- * Options for the schema inspector - does not add anything to the underlying VanillaInspectorOptions currently.
+ * Options for the schema inspector
  */
-export interface SchemaInspectorOptions extends VanillaInspectorOptions { }
+export type SchemaInspectorOptions = {
+    surface:Surface,
+    container:HTMLElement
+}
 
 /**
  * Templates for the inspector. We have a different inspector template for table, view, column and edge (relationship).
@@ -86,6 +86,6 @@ export class SchemaBuilderInspector extends VanillaInspector {
                     return inspectorTemplates[TMPL_COLUMN_INSPECTOR]
                 }
             }
-        }))
+        }) as VanillaInspectorOptions)
     }
 }
