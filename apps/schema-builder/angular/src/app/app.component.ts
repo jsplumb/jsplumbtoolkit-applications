@@ -5,13 +5,12 @@ import {AnchorLocations, consume, DEFAULT,
   Edge,
   EVENT_CANVAS_CLICK, EVENT_CLICK, EVENT_TAP, ForceDirectedLayout, LabelOverlay,
   LassoPlugin,
-  StateMachineConnector, Surface, SelectionModes } from "@jsplumbtoolkit/browser-ui"
+  StateMachineConnector, Surface, SelectionModes, Vertex, isPort } from "@jsplumbtoolkit/browser-ui"
 import {TableNodeComponent} from "./table.node.component"
 import {ViewNodeComponent} from "./view.node.component"
 import {ColumnComponent} from "./column.component"
 import {COMMON} from "./constants"
-import {edgeMappings, Relationship} from "./definitions"
-
+import {cardinalities, edgeMappings, Relationship} from "./definitions"
 
 @Component({
   selector: 'app-root',
@@ -135,7 +134,28 @@ export class AppComponent implements AfterViewInit {
   }
 
   toolkitParams = {
+    //
+    // instructs the toolkit to only allow one type of object to be selected at any time - a node, or a port, or an edge.
+    // the inspector relies on this being set.
+    //
     selectionMode:SelectionModes.isolated,
-    portDataProperty: "columns"
+    //
+    // instructs the Toolkit to look for port data inside the `columns` array of each node's backing data.
+    //
+    portDataProperty: "columns",
+    //
+    // set `cardinality` to be the first entry in the list by default.
+    //
+    beforeStartConnect:(source: Vertex, type: string) => {
+      return {
+        cardinality:cardinalities[0].id
+      }
+    },
+    //
+    // Prevent connections from a column to itself or to another column on the same table.
+    //
+    beforeConnect:(source:Vertex, target:Vertex) => {
+      return isPort(source) && isPort(target) && source !== target && source.getParent() !== target.getParent()
+    }
   }
 }
