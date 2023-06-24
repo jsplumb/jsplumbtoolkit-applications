@@ -51,7 +51,6 @@ export const anchorPositions:Array<ObjectAnchorSpec & {id:string}> = [
   templateUrl: './app.component.html'
 })
 export class AppComponent implements AfterViewInit {
-  title = 'angular';
 
   @ViewChild(jsPlumbSurfaceComponent) surfaceComponent:jsPlumbSurfaceComponent;
 
