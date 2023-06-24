@@ -14,29 +14,6 @@ import {
     ONE_TO_ONE_NAME, PROPERTY_CARDINALITY
 } from "./constants"
 
-export const MESSAGE_DELETE_COLUMN = "message.column.delete"
-export const MESSAGE_DELETE_TABLE = "message.table.delete"
-export const MESSAGE_DELETE_VIEW = "message.view.delete"
-export const MESSAGE_DELETE_RELATIONSHIP = "message.relationship.delete"
-export const INSPECTOR_NODE_NAME = "inspector.node.name"
-export const INSPECTOR_VIEW_QUERY = "inspector.view.query"
-export const INSPECTOR_LINE_STYLE = "inspector.line.style"
-export const INSPECTOR_PRIMARY_KEY = "inspector.primaryKey"
-export const INSPECTOR_NOTHING_SELECTED = "inspector.nothing.selected"
-export const INSPECTOR_CARDINALITY = "inspector.cardinality"
-export const PROMPT_CLICK_TO_DELETE = "prompt.clickToDelete"
-export const PROMPT_CLICK_TO_ADD_COLUMN = "prompt.clickToAddColumn"
-export const PROMPT_CLICK_TO_EDIT_NAME = "prompt.clickToEditName"
-export const MESSAGE_COLUMN_NAME_LENGTH = "message.columnNameLength"
-export const MESSAGE_TABLE_NAME_LENGTH = "message.tableNameLength"
-export const MESSAGE_MISSING_COLUMN_NAME = "message.missingColumnName"
-export const MESSAGE_MISSING_TABLE_NAME = "message.missingTableName"
-export const MESSAGE_MISSING_VIEW_NAME = "message.missingViewName"
-export const MESSAGE_VIEW_NAME_LENGTH = "message.viewNameLength"
-export const DEFAULT_COLUMN_NAME = "default.columnName"
-export const DEFAULT_TABLE_NAME = "default.tableName"
-export const DEFAULT_VIEW_NAME = "default.viewName"
-
 /**
  * Default supported datatypes
  * @public
@@ -62,6 +39,7 @@ export const cardinalities:Array<Cardinality> = [
 // add a mapping for the specific value, which has an overlay at each end showing the cardinality values.
 // `cardinalityMappings` is passed to the render call, and the surface uses it to decide which overlays to show
 // on a given edge.
+//
 export const cardinalityMappings = {}
 cardinalities.forEach(c => {
     cardinalityMappings[c.id] = {
@@ -72,6 +50,10 @@ cardinalities.forEach(c => {
     }
 })
 
+//
+// Setup edge mappings. You can map multiple properties; here we map the cardinality mappings from above to the
+// `cardinality` property of each edge's data.
+//
 export const edgeMappings = [
     {
         property:PROPERTY_CARDINALITY,
@@ -95,30 +77,6 @@ export interface UndoRedoOptions {
      * @public
      */
     redo?:HTMLElement
-}
-
-/**
- * Set of messages required by the Schema Builder component.
- * @public
- */
-export interface SchemaBuilderMessages extends Record<string, any> {
-    [MESSAGE_MISSING_TABLE_NAME]:string
-    [MESSAGE_TABLE_NAME_LENGTH]:string
-    [MESSAGE_COLUMN_NAME_LENGTH]:string
-    [MESSAGE_VIEW_NAME_LENGTH]:string
-    [MESSAGE_MISSING_COLUMN_NAME]:string
-    [MESSAGE_MISSING_VIEW_NAME]:string
-    [MESSAGE_DELETE_COLUMN]:string
-    [MESSAGE_DELETE_TABLE]:string
-    [MESSAGE_DELETE_VIEW]:string
-    [INSPECTOR_PRIMARY_KEY]:string
-    [INSPECTOR_NODE_NAME]:string
-    [INSPECTOR_VIEW_QUERY]:string
-    [INSPECTOR_CARDINALITY]:string
-    [MESSAGE_DELETE_RELATIONSHIP]:string,
-    [DEFAULT_COLUMN_NAME]:string,
-    [DEFAULT_TABLE_NAME]:string,
-    [DEFAULT_VIEW_NAME]:string,
 }
 
 
@@ -176,12 +134,6 @@ export interface SchemaBuilderOptions {
      * @param continueCallback
      */
     prompt?:(msg:string, continueCallback:() => any) => any
-
-    /**
-     * Optional set of messages to use. The default messages are in English. You can use this to override
-     * the English defaults, or to supply messages in a different language.
-     */
-    messages?:SchemaBuilderMessages
 
     /**
      * The element into which to draw the schema builder
