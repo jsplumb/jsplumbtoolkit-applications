@@ -25,7 +25,7 @@ import {
     uuid, MiniviewPlugin
 } from "@jsplumbtoolkit/browser-ui"
 
-import {cardinalities, Cardinality, Datatype, Relationship} from './definitions'
+import {cardinalities, Cardinality, Datatype, edgeMappings, Relationship} from './definitions'
 import {
     CLASS_SCHEMA_RELATIONSHIP_CARDINALITY,
     COLUMNS,
@@ -33,23 +33,6 @@ import {
     PROPERTY_CARDINALITY, TABLE
 } from "./constants"
 import {SchemaBuilderInspector} from "./schema-inspector"
-
-
-//
-// Create a set of edge mappings from the `cardinalities` array in definitions.ts. For each cardinality declared we
-// add a mapping for the specific value, which has an overlay at each end showing the cardinality values.
-// `cardinalityMappings` is passed to the render call, and the surface uses it to decide which overlays to show
-// on a given edge.
-const cardinalityMappings = {}
-cardinalities.forEach(c => {
-    cardinalityMappings[c.id] = {
-        overlays:[
-            { type:LabelOverlay.type, options:{ label:c.labels[0], location:0.1, cssClass:CLASS_SCHEMA_RELATIONSHIP_CARDINALITY }},
-            { type:LabelOverlay.type, options:{ label:c.labels[1], location:0.9, cssClass:CLASS_SCHEMA_RELATIONSHIP_CARDINALITY }}
-        ]
-    }
-})
-
 
 ready(() => {
 
@@ -97,12 +80,7 @@ ready(() => {
             LassoPlugin.type
         ],
         propertyMappings:{
-            edgeMappings:[
-                {
-                    property:PROPERTY_CARDINALITY,
-                    mappings:cardinalityMappings
-                }
-            ]
+            edgeMappings
         },
         events: {
             [EVENT_CANVAS_CLICK]: (e:Event) => {
@@ -149,7 +127,7 @@ ready(() => {
                                     <div class="jtk-schema-view-delete jtk-schema-delete jtk-schema-delete-vertex" title="Delete view"/>
                                     <span>{{name}}</span>
                                     <div class="jtk-schema-buttons">
-                                        <div class="jtk-schema-edit-name jtk-schema-edit" title="Edit view name"/>                                            
+                                        <div class="jtk-schema-edit-name jtk-schema-edit" title="Edit view"/>                                            
                                     </div>
                                 </div>            
                                 <div class="jtk-schema-view-details">{{query}}</div>
