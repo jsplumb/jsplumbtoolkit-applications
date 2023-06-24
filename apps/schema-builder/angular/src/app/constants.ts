@@ -14,16 +14,11 @@ export const ONE_TO_ONE = "1:1"
 export const ONE_TO_N = "1:N"
 export const N_TO_M = "N:M"
 
-export const ONE = "1"
 export const N = "N"
 export const M = "M"
 
 export const ONE_TO_ONE_NAME = "One to one"
 export const ONE_TO_N_NAME = "One to many"
 export const N_TO_M_NAME = "Many to many"
-
-export const MINIMUM_TABLE_NAME_LENGTH = 3
-export const MINIMUM_VIEW_NAME_LENGTH = 3
-export const MINIMUM_COLUMN_NAME_LENGTH = 3
 
 export const CLASS_SCHEMA_RELATIONSHIP_CARDINALITY = "jtk-schema-relationship-cardinality"
