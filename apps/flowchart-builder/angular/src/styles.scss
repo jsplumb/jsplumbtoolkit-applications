@@ -2,7 +2,7 @@
 @import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css";
 @import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-connector-editors.css";
 @import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css";
-@import '../../vanilla/app.css';
+@import './app.css';
 
 jtk-shape {
   width: 100%;
@@ -14,7 +14,6 @@ jtk-shape {
 jsplumb-surface {
   width:100%;
   height:100%;
-  outline:10px solid red;
   display:block;
 }
 
@@ -27,6 +26,10 @@ jsplumb-miniview {
   position:absolute;
   top:2rem;
   right:2rem;
+}
+
+jsplumb-controls {
+  position:absolute;
 }
 
 .zone {
