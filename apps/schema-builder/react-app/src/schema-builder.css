@@ -302,6 +302,10 @@ body {
 
 /* ------------------ INSPECTOR ------------------------------------------------- */
 
+.jtk-surface-selected-element {
+    border: 2px solid orange;
+}
+
 .jtk-inspector {
     display:flex;
     flex-direction: column;
