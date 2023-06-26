@@ -33,11 +33,10 @@ import {
   DEFAULT_FILL,
   DEFAULT_STROKE, DEFAULT_TEXT_COLOR,
   GRID_BACKGROUND_OPTIONS,
-  GRID_SIZE
+  GRID_SIZE, DEFAULT_OUTLINE_WIDTH
 } from "./constants"
 
 import {NodeComponent} from "./node.component"
-import {DEFAULT_OUTLINE_WIDTH} from "../../../vanilla/constants"
 
 export const anchorPositions:Array<ObjectAnchorSpec & {id:string}> = [
   {x:0, y:0.5, ox:-1, oy:0, id:"left" },
