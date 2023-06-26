@@ -6,17 +6,11 @@ import {
     VanillaInspector, isPort, Surface
 } from "@jsplumbtoolkit/browser-ui"
 import {
-    N_TO_M,
-    N_TO_M_NAME,
-    ONE_TO_N,
-    ONE_TO_N_NAME,
-    ONE_TO_ONE,
-    ONE_TO_ONE_NAME,
     PROPERTY_CARDINALITY,
     TABLE, VIEW
 } from "./constants"
 
-import { datatypes } from "./definitions"
+import { datatypes, cardinalities } from "./definitions"
 
 const TMPL_TABLE_INSPECTOR = "tmplTableInspector"
 const TMPL_VIEW_INSPECTOR = "tmplViewInspector"
@@ -56,12 +50,8 @@ const inspectorTemplates = {
             </div>`,
     [TMPL_EDGE_INSPECTOR] : `
             <div class="jtk-inspector jtk-edge-inspector">
-                <div>Cardinality</div>
-                <select jtk-att="${PROPERTY_CARDINALITY}">
-                    <option value="${ONE_TO_ONE}">${ONE_TO_ONE_NAME}</option>
-                    <option value="${ONE_TO_N}">${ONE_TO_N_NAME}</option>
-                    <option value="${N_TO_M}">${N_TO_M_NAME}</option>
-                </select>               
+                <div>Cardinality</div>                       
+                ${cardinalities.map(c => `<label><input type="radio" name="${PROPERTY_CARDINALITY}" jtk-att="${PROPERTY_CARDINALITY}" value="${c.id}"/>${c.name}</label>`)}                            
             </div>`
 }
 
