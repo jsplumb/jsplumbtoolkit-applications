@@ -3,6 +3,7 @@ export const COLUMN = "column"
 export const COMMON = "common"
 export const TABLE = "table"
 export const VIEW = "view"
+export const RELATIONSHIP = "relationship"
 
 export const PROPERTY_CARDINALITY = "cardinality"
 
