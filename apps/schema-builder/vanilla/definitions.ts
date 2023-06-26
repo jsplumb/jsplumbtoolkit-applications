@@ -524,15 +524,3 @@ export interface SchemaBuilderBase extends SchemaBuilder {
      */
     attachInspector(config:InspectorConfiguration):void;
 }
-
-/**
- * Create a new instance of the SchemaBuilder.
- * @param options
- * @public
- */
-export declare function newInstance(options:SchemaBuilderOptions):SchemaBuilderBase;
-
-/**
- * A helper method to generate a UUID v4.
- */
-export declare function uuid():string;
