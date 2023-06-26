@@ -1,0 +1,317 @@
+
+body {
+    font-family: sans-serif;
+}
+
+.jtk-demo-main {
+    display: flex;
+    height: 100vh;
+}
+
+.jtk-demo-canvas {
+    background-color: white;
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden !important;
+}
+
+.jtk-demo-rhs {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f9f9f9;
+    flex: 0 0 250px;
+    padding: 20px 5px 0 5px;
+}
+
+.node-palette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.miniview {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 100;
+}
+
+.jtk-controls-container {
+    top: 25px;
+    position: absolute;
+    left: 25px;
+    z-index: 1;
+    font-size:14px;
+}
+
+.jtk-demo-main .description {
+    font-size: 13px;
+    padding: 13px;
+}
+
+.jtk-demo-main .description ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+
+.jtk-demo-main .description li {
+    list-style-type: disc !important;
+    margin: 3px 0;
+}
+
+.anActionButton {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 10px;
+    padding-bottom: 2px;
+}
+
+.jtk-schema-delete {
+    cursor:pointer;
+}
+
+.jtk-schema-delete:after {
+     content:"x";
+}
+
+.jtk-schema-add:hover {
+     color: #ff8000;
+ }
+
+.jtk-schema-add:after {
+     content:"+";
+}
+
+.jtk-schema-edit:hover {
+     color: #ff8000;
+ }
+
+.jtk-schema-edit:after {
+     content:"✎";
+ }
+
+.jtk-schema-element .jtk-schema-add {
+    right:3px;
+}
+
+.jtk-schema-element .jtk-schema-add {
+/*@include anAddButton;*/
+}
+
+.jtk-schema-element .jtk-schema-delete {
+/*@include aDeleteButton;*/
+    left:3px;
+}
+
+.jtk-schema-element .node-edit {
+    /*@include anEditButton;*/
+}
+
+.jtk-schema-element {
+
+    border: 1px solid;
+    cursor: pointer;
+    font-size: 12px;
+    background-color: white;
+    z-index: 12;
+    overflow: hidden;
+    min-width: 80px;
+    min-height: 30px;
+    width: auto;
+
+    flex-direction: column;
+}
+
+.jtk-schema-element-name {
+    cursor: move;
+    font-size: 13px;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+}
+
+.jtk-schema-element-name span {
+    cursor:pointer;
+    margin-left: auto;
+    margin-right: auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.jtk-schema-buttons {
+    display:flex;
+    align-items: center;
+    cursor:pointer;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* ---------------- Table nodes ------------------------------------------------------------------------ */
+/* ----------------------------------------------------------------------------------------------------- */
+
+
+.jtk-schema-table {
+    margin-bottom: 0;
+    min-width: 200px;
+    align-items: stretch;
+}
+
+.jtk-schema-table-columns {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    position:relative;
+}
+
+.jtk-schema-table-column {
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    border:2px solid transparent;
+}
+
+.jtk-schema-table-column-edit {
+    margin-left: auto;
+    cursor: pointer;
+/*@include anEditButton;*/
+}
+
+.jtk-schema-edit-name {
+    margin-right:7px;
+/*@include anEditButton;*/
+}
+
+.jtk-schema-table-column-delete, .jtk-schema-view-delete {
+    padding: 2px;
+    cursor: pointer;
+    position:static;
+    font-size: 10px;
+}
+
+.jtk-schema-table-column-delete {
+/*@include aDeleteButton;*/
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* ---------------- View nodes ------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-view {
+    margin-bottom: 0;
+    width: 200px;
+    overflow: hidden;
+    background-color: white;
+    align-items: stretch;
+}
+
+.jtk-schema-view-details {
+    font-size: 10px;
+    padding: 10px;
+    min-height: 50px;
+    position:relative;
+}
+
+.jtk-schema-view-delete {
+    padding: 2px;
+    cursor: pointer;
+    float:left;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* ---------------- Node Palette ----------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-palette {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.jtk-schema-palette-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.jtk-schema-palette-item {
+    cursor: move;
+    padding: 8px;
+    width: 128px;
+    text-align: center;
+    margin: 10px;
+    outline: none;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* ---------------- inspector -------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-inspector {
+    display: flex;
+    flex-direction: column;
+}
+
+.jtk-schema-inspector input[type='text'][jtk-att] {
+    width: 98%;
+    height: 3rem;
+}
+
+.jtk-schema-inspector textarea.jtk-schema-view-query {
+    width: 98%;
+    min-height:9rem;
+}
+
+.jtk-schema-inspector .jtk-schema-inspector-datatypes, .jtk-schema-inspector-cardinalities {
+    display: flex;
+    flex-direction: column;
+}
+
+.jtk-schema-inspector label {
+    display:flex;
+    align-items: center;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* ---------------- Edge styles ------------------------------------------------------------------------ */
+/* ----------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-common-edge path {
+    stroke-width: 3;
+}
+
+.jtk-schema-delete-relationship {
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.jtk-schema-endpoint circle {
+    fill:black;
+}
+
+/* ------------------ INSPECTOR ------------------------------------------------- */
+
+.jtk-inspector {
+    display:flex;
+    flex-direction: column;
+    padding:1rem;
+    background-color: #e7e7e7;
+    margin: 5px;
+}
+
+.jtk-inspector input:not([type='radio']) {
+    width:100%;
+    height: 1.5rem;
+    margin:5px 0;
+}

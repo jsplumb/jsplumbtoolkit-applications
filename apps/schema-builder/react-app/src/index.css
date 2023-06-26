@@ -1,0 +1,6 @@
+@import '../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css';
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css";
+
+.jtk-surface {
+  width:100%;
+}
