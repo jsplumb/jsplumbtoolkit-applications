@@ -37,7 +37,7 @@ export default function TableComponent({ctx}) {
             </div>
         </div>
         <div className="jtk-schema-table-columns">
-            { vertex.data.columns.map(c => <ColumnComponent column={c} key={c.id} toolkit={toolkit} surface={surface} vertex={vertex}/>) }
+            { vertex.data.columns.map(c => <ColumnComponent data={c} key={c.id} toolkit={toolkit} surface={surface} vertex={vertex}/>) }
         </div>
     </div>)
 }
