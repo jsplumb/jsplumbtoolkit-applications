@@ -26,6 +26,7 @@ import {
     ControlsComponent
 } from "@jsplumbtoolkit/browser-ui-react";
 
+import InspectorComponent from './InspectorComponent'
 import TableComponent from './TableComponent'
 import ViewComponent from './ViewComponent'
 import ColumnComponent from './ColumnComponent'
@@ -40,6 +41,7 @@ export default function SchemaBuilderComponent() {
     const miniviewContainer = useRef(null)
     const controlsContainer = useRef(null)
     const paletteContainer = useRef(null)
+    const inspectorContainer = useRef(null)
 
     function dataGenerator (el) {
         const type = el.getAttribute("data-type"),
@@ -172,6 +174,9 @@ export default function SchemaBuilderComponent() {
         const m = createRoot(miniviewContainer.current)
         m.render(<JsPlumbToolkitMiniviewComponent surface={surfaceComponent.current.surface}/>)
 
+        const i = createRoot(inspectorContainer.current)
+        i.render(<InspectorComponent surface={surfaceComponent.current.surface}/>)
+
         const paletteRoot = createRoot(paletteContainer.current)
         paletteRoot.render(
             <DragDropNodeSource
@@ -195,7 +200,7 @@ export default function SchemaBuilderComponent() {
             </div>
             <div className="jtk-demo-rhs">
                 <div id="palette" className="jtk-schema-palette" ref={paletteContainer}/>
-                <div id="inspector"/>
+                <div id="inspector" ref={inspectorContainer}/>
                 <div className="description">
                     <p>This sample application is a builder for database schemas.</p>
                 </div>
