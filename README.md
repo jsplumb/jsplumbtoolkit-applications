@@ -71,8 +71,6 @@ Documentation can be found at [https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/s
 
 ![](img/schema-builder.png)
 
-NOTE: we are still working on the Angular, React, Vue 2 and Vue 3 versions of this app.
-
 You can test this app on our site at [https://jsplumbtoolkit.com/demonstrations/schema-builder](https://jsplumbtoolkit.com/demonstrations/schema-builder).
 
 Documentation can be found at [https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-schema-builder](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-schema-builder).
