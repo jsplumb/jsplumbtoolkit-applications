@@ -22,6 +22,9 @@ import NodeComponent from './NodeComponent'
 import {DEFAULT_FILL, DEFAULT_STROKE, DEFAULT_TEXT_COLOR,CLASS_EDGE_LABEL, CLASS_FLOWCHART_EDGE, GRID_BACKGROUND_OPTIONS, GRID_SIZE} from "./constants";
 import edgeMappings from "./edge-mappings";
 
+//
+// these anchor positions are used by the drag/drop of new edges, and also by the edge path editor
+//
 export const anchorPositions = [
     {x:0, y:0.5, ox:-1, oy:0, id:"left" },
     {x:1, y:0.5, ox:1, oy:0, id:"right" },
@@ -39,6 +42,18 @@ export default function FlowchartComponent() {
     const controlsContainer = useRef(null)
     const paletteContainer = useRef(null)
     const inspectorContainer = useRef(null)
+
+    /**
+     * Generator for data for nodes dragged from palette.
+     * @param el
+     */
+    const dataGenerator = (el) => {
+        return {
+            fill:DEFAULT_FILL,
+            outline:DEFAULT_STROKE,
+            textColor:DEFAULT_TEXT_COLOR
+        }
+    }
 
     const toolkit = newInstance()
 
@@ -143,18 +158,6 @@ export default function FlowchartComponent() {
             }
         ],
         zoomToFit:true
-    }
-
-    /**
-     * Generator for data for nodes dragged from palette.
-     * @param el
-     */
-    const dataGenerator = (el) => {
-        return {
-            fill:DEFAULT_FILL,
-            outline:DEFAULT_STROKE,
-            textColor:DEFAULT_TEXT_COLOR
-        }
     }
 
     useEffect(() => {
