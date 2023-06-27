@@ -36,6 +36,7 @@
 </template>
 <script>
 
+    import { nextTick } from "vue"
     import {loadSurface} from "@jsplumbtoolkit/browser-ui-vue3";
     import { Inspector, isNode, isPort } from "@jsplumbtoolkit/browser-ui"
 
@@ -76,7 +77,7 @@
                     },
                     refresh:(obj, cb) => {
                         this.currentType = isNode(obj) ? obj.data.type : isPort(obj) ? COLUMN : RELATIONSHIP
-                        Vue.nextTick(cb)
+                        nextTick(cb)
                     }
                 })
 
