@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Flowchart Builder (React)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+**This is a work in progress**
+
+## Overview
+
+This is a version of the [Flowchart Builder starter app](https://jsplumbtoolkit.com/demonstrations/flowchart-builder) written using the Toolkit's React integration.  Users can drag/resize/edit nodes, change the paths of a given edge, and edit node/edge labels. A lot of the code from the vanilla app is reused in this application, but it's just reorganised to work as a React app.
+
+## Setup
+
+You can use the `npm run install` or `npm run install:react` tasks from the project root to install dependencies for every app or just for React apps, or you can run `npm i` in this folder to just install the dependencies for this application.
+
 
 ## Available Scripts
 
@@ -14,11 +25,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -29,42 +35,133 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## App structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The entry point for this app is `App.js`, which does very little except render a `FlowchartComponent`. The flowchart component is where the meat of the application resides.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The flowchart component code is roughly broken into 5 discrete sections:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Anchor positions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```javascript
+export const anchorPositions = [
+    {x:0, y:0.5, ox:-1, oy:0, id:"left" },
+    {x:1, y:0.5, ox:1, oy:0, id:"right" },
+    {x:0.5, y:0, ox:0, oy:-1, id:"top" },
+    {x:0.5, y:1, ox:0, oy:1, id:"bottom" }
+]
+```
 
-## Learn More
+This array of anchor positions serves a dual purpose:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- it is used when dropping an edge on some element, to determine which anchor point is closest to where mouse button has been released
+- it is used when editing an edge path, to define the positions to which the user can drag anchor points
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This array is declared outside of the component.
 
-### Code Splitting
+### Component setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The first section of code in the Flowchart component looks like this:
 
-### Analyzing the Bundle Size
+```javascript
+const shapeLibrary = new ShapeLibraryImpl(FLOWCHART_SHAPES)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+const pathEditor = useRef(null)
+const surfaceComponent = useRef(null)
+const miniviewContainer = useRef(null)
+const controlsContainer = useRef(null)
+const paletteContainer = useRef(null)
+const inspectorContainer = useRef(null)
 
-### Making a Progressive Web App
+/**
+ * Generator for data for nodes dragged from palette.
+ * @param el
+ */
+const dataGenerator = (el) => {
+    return {
+        fill:DEFAULT_FILL,
+        outline:DEFAULT_STROKE,
+        textColor:DEFAULT_TEXT_COLOR
+    }
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+const toolkit = newInstance()
 
-### Advanced Configuration
+initializeOrthogonalConnectorEditors()
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The first thing we do is to declare a [Shape library](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/shape-libraries). This is a module that manages a set of named shapes that we will use to render SVG. We construct our library with `FLOWCHART_SHAPES`, a set of shapes that ship with the Toolkit since 6.2.0.
 
-### Deployment
+We then declare a few refs - one for the object we'll use to edit paths, one for our surface, and then a few for various DOM elements we're going to want access to in the `useEffect` hook discussed below.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+`dataGenerator` is a function used by the palette from which the user drags new shapes onto the canvas. Its job is to take some DOM element as input (a DOM element that a user has started to drag from the palette), and to return an appropriate initial dataset for an object of that type. This is discussed in detail [in the drag and drop documentation](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/drag-and-drop).
 
-### `npm run build` fails to minify
+Next, we create an instance of the Toolkit. We do not have any constructor params for the Toolkit in this application, but when constructing a Toolkit you can provide various things like a function to run before a connection can be established, initial mode for the Toolkit's selection, etc.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Finally in the setup of this component we call `initializeOrthogonalConnectorEditors()`. This is a method exported by `@jsplumbtoolkit/browser-ui` and calling it here ensures that the edge editors for Orthogonal connectors don't get tree-shaken out of our bundle.
+
+### View
+
+The [view](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/views) is where you map object types to their visual representations:
+
+```javascript
+const view = {
+    nodes: {
+        [DEFAULT]: {
+            jsx: (ctx) => {
+                return <NodeComponent ctx={ctx}  shapeLibrary={shapeLibrary}/>
+            },
+            events: {
+                [EVENT_TAP]: (params) => {
+                    pathEditor.current.stopEditing()
+                    // if zero nodes currently selected, or the shift key wasnt pressed, make this node the only one in the selection.
+                    if (toolkit.getSelection()._nodes.length < 1 || params.e.shiftKey !== true) {
+                        toolkit.setSelection(params.obj)
+                    } else {
+                        // if multiple nodes already selected, or shift was pressed, add this node to the current selection.
+                        toolkit.addToSelection(params.obj)
+                    }
+                }
+            }
+        }
+    },
+    // There are two edge types defined - 'yes' and 'no', sharing a common
+    // parent.
+    edges: {
+        [DEFAULT]: {
+            endpoint: BlankEndpoint.type,
+            connector: {
+                type: OrthogonalConnector.type,
+                options: {
+                    cornerRadius: 5
+                }
+            },
+            cssClass:CLASS_FLOWCHART_EDGE,
+            labelClass:CLASS_EDGE_LABEL,
+            label:"{{label}}",
+            outlineWidth:10,
+            events: {
+                [EVENT_DBL_CLICK]: (params) => {
+                    toolkit.removeEdge(params.edge)
+                },
+                [EVENT_CLICK]: (params) => {
+                    toolkit.setSelection(params.edge)
+                    pathEditor.current.startEditing(params.edge, {
+                        deleteButton:true,
+                        anchorPositions
+                    })
+                }
+            }
+        }
+    },
+    ports: {
+        target: {
+            anchorPositions,
+            maxConnections: -1,
+            isTarget: true
+        }
+    }
+}
+```
+
+
