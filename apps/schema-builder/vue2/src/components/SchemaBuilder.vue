@@ -11,6 +11,7 @@
 
             </jsplumb-toolkit>
             <Controls surface-id="surfaceId"></Controls>
+            <jsplumb-miniview surface-id="surfaceId"></jsplumb-miniview>
         </div>
         <div class="jtk-demo-rhs">
             <Palette surface-id="surfaceId"
