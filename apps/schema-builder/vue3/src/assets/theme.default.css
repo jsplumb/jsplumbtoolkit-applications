@@ -1,0 +1,152 @@
+:root {
+    --green:#4ea758;
+    --white:white;
+    --darkGrey:#434343;
+    --darkTeal:#407364;
+
+    --jtk-error:orangered;
+}
+
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* --- Node common -------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-table, .jtk-schema-view {
+    background-color: #3E7E9C;
+    border-radius: 4px;
+    border:1px solid #ccc;
+}
+
+.jtk-schema-element-name {
+    background-color: #3E7E9C;
+    color: #f7ebca;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* --- Table nodes -------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-table-column-delete, .jtk-schema-view-delete {
+    color: var(--darkTeal);
+}
+
+.jtk-schema-table-column-edit {
+    color: var(--darkTeal);
+}
+
+.new-column, .jtk-schema-delete, .jtk-schema-table-column-delete {
+    -webkit-transition: background-color 0.15s ease-in;
+    -moz-transition: background-color 0.15s ease-in;
+    -o-transition: background-color 0.15s ease-in;
+    transition: background-color 0.15s ease-in;
+}
+
+.jtk-schema-delete:hover {
+    background-color:var(--jtk-error);
+    color:var(--white);
+}
+
+.jtk-schema-view-delete:hover, .jtk-schema-table-column-delete:hover {
+    color: var(--darkGrey);
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/*    Mappings for column types. The template writes a `data-type` attribute with the column's datatype  */
+/* ----------------------------------------------------------------------------------------------------- */
+
+[data-type='varchar'] {
+    background-color: #cbeae1;
+}
+
+[data-type='integer'] {
+    background-color: #8cdcc4;
+}
+
+[data-type='date'] {
+    background-color: #e5f5f0;
+}
+
+[data-primary-key='true']:after {
+     content:'🗝';
+     position:absolute;
+     right: 1.5rem;
+     font-size: smaller;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* --- View nodes -------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-view {
+    background-color: white;
+}
+
+.jtk-schema-view-details {
+    font-family: Courier, sans-serif;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* --- Drag/drop interactions ------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------- */
+
+.jtk-drag-hover {
+    background-color: #629f72 !important;
+    color: #FFF !important;
+}
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* --- Edge styles ------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-delete-relationship:hover {
+    color: #FFF;
+    background-color: var(--darkGrey);
+    padding: 4px;
+}
+
+.jtk-schema-common-edge path {
+    stroke-width: 3;
+    stroke: #f76258;
+}
+
+.jtk-schema-common-edge.jtk-hover path {
+    stroke:var(--darkGrey);
+}
+
+/* the endpoints at the end of each edge */
+.jtk-schema-endpoint circle {
+    fill:#f76258;
+}
+
+.jtk-schema-endpoint:hover circle {
+    fill:var(--darkGrey);
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* ---------------- overlays -------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-delete-relationship, .jtk-schema-relationship-cardinality {
+    background-color: var(--white);
+    color: var(--darkGrey);
+    font-weight: 400;
+    padding: 4px;
+    z-index:11;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* ---------------- new node palette ------------------------------------------------------------------ */
+/* ---------------------------------------------------------------------------------------------------- */
+
+.jtk-schema-palette-item {
+    background-color: #CCC;
+    border-radius: 11px;
+    color: #585858;
+    cursor: move;
+    padding: 8px;
+    width: 128px;
+    text-align: center;
+    margin: 10px;
+    outline: none;
+}

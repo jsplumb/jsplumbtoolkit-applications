@@ -1,0 +1,13 @@
+@import "./base.css";
+
+#app {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.jtk-miniview {
+  position: absolute;
+  right:10px;
+  top:10px;
+}

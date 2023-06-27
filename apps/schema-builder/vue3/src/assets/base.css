@@ -1,0 +1,4 @@
+@import '../../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css';
+@import '../../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css';
+@import './schema-builder.css';
+@import './theme.default.css';
