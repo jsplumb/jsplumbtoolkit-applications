@@ -22,7 +22,8 @@ import {
   EVENT_CLICK,
   FLOWCHART_SHAPES,
   initializeOrthogonalConnectorEditors,
-  ObjectAnchorSpec
+  ObjectAnchorSpec,
+    SelectionModes
 } from "@jsplumbtoolkit/browser-ui"
 
 import edgeMappings from './edge-mappings'
@@ -85,6 +86,10 @@ export class AppComponent implements AfterViewInit {
       textColor:DEFAULT_TEXT_COLOR,
       outlineWidth:DEFAULT_OUTLINE_WIDTH
     }
+  }
+
+  toolkitParams = {
+    selectionMode:SelectionModes.isolated
   }
 
   view = {
