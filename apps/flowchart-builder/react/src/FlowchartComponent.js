@@ -14,12 +14,22 @@ LassoPlugin, DrawingToolsPlugin,
 AbsoluteLayout, EVENT_CANVAS_CLICK,
     EdgePathEditor,
     ShapeLibraryImpl,
-    FLOWCHART_SHAPES
+    FLOWCHART_SHAPES,
+    SelectionModes
 } from "@jsplumbtoolkit/browser-ui"
 
 import Inspector from './InspectorComponent'
 import NodeComponent from './NodeComponent'
-import {DEFAULT_FILL, DEFAULT_STROKE, DEFAULT_TEXT_COLOR,CLASS_EDGE_LABEL, CLASS_FLOWCHART_EDGE, GRID_BACKGROUND_OPTIONS, GRID_SIZE} from "./constants";
+import {
+    DEFAULT_FILL,
+    DEFAULT_STROKE,
+    DEFAULT_TEXT_COLOR,
+    CLASS_EDGE_LABEL,
+    CLASS_FLOWCHART_EDGE,
+    GRID_BACKGROUND_OPTIONS,
+    GRID_SIZE,
+    EDGE_TYPE_TARGET_ARROW, PROPERTY_COLOR, PROPERTY_LABEL, PROPERTY_LINE_STYLE
+} from "./constants";
 import edgeMappings from "./edge-mappings";
 
 //
@@ -55,7 +65,22 @@ export default function FlowchartComponent() {
         }
     }
 
-    const toolkit = newInstance()
+    const toolkit = newInstance({
+        // set the Toolkit's selection mode to 'isolated', meaning it can select a set of edges, or a set of nodes, but it
+        // cannot select a set of nodes and edges. In this demonstration we use an inspector that responds to events from the
+        // toolkit's selection, so setting this to `isolated` helps us ensure we dont try to inspect edges and nodes at the same
+        // time.
+        selectionMode:SelectionModes.isolated,
+        beforeStartConnect:(node, edgeType) => {
+            return {
+                [PROPERTY_LABEL]:"",
+                [PROPERTY_COLOR]:DEFAULT_STROKE,
+                [PROPERTY_LINE_STYLE]:EDGE_TYPE_TARGET_ARROW
+            }
+        }
+    })
+
+    //window.tk = toolkit
 
     initializeOrthogonalConnectorEditors()
 
