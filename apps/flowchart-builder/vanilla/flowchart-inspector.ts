@@ -14,7 +14,7 @@ import {
     PROPERTY_OUTLINE,
     PROPERTY_TEXT_COLOR
 } from "./constants"
-import {EdgeTypePicker} from "./edge-type-picker"
+
 import edgeMappings from "./edge-mappings"
 
 const TMPL_NODE_INSPECTOR = "tmplNodeInspector"
