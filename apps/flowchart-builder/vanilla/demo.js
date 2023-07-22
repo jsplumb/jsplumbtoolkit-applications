@@ -69,6 +69,10 @@ ready(() => {
         // toolkit's selection, so setting this to `isolated` helps us ensure we dont try to inspect edges and nodes at the same
         // time.
         selectionMode:SelectionModes.isolated,
+        // This is the payload to set when a user begins to drag an edge - we return values for the
+        // edge's label, color and line style. If you wanted to implement a mechanism whereby you have
+        // some "current style" you could update this method to return some dynamically configured
+        // values.
         beforeStartConnect:(node, edgeType) => {
             return {
                 [PROPERTY_LABEL]:"",
