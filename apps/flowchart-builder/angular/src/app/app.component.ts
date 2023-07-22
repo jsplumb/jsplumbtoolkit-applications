@@ -34,7 +34,7 @@ import {
   DEFAULT_FILL,
   DEFAULT_STROKE, DEFAULT_TEXT_COLOR,
   GRID_BACKGROUND_OPTIONS,
-  GRID_SIZE, DEFAULT_OUTLINE_WIDTH
+  GRID_SIZE, DEFAULT_OUTLINE_WIDTH, EDGE_TYPE_TARGET_ARROW, PROPERTY_LINE_STYLE, PROPERTY_COLOR, PROPERTY_LABEL
 } from "./constants"
 
 import {NodeComponent} from "./node.component"
@@ -89,12 +89,27 @@ export class AppComponent implements AfterViewInit {
   }
 
   toolkitParams = {
-    selectionMode:SelectionModes.isolated
+    // set the Toolkit's selection mode to 'isolated', meaning it can select a set of edges, or a set of nodes, but it
+    // cannot select a set of nodes and edges. In this demonstration we use an inspector that responds to events from the
+    // toolkit's selection, so setting this to `isolated` helps us ensure we dont try to inspect edges and nodes at the same
+    // time.
+    selectionMode:SelectionModes.isolated,
+    // This is the payload to set when a user begins to drag an edge - we return values for the
+    // edge's label, color and line style. If you wanted to implement a mechanism whereby you have
+    // some "current style" you could update this method to return some dynamically configured
+    // values.
+    beforeStartConnect:(node, edgeType) => {
+      return {
+        [PROPERTY_LABEL]:"",
+        [PROPERTY_COLOR]:DEFAULT_STROKE,
+        [PROPERTY_LINE_STYLE]:EDGE_TYPE_TARGET_ARROW
+      }
+    }
   }
 
   view = {
     nodes: {
-      default:{
+      [DEFAULT]:{
         component:NodeComponent,
         events: {
           [EVENT_TAP]: (params) => {
