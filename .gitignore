@@ -2,3 +2,4 @@ node_modules
 .idea
 _build_es6
 .vscode
+.npmrc
