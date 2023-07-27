@@ -13,7 +13,7 @@ export default function NodeComponent({ctx, shapeLibrary}) {
         <span>{data.text}</span>
         <ShapeComponent obj={data} shapeLibrary={shapeLibrary}/>
 
-        {anchorPositions.map(ap => <div className={"jtk-connect jtk-connect-" + ap.id} data-jtk-anchor-x={ap.x} data-jtk-anchor-y={ap.y} data-jtk-orientation-x={ap.ox}  data-jtk-orientation-y={ap.oy} data-jtk-source="true" data-jtk-port-type="source"></div>)}
+        {anchorPositions.map(ap => <div className={"jtk-connect jtk-connect-" + ap.id} data-jtk-anchor-x={ap.x} data-jtk-anchor-y={ap.y} data-jtk-orientation-x={ap.ox}  data-jtk-orientation-y={ap.oy} data-jtk-source="true" data-jtk-port-type="source" key={ap.id}></div>)}
 
         <div className="node-delete node-action delete" onClick={() => toolkit.removeNode(vertex)}></div>
     </div>
