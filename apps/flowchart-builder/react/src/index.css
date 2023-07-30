@@ -34,6 +34,18 @@ body {
   width:100%;
 }
 
+.jtk-miniview {
+  position:absolute;
+  right:1rem;
+  top:1rem;
+}
+
+.jtk-controls {
+  position: absolute;
+  left:1rem;
+  top:1rem;
+}
+
 .jtk-demo-canvas {
   background-color: white;
   display: flex;
