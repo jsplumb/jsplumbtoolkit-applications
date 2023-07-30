@@ -56,6 +56,25 @@ cd apps/flowchart-builder/vanilla
 npm run build
 ```
 
+## Serving apps
+
+Each app can be run via npm, the command varying depending on the library integration:
+
+#### Angular
+
+`npm run start`
+
+#### React
+
+`npm run start`
+
+#### Vue 2 / Vue 3
+
+`npm run preview`
+
+#### Vanilla
+
+`npm run serve`
 
 
 ## Apps available
