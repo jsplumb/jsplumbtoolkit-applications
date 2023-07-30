@@ -8,7 +8,13 @@ You'll need to be a licensee or evaluator of the [jsPlumb Toolkit](https://jsplu
 
 If you are not a licensee or an evaluator, you can request an evaluation of the Toolkit [on our site](https://jsplumbtoolkit.com/trial).
 
-Both licensees and evaluators will need to first login to our NPM repository, instructions for which can be found [here](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/npm-repository).
+### Evaluators
+
+If you are an evaluator and you are accessing the starter apps from your evaluation bundle, the Toolkit packages were delivered in the bundle and are referenced via `file:..` urls.  You can also access the Toolkit packages via our NPM repository, instructions for which can be found [here](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/npm-repository). 
+
+### Licensees
+
+Licensees who are logged in to our NPM repository can skip to installation at this point. If you are a licensee but you are not logged in to our NPM repository, you will either need to login to our repository (instructions for which can be found [here](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/npm-repository)), or provision the Toolkit packages via your own NPM repository, or local files.
 
 ## Installation
 
