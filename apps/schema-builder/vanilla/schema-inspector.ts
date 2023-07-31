@@ -46,12 +46,12 @@ const inspectorTemplates = {
                 <div>Name</div>
                  <input type="text" jtk-att="name" jtk-focus/>
                  <div>Datatype</div>
-                 ${datatypes.map(d =>`<label><input type="radio" jtk-att="datatype" name="datatype" value="${d.id}"/>${d.description}</label>`)}
+                 ${datatypes.map(d =>`<label><input type="radio" jtk-att="datatype" name="datatype" value="${d.id}"/>${d.description}</label>`).join("")}
             </div>`,
     [TMPL_EDGE_INSPECTOR] : `
             <div class="jtk-inspector jtk-edge-inspector">
                 <div>Cardinality</div>                       
-                ${cardinalities.map(c => `<label><input type="radio" name="${PROPERTY_CARDINALITY}" jtk-att="${PROPERTY_CARDINALITY}" value="${c.id}"/>${c.name}</label>`)}                            
+                ${cardinalities.map(c => `<label><input type="radio" name="${PROPERTY_CARDINALITY}" jtk-att="${PROPERTY_CARDINALITY}" value="${c.id}"/>${c.name}</label>`).join("")}                            
             </div>`
 }
 
