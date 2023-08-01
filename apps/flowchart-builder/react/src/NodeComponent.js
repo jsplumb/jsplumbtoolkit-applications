@@ -9,7 +9,7 @@ export default function NodeComponent({ctx, shapeLibrary}) {
     const { vertex, toolkit } = ctx;
     const data = vertex.data;
 
-    return <div style={{width:data.width + 'px',height:data.height + 'px',color:data.textColor}} className="flowchart-object" data-jtk-target="true" data-jtk-target-port-type="target">
+    return <div style={{width:data.width + 'px',height:data.height + 'px',color:data.textColor}} className="flowchart-object" data-jtk-target="true">
         <span>{data.text}</span>
         <ShapeComponent obj={data} shapeLibrary={shapeLibrary}/>
 

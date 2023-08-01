@@ -9,7 +9,7 @@
 
 </script>
 <template>
-    <div :style="{width:obj.width + 'px', height:obj.height + 'px', color:obj.textColor}" class="flowchart-object" data-jtk-target="true" data-jtk-target-port-type="target">
+    <div :style="{width:obj.width + 'px', height:obj.height + 'px', color:obj.textColor}" class="flowchart-object" data-jtk-target="true">
         <span>{{obj.text}}</span>
         <jsplumb-shape :obj="obj" :shape-library="shapeLibrary"></jsplumb-shape>
         <div v-for="anchor in anchorPositions"
