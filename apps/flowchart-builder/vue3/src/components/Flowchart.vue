@@ -20,7 +20,7 @@
         LassoPlugin,
         BackgroundPlugin,
         ShapeLibraryImpl,
-        AnchorLocations
+        SelectionModes
 
     } from "@jsplumbtoolkit/browser-ui"
 
@@ -28,7 +28,13 @@
 
     import {
         CLASS_EDGE_LABEL,
-        CLASS_FLOWCHART_EDGE, DEFAULT_FILL, DEFAULT_STROKE, DEFAULT_TEXT_COLOR, GRID_BACKGROUND_OPTIONS, GRID_SIZE
+        CLASS_FLOWCHART_EDGE,
+        DEFAULT_FILL,
+        DEFAULT_STROKE,
+        DEFAULT_TEXT_COLOR, EDGE_TYPE_TARGET_ARROW,
+        GRID_BACKGROUND_OPTIONS,
+        GRID_SIZE, PROPERTY_COLOR,
+        PROPERTY_LABEL, PROPERTY_LINE_STYLE
     } from "../constants";
 
     import edgeMappings from "../edge-mappings";
@@ -70,13 +76,34 @@
         },
         methods:{
             toolkitParams:function() {
-                return {}
+                return {
+                    // set the Toolkit's selection mode to 'isolated', meaning it can select a set of edges, or a set of nodes, but it
+                    // cannot select a set of nodes and edges. In this demonstration we use an inspector that responds to events from the
+                    // toolkit's selection, so setting this to `isolated` helps us ensure we dont try to inspect edges and nodes at the same
+                    // time.
+                    selectionMode:SelectionModes.isolated,
+                    // This is the payload to set when a user begins to drag an edge - we return values for the
+                    // edge's label, color and line style. If you wanted to implement a mechanism whereby you have
+                    // some "current style" you could update this method to return some dynamically configured
+                    // values.
+                    beforeStartConnect:(node, edgeType) => {
+                        return {
+                            [PROPERTY_LABEL]:"",
+                            [PROPERTY_COLOR]:DEFAULT_STROKE,
+                            [PROPERTY_LINE_STYLE]:EDGE_TYPE_TARGET_ARROW
+                        }
+                    }
+                }
             },
             viewParams:function() {
                 return {
                     nodes:{
                         default:{
                             component:NodeComponent,
+                            // target connections to this node can exist at any of the given anchorPositions
+                            anchorPositions,
+                            // node can support any number of connections.
+                            maxConnections: -1,
                             events: {
                                 [EVENT_TAP]: (params) => {
                                     edgeEditor.stopEditing()
@@ -118,16 +145,6 @@
                                     })
                                 }
                             }
-                        }
-                    },
-                    ports: {
-                        source: {
-                            maxConnections: -1
-                        },
-                        target: {
-                            anchorPositions,
-                            maxConnections: -1,
-                            isTarget: true
                         }
                     }
                 }
