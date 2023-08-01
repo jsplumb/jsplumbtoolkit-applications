@@ -94,6 +94,10 @@ export default function FlowchartComponent() {
                 jsx: (ctx) => {
                     return <NodeComponent ctx={ctx}  shapeLibrary={shapeLibrary}/>
                 },
+                // target connections to this node can exist at any of the given anchorPositions
+                anchorPositions,
+                // node can support any number of connections.
+                maxConnections: -1,
                 events: {
                     [EVENT_TAP]: (params) => {
                         pathEditor.current.stopEditing()
@@ -135,13 +139,6 @@ export default function FlowchartComponent() {
                         })
                     }
                 }
-            }
-        },
-        ports: {
-            target: {
-                anchorPositions,
-                maxConnections: -1,
-                isTarget: true
             }
         }
     }
