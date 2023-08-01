@@ -102,12 +102,16 @@ ready(() => {
                     // In this template we render a div for each value in the `anchorPositions` array, and these elements
                     // act as connection drag sources. We use CSS to position them, but we also write out various
                     // `data-jtk-anchor-...` properties to control their anchor positions.
-                    template:`<div style="left:{{left}}px;top:{{top}}px;width:{{width}}px;height:{{height}}px;color:{{#textColor}}" class="flowchart-object flowchart-{{type}}" data-jtk-target="true" data-jtk-target-port-type="target">
+                    template:`<div style="left:{{left}}px;top:{{top}}px;width:{{width}}px;height:{{height}}px;color:{{#textColor}}" class="flowchart-object flowchart-{{type}}" data-jtk-target="true">
                             <jtk-shape/>
                             <span>{{text}}</span> 
                             ${anchorPositions.map(ap => `<div class="jtk-connect jtk-connect-${ap.id}"  data-jtk-anchor-x="${ap.x}" data-jtk-anchor-y="${ap.y}" data-jtk-orientation-x="${ap.ox}"  data-jtk-orientation-y="${ap.oy}" data-jtk-source="true"></div>`).join("\n")}
                             <div class="node-delete node-action delete"/>
                         </div>`,
+                    // target connections to this node can exist at any of the given anchorPositions
+                    anchorPositions,
+                    // node can support any number of connections.
+                    maxConnections: -1,
                     events: {
                         [EVENT_TAP]: (params) => {
                             // cancel any edge edits when the user taps a node.
@@ -154,15 +158,6 @@ ready(() => {
                             })
                         }
                     }
-                }
-            },
-            ports: {
-                // the `target` port declares that it can exist at any of the given anchorPositions, that it is
-                // a drag target, and that it can support any number of connections.
-                target: {
-                    anchorPositions,
-                    maxConnections: -1,
-                    isTarget: true
                 }
             }
         },
