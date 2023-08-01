@@ -111,6 +111,10 @@ export class AppComponent implements AfterViewInit {
     nodes: {
       [DEFAULT]:{
         component:NodeComponent,
+        // target connections to this node can exist at any of the given anchorPositions
+        anchorPositions,
+        // node can support any number of connections.
+        maxConnections: -1,
         events: {
           [EVENT_TAP]: (params) => {
             this.edgeEditor.stopEditing()
@@ -148,13 +152,6 @@ export class AppComponent implements AfterViewInit {
             })
           }
         }
-      }
-    },
-    ports: {
-      target: {
-        anchorPositions,
-        maxConnections: -1,
-        isTarget: true
       }
     }
   }
