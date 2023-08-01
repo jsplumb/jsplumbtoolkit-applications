@@ -1,6 +1,6 @@
 {
   "name": "vue3",
-  "version": "0.0.0",
+  "version": "6.2.15",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "^3.3.2",
-    "@jsplumbtoolkit/browser-ui-vue3": "^6.2.4"
+    "@jsplumbtoolkit/browser-ui-vue3": "^6.2.15"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

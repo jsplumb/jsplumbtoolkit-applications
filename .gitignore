@@ -6,3 +6,5 @@ _build_es6
 .angular
 **/dist/
 package-lock.json
+TODO.txt
+

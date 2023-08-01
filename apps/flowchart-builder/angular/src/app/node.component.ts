@@ -4,7 +4,7 @@ import {BaseNodeComponent} from "@jsplumbtoolkit/browser-ui-angular"
 import { anchorPositions } from "./app.component"
 
 @Component({
-    template:`<div style="width:{{obj.width}}px;height:{{obj.height}}px;color:{{obj.textColor}}" class="flowchart-object" data-jtk-target="true" data-jtk-target-port-type="target">
+    template:`<div style="width:{{obj.width}}px;height:{{obj.height}}px;color:{{obj.textColor}}" class="flowchart-object" data-jtk-target="true">
         <span>{{obj.text}}</span>
         <jtk-shape [obj]="obj" [width]="obj.width" [height]="obj.height"></jtk-shape>
 
