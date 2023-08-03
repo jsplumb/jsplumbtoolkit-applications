@@ -147,8 +147,7 @@ export class AppComponent implements AfterViewInit {
           [EVENT_CLICK]:(p) => {
             this.toolkit.setSelection(p.edge)
             this.edgeEditor.startEditing(p.edge, {
-              deleteButton:true,
-              anchorPositions
+              deleteButton:true
             })
           }
         }

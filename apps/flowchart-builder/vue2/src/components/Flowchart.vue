@@ -138,8 +138,7 @@
                                 click:(p) => {
                                     toolkit.setSelection(p.edge)
                                     edgeEditor.startEditing(p.edge, {
-                                        deleteButton:true,
-                                        anchorPositions
+                                        deleteButton:true
                                     })
                                 }
                             }

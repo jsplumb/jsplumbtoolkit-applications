@@ -148,13 +148,10 @@ ready(() => {
                     events: {
                         click:(p) => {
                             // on edge click, select the edge (the inspector will update to
-                            // show this edge), and start editing it.
-                            // Note that we pass `anchorPositions` in to the edge editor to allow the user
-                            // to relocate the source/target anchors.
+                            // show this edge), and start editing it
                             toolkit.setSelection(p.edge)
                             edgeEditor.startEditing(p.edge, {
-                                deleteButton:true,
-                                anchorPositions
+                                deleteButton:true
                             })
                         }
                     }

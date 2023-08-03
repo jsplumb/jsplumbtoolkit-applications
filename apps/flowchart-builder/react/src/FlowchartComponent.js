@@ -134,8 +134,7 @@ export default function FlowchartComponent() {
                     [EVENT_CLICK]: (params) => {
                         toolkit.setSelection(params.edge)
                         pathEditor.current.startEditing(params.edge, {
-                            deleteButton:true,
-                            anchorPositions
+                            deleteButton:true
                         })
                     }
                 }
