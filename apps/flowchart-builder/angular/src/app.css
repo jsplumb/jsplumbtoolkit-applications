@@ -270,6 +270,7 @@ svg.jtk-drag-drop-hover path {
     display: none;
 }
 
+
 .jtk-connect-left {
     left:0;
     top:50%;
@@ -299,6 +300,21 @@ svg.jtk-drag-drop-hover path {
  */
 .jtk-node:hover .jtk-connect, .jtk-drag-selected .jtk-connect, .jtk-surface-touch-device .jtk-connect {
     display: flex;
+}
+
+/**
+Hide connect elements if an edge is currently being dragged
+ */
+.jtk-surface-edge-dragging .jtk-connect {
+    display:none !important;
+}
+
+/**
+    Show an outline around a node when it is the current edge drop target
+ */
+.jtk-drag-hover {
+    outline:1px solid orangered;
+    outline-offset:5px;
 }
 
 /**
