@@ -302,6 +302,21 @@ svg.jtk-drag-drop-hover path {
 }
 
 /**
+    Hide connect elements if an edge is currently being dragged
+ */
+.jtk-surface-edge-dragging .jtk-connect {
+    display:none !important;
+}
+
+/**
+    Show an outline around a node when it is the current edge drop target
+ */
+.jtk-drag-hover {
+    outline:1px solid orangered;
+    outline-offset:5px;
+}
+
+/**
     When editing a path, show its anchor placeholder on top of any connect elements.
  */
 .jtk-anchor-placeholder {
