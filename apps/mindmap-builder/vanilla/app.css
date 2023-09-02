@@ -90,7 +90,15 @@ body {
     width:150px;
     height:90px;
     background-color:white;
-    outline:1px solid;
+    border:1px solid;
+    padding:0.25rem;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 3px;
+    flex-direction: column;
+    text-align: center;
 }
 
 .jtk-mindmap-main {
@@ -108,11 +116,11 @@ body {
     bottom:10px;
 }
 
-[data-direction='left'] .jtk-add-mindmap-child {
+.jtk-add-mindmap-child[data-direction='left'] {
     left:10px;
 }
 
-[data-direction='right'] .jtk-add-mindmap-child {
+.jtk-add-mindmap-child[data-direction='right'] {
     right:10px;
 }
 
