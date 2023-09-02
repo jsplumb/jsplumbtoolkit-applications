@@ -45,16 +45,16 @@ export class MindmapLayout extends AbstractLayout {
             //
             const _preparePlacementStrategy = (dir) => {
                 return new ParentRelativePlacementStrategy(toolkit, {
-                    rootNode:this.focusVertex.data,
+                    rootNode:this.focusVertex,
                     idFunction:(d) => d.id,
                     sizeFunction:(id) => {
                         return this._getSize(id)
                     },
                     childVerticesFunction:(d) => {
-                        if (d.type === MAIN) {
-                            return d[dir] || []
+                        if (d.data.type === MAIN) {
+                            return d.getAllEdges().filter(e => e.target.data.direction === dir).map(e => e.target)
                         } else {
-                            return d.children || []
+                            return d.getAllEdges().map(e => e.target)
                         }
                     },
                     padding:{x:250, y:100},
@@ -65,7 +65,6 @@ export class MindmapLayout extends AbstractLayout {
 
             const rightPositions = _preparePlacementStrategy(RIGHT).execute()
             rightPositions.forEach((info, id) => {
-                console.log(id, info.position)
                 this.setPosition(id, info.position.x, info.position.y)
             })
 
