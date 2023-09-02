@@ -9,16 +9,7 @@
   */
     --jtk-draw-skeleton-padding:-0.6rem;
 
-    --flowchartBuilderDragHover:orangered;
-    --flowchartBuilderShapeOutline:var(--jtk-component-outline);
-    --flowchartBuilderDeleteButtonBackground:#d83f3f;
-    --flowchartBuilderDeleteButtonForeground:white;
-    --flowchartBuilderConnectButtonBackground:#84acb3;
-    --flowchartBuilderConnectButtonForeground:white;
-
-    --flowchartBuilderGridLine:#aaa;
-
-    --flowchartBuilderPaletteBorder:var(--jtk-component-outline);
+    --jtk-delete-icon:url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgLTI1NiAxNzkyIDE3OTIiIHZlcnNpb249IjEuMSI+CiAgICA8ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxOTcuNDIzNzMsMTI1NS4wNTA4KSI+CiAgICAgICAgPHBhdGggc3Ryb2tlPSJjdXJyZW50Q29sb3IiIGQ9Ik0gNTEyLDgwMCBWIDIyNCBxIDAsLTE0IC05LC0yMyAtOSwtOSAtMjMsLTkgaCAtNjQgcSAtMTQsMCAtMjMsOSAtOSw5IC05LDIzIHYgNTc2IHEgMCwxNCA5LDIzIDksOSAyMyw5IGggNjQgcSAxNCwwIDIzLC05IDksLTkgOSwtMjMgeiBtIDI1NiwwIFYgMjI0IHEgMCwtMTQgLTksLTIzIC05LC05IC0yMywtOSBoIC02NCBxIC0xNCwwIC0yMyw5IC05LDkgLTksMjMgdiA1NzYgcSAwLDE0IDksMjMgOSw5IDIzLDkgaCA2NCBxIDE0LDAgMjMsLTkgOSwtOSA5LC0yMyB6IG0gMjU2LDAgViAyMjQgcSAwLC0xNCAtOSwtMjMgLTksLTkgLTIzLC05IGggLTY0IHEgLTE0LDAgLTIzLDkgLTksOSAtOSwyMyB2IDU3NiBxIDAsMTQgOSwyMyA5LDkgMjMsOSBoIDY0IHEgMTQsMCAyMywtOSA5LC05IDksLTIzIHogTSAxMTUyLDc2IHYgOTQ4IEggMjU2IFYgNzYgUSAyNTYsNTQgMjYzLDM1LjUgMjcwLDE3IDI3Ny41LDguNSAyODUsMCAyODgsMCBoIDgzMiBxIDMsMCAxMC41LDguNSA3LjUsOC41IDE0LjUsMjcgNywxOC41IDcsNDAuNSB6IE0gNDgwLDExNTIgaCA0NDggbCAtNDgsMTE3IHEgLTcsOSAtMTcsMTEgSCA1NDYgcSAtMTAsLTIgLTE3LC0xMSB6IG0gOTI4LC0zMiB2IC02NCBxIDAsLTE0IC05LC0yMyAtOSwtOSAtMjMsLTkgaCAtOTYgViA3NiBxIDAsLTgzIC00NywtMTQzLjUgLTQ3LC02MC41IC0xMTMsLTYwLjUgSCAyODggcSAtNjYsMCAtMTEzLDU4LjUgUSAxMjgsLTExIDEyOCw3MiB2IDk1MiBIIDMyIHEgLTE0LDAgLTIzLDkgLTksOSAtOSwyMyB2IDY0IHEgMCwxNCA5LDIzIDksOSAyMyw5IGggMzA5IGwgNzAsMTY3IHEgMTUsMzcgNTQsNjMgMzksMjYgNzksMjYgaCAzMjAgcSA0MCwwIDc5LC0yNiAzOSwtMjYgNTQsLTYzIGwgNzAsLTE2NyBoIDMwOSBxIDE0LDAgMjMsLTkgOSwtOSA5LC0yMyB6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=);
 }
 
 body {
@@ -90,13 +81,13 @@ body {
     width:150px;
     height:90px;
     background-color:white;
-    border:1px solid;
+    border:0.1rem solid;
     padding:0.25rem;
     display:flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-radius: 3px;
+    border-radius: 0.25rem;
     flex-direction: column;
     text-align: center;
 }
@@ -111,27 +102,72 @@ body {
     height:15px;
     border-radius:50%;
     cursor:pointer;
-    background-color:limegreen;
-    color:white;
-    bottom:10px;
+    bottom:5px;
 }
 
+.jtk-add-mindmap-child:after {
+    content:'+';
+    text-align:center;
+}
+
+.jtk-add-mindmap-child:hover {
+    color:white;
+    background-color:limegreen;
+}
+
+
 .jtk-add-mindmap-child[data-direction='left'] {
-    left:10px;
+    left:5px;
 }
 
 .jtk-add-mindmap-child[data-direction='right'] {
-    right:10px;
+    right:5px;
 }
 
-.jtk-add-mindmap-delete {
+.jtk-mindmap-info {
+    cursor:pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' xml:space='preserve'%3E%3Cg%3E%3Cpath fill='none' d='M402.5,74.74c0-4.551-3.689-8.24-8.24-8.24H117.74c-4.551,0-8.24,3.689-8.24,8.24v362.52 c0,4.551,3.689,8.24,8.24,8.24h276.52c4.551,0,8.24-3.689,8.24-8.24V74.74z'/%3E%3Cpath d='M418.5,75.219c0-13.652-11.067-24.72-24.721-24.72H118.221c-13.653,0-24.721,11.067-24.721,24.72V437.78 c0,13.652,11.068,24.72,24.721,24.72H393.78c13.653,0,24.721-11.067,24.721-24.72V75.219z M402.5,437.26 c0,4.551-3.689,8.239-8.24,8.239H117.74c-4.551,0-8.24-3.688-8.24-8.239V74.739c0-4.55,3.689-8.239,8.24-8.239h276.52 c4.551,0,8.24,3.689,8.24,8.239V437.26z'/%3E%3C/g%3E%3Cg%3E%3Crect x='134.5' y='248.5' width='247' height='16'/%3E%3C/g%3E%3Cg%3E%3Crect x='134.5' y='207.5' width='247' height='16'/%3E%3C/g%3E%3Cg%3E%3Crect x='134.5' y='289.5' width='247' height='16'/%3E%3C/g%3E%3Cg%3E%3Crect x='134.5' y='330.5' width='247' height='17'/%3E%3C/g%3E%3Cg%3E%3Crect x='134.5' y='371.5' width='247' height='17'/%3E%3C/g%3E%3Ccircle cx='153' cy='109.74' r='12.36'/%3E%3Ccircle cx='194.2' cy='109.74' r='12.36'/%3E%3Cpath d='M383.72,109.74c0,6.826-5.536,12.36-12.359,12.36c-6.824,0-12.36-5.534-12.36-12.36c0-6.826,5.536-12.36,12.36-12.36 C378.184,97.38,383.72,102.914,383.72,109.74z'/%3E%3Cpath d='M342.52,109.74c0,6.826-5.536,12.36-12.359,12.36c-6.824,0-12.36-5.534-12.36-12.36c0-6.826,5.536-12.36,12.36-12.36 C336.984,97.38,342.52,102.914,342.52,109.74z'/%3E%3C/svg%3E%0A");
+    width:15px;
+    height:15px;
+    position:absolute;
+    left:5px;
+    top:5px;
+    border-radius:50%;
+    background-size:75%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.jtk-mindmap-info:hover {
+    color:white;
+    background-color:limegreen;
+}
+
+.jtk-mindmap-delete {
     position:absolute;
     width:15px;
     height:15px;
     border-radius:50%;
     cursor:pointer;
-    background-color:orangered;
     color:white;
-    top:10px;
-    right:10px;
+    top:5px;
+    right:5px;
+    background-image:var(--jtk-delete-icon);
+    background-size:75%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.jtk-mindmap-delete:hover {
+    background-color:orangered;
+}
+
+/* ----------------- INSPECTOR ----------------------- */
+.jtk-inspector input[type="text"], .jtk-inspector textarea {
+    width:90%;
+    margin:1rem;
+}
+
+.jtk-inspector input[type="text"] {
+    height:2rem;
 }
