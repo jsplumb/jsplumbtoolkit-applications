@@ -11,6 +11,11 @@ const mindmapJsonParser = (jd, toolkit, parameters) => {
     data.type = MAIN
     let mainTopic = toolkit.addNode(data)
 
+    // add logical ports for connections to each side of the
+    // main node
+    mainTopic.addPort({id:LEFT})
+    mainTopic.addPort({id:RIGHT})
+
     const _processChildren = (focus, direction) => {
         const c = focus.data.children || []
         c.forEach((_c) => {
@@ -26,13 +31,14 @@ const mindmapJsonParser = (jd, toolkit, parameters) => {
 
     const _processRootChildren = (direction) => {
         const n = data[direction]
+        const source = mainTopic.getPort(direction)
         n.forEach(l => {
             l.type = SUBTOPIC
             l.direction = direction
             // l.parent = mainTopic.id
             l.children = l.children || []
             const ln = toolkit.addNode(l)
-            toolkit.addEdge({source:mainTopic, target:ln, data:{direction:direction}})
+            toolkit.addEdge({source, target:ln, data:{direction:direction}})
             _processChildren(ln, direction)
         })
     }
@@ -44,37 +50,39 @@ const mindmapJsonParser = (jd, toolkit, parameters) => {
 
 registerParser(MINDMAP_JSON, mindmapJsonParser)
 
-// const mindmapJsonExporter = (toolkit, parameters) => {
-//
-//     const mainTopic = toolkit.filter(o => isNode(o) && o.data.type === MAIN).getNodeAt(0)
-//
-//     const _one = (v, direction) => {
-//         const edges = direction === LEFT ? getLeftEdges(v, toolkit) : getRightEdges(v, toolkit)
-//         const d = {
-//             id:v.data.id,
-//             label:v.data.label,
-//             notes:v.data.notes || "",
-//             children:edges.map(e => _one(e.target, direction))
-//         }
-//
-//         return d
-//     }
-//
-//     const mainLeft = getLeftEdges(mainTopic, toolkit)
-//     const mainRight = getRightEdges(mainTopic, toolkit)
-//     const left = mainLeft.map(ml => _one(ml.target, LEFT))
-//     const right = mainRight.map(ml => _one(ml.target, RIGHT))
-//
-//     return {
-//         name:"mindmap",
-//         data:{
-//             id:mainTopic.data.id,
-//             label:mainTopic.data.label,
-//             notes:mainTopic.data.notes || "",
-//             left,
-//             right
-//         }
-//     }
-// }
-//
-// registerExporter(MINDMAP_JSON, mindmapJsonExporter)
+const mindmapJsonExporter = (toolkit, parameters) => {
+
+    const mainTopic = toolkit.filter(o => isNode(o) && o.data.type === MAIN).getNodeAt(0)
+
+    const _one = (v, direction) => {
+        const edges = v.getAllSourceEdges()
+        const d = {
+            id:v.data.id,
+            type:SUBTOPIC,
+            direction,
+            label:v.data.label,
+            notes:v.data.notes || "",
+            children:edges.map(e => _one(e.target, direction))
+        }
+
+        return d
+    }
+
+    const mainLeft = mainTopic.getAllEdges().filter(e => e.target.data.direction === LEFT)
+    const mainRight = mainTopic.getAllEdges().filter(e => e.target.data.direction === RIGHT)
+    const left = mainLeft.map(ml => _one(ml.target, LEFT))
+    const right = mainRight.map(ml => _one(ml.target, RIGHT))
+
+    return {
+        name:"mindmap",
+        data:{
+            id:mainTopic.data.id,
+            label:mainTopic.data.label,
+            notes:mainTopic.data.notes || "",
+            left,
+            right
+        }
+    }
+}
+
+registerExporter(MINDMAP_JSON, mindmapJsonExporter)
