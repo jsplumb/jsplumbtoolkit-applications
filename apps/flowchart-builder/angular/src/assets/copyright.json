@@ -9,8 +9,7 @@
       "width": 350,
       "height": 150,
       "fill": "#FF2299",
-      "outline": "blue",
-      "outlineWidth": 5
+      "outline": "#000000"
     },
     {
       "id": "2",
@@ -119,16 +118,16 @@
       "target": "2",
       "data": {
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
           {
-            "x": -140,
+            "x": -125,
             "y": -320
           },
           {
-            "x": -140,
+            "x": -125,
             "y": -300
           },
           {
@@ -141,7 +140,7 @@
           }
         ],
         "source": {
-          "curX": -140,
+          "curX": -125,
           "curY": -350,
           "x": 0.5,
           "y": 1,
@@ -165,7 +164,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -211,7 +210,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -220,16 +219,12 @@
             "y": -125
           },
           {
-            "x": -270,
-            "y": -125
-          },
-          {
             "x": 20,
             "y": -125
           },
           {
             "x": 20,
-            "y": -225
+            "y": -175
           }
         ],
         "source": {
@@ -242,7 +237,7 @@
         },
         "target": {
           "curX": 50,
-          "curY": -225,
+          "curY": -175,
           "x": 0,
           "y": 0.5,
           "ox": -1,
@@ -257,7 +252,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -299,7 +294,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -341,7 +336,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -355,11 +350,11 @@
           },
           {
             "x": 992,
-            "y": -530
+            "y": -550
           },
           {
-            "x": -140,
-            "y": -530
+            "x": -125,
+            "y": -550
           }
         ],
         "source": {
@@ -371,7 +366,7 @@
           "oy": 0
         },
         "target": {
-          "curX": -140,
+          "curX": -125,
           "curY": -500,
           "x": 0.5,
           "y": 0,
@@ -387,7 +382,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -433,7 +428,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -475,7 +470,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -561,7 +556,7 @@
       "target": "9",
       "data": {
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -601,7 +596,7 @@
       "target": "10",
       "data": {
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -643,7 +638,7 @@
         "label": "no",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -689,7 +684,7 @@
         "label": "yes",
         "type": "response",
         "lineStyle": "targetArrow",
-        "color": "black"
+        "color": "#000000"
       },
       "geometry": {
         "segments": [
@@ -724,7 +719,5 @@
         }
       }
     }
-  ],
-  "ports": [],
-  "groups": []
+  ]
 }
