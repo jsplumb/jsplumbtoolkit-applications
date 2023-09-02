@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jsPlumbToolkit - Mindmap Builder Example</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css">
+
+        <!-- /CSS -->
+        <link rel="stylesheet" href="./app.css">
+
+    </head>
+    <body>
+
+        <div class="jtk-demo-main" id="jtk-demo-flowchart">
+
+            <!-- main drawing area -->
+            <div class="jtk-demo-canvas">
+                <!-- controls -->
+                <div class="jtk-controls-container"></div>
+                <!-- miniview -->
+                <div class="miniview"></div>
+            </div>
+            <div class="jtk-demo-rhs">
+
+                <!-- the node palette -->
+                <div class="sidebar node-palette"></div>
+                <!-- node/edge inspector -->
+                <div class="inspector"></div>
+
+                <div class="description">
+                    <p>
+                        This sample application is a builder for mindmaps.
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- the demo code -->
+        <script src="bundle.js"></script>
+
+    </body>
+</html>

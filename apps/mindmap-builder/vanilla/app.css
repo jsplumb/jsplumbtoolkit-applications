@@ -1,0 +1,129 @@
+:root {
+
+    --jtk-component-outline: #1b1b1b;
+    --jtk-component-select: yellowgreen;
+
+    /*
+    The space between the frame around a selected node and the node itself. Specify this as a negative value if you change it. Unless you want the
+    frame inside the element, I guess.
+  */
+    --jtk-draw-skeleton-padding:-0.6rem;
+
+    --flowchartBuilderDragHover:orangered;
+    --flowchartBuilderShapeOutline:var(--jtk-component-outline);
+    --flowchartBuilderDeleteButtonBackground:#d83f3f;
+    --flowchartBuilderDeleteButtonForeground:white;
+    --flowchartBuilderConnectButtonBackground:#84acb3;
+    --flowchartBuilderConnectButtonForeground:white;
+
+    --flowchartBuilderGridLine:#aaa;
+
+    --flowchartBuilderPaletteBorder:var(--jtk-component-outline);
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.jtk-demo-main {
+    display: flex;
+    height: 100vh;
+}
+
+.jtk-demo-canvas {
+    background-color: white;
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden !important;
+}
+
+.jtk-demo-rhs {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f9f9f9;
+    flex: 0 0 250px;
+    padding: 20px 5px 0 5px;
+}
+
+.node-palette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.miniview {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 100;
+}
+
+.jtk-demo-main .description {
+    font-size: 13px;
+    padding: 13px;
+}
+
+.jtk-demo-main .description ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+
+.jtk-demo-main .description li {
+    list-style-type: disc !important;
+    margin: 3px 0;
+}
+
+.jtk-controls-container {
+    top: 25px;
+    position: absolute;
+    left: 25px;
+    z-index: 1;
+    font-size:14px;
+}
+
+/* ----------------- mindmap node styles ------------*/
+
+
+.jtk-mindmap-vertex {
+    width:150px;
+    height:90px;
+    background-color:white;
+    outline:1px solid;
+}
+
+.jtk-mindmap-main {
+
+}
+
+.jtk-add-mindmap-child {
+    position:absolute;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    cursor:pointer;
+    background-color:limegreen;
+    color:white;
+    bottom:10px;
+}
+
+[data-direction='left'] .jtk-add-mindmap-child {
+    left:10px;
+}
+
+[data-direction='right'] .jtk-add-mindmap-child {
+    right:10px;
+}
+
+.jtk-add-mindmap-delete {
+    position:absolute;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    cursor:pointer;
+    background-color:orangered;
+    color:white;
+    top:10px;
+    right:10px;
+}

@@ -1,0 +1,66 @@
+{
+  "name": "test dataset",
+  "data":{
+    "id": "1",
+    "label": "Main Topic Main Topic",
+    "notes": "this is the main topic",
+    "right": [
+      {
+        "id": "2",
+        "label": "Topic 2 Topic 2",
+        "notes": "",
+        "children": [
+          {
+            "id": "9",
+            "label": "Topic 9 RIGHT",
+            "notes": ""
+          },
+          {
+            "id": "10",
+            "label": "Topic 10",
+            "notes": ""
+          },
+          {
+            "id": "11",
+            "label": "Topic 11",
+            "notes": ""
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "label": "Topic 3 Topic 3",
+        "notes": ""
+      }
+    ],
+    "left": [
+      {
+        "id": "4",
+        "label": "Topic 4 Topic 4 (LEFT)",
+        "notes": ""
+      },
+      {
+        "id": "5",
+        "label": "Topic 5 Topic 5 (LEFT)",
+        "notes": "",
+        "children": [
+          {
+            "id": "6",
+            "label": "Topic 6 Topic 6 (LEFT)",
+            "notes": ""
+          },
+          {
+            "id": "7",
+            "label": "Topic 7 Topic 7 (LEFT)",
+            "notes": ""
+          },
+          {
+            "id": "8",
+            "label": "Topic 8 Topic 8 (LEFT)",
+            "notes": ""
+          }
+        ]
+      }
+    ]
+  }
+}
