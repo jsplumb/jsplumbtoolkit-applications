@@ -8,9 +8,10 @@ import {
     EVENT_GRAPH_CLEARED
 } from "@jsplumbtoolkit/browser-ui"
 
-import { SUBTOPIC, LEFT, RIGHT, MAIN } from './definitions'
+import { SUBTOPIC, LEFT, RIGHT, MAIN, CLASS_MINDMAP_DELETE, CLASS_ADD_CHILD, CLASS_MINDMAP_INFO } from './definitions'
 import { MINDMAP_JSON } from "./parser";
 import { MindmapLayout } from './layout'
+import { MindmapBuilderInspector } from "./mindmap-inspector";
 
 ready(() => {
 
@@ -44,15 +45,17 @@ ready(() => {
                 main:{
                     template:`<div class="jtk-mindmap-main jtk-mindmap-vertex">
                     {{label}}
-                    <div class="jtk-add-mindmap-child" data-direction="${LEFT}"></div>
-                    <div class="jtk-add-mindmap-child" data-direction="${RIGHT}"></div>
+                    <div class="${CLASS_MINDMAP_INFO}"></div>
+                    <div class="${CLASS_ADD_CHILD}" data-direction="${LEFT}"></div>
+                    <div class="${CLASS_ADD_CHILD}" data-direction="${RIGHT}"></div>
                     </div>`
                 },
                 subtopic:{
                     template:`<div class="jtk-mindmap-subtopic jtk-mindmap-vertex">
                         {{label}}
-                        <div class="jtk-add-mindmap-child" data-direction="{{direction}}"></div>
-                        <div class="jtk-add-mindmap-delete"></div>
+                        <div class="${CLASS_MINDMAP_INFO}"></div>
+                        <div class="${CLASS_ADD_CHILD}" data-direction="{{direction}}"></div>
+                        <div class="${CLASS_MINDMAP_DELETE}"></div>
                         </div>`
                 }
             }
@@ -61,7 +64,7 @@ ready(() => {
         modelEvents:[
             {
                 event:EVENT_TAP,
-                selector:".jtk-add-mindmap-child",
+                selector:`.${CLASS_ADD_CHILD}`,
                 callback:(event, eventTarget, modelObject) => {
                     // read out the direction for this edge.
                     const direction = eventTarget.getAttribute("data-direction")
@@ -87,7 +90,7 @@ ready(() => {
             },
             {
                 event:EVENT_TAP,
-                selector:".jtk-add-mindmap-delete",
+                selector:`.${CLASS_MINDMAP_DELETE}`,
                 callback:(event, eventTarget, modelObject) => {
                     // select the node that was clicked and all of its descendants (we get a Selection object back)
                     const nodeAndDescendants = toolkit.selectDescendants(modelObject.obj, true)
@@ -97,6 +100,13 @@ ready(() => {
                         toolkit.remove(nodeAndDescendants)
                     })
 
+                }
+            },
+            {
+                event:EVENT_TAP,
+                selector:`.${CLASS_MINDMAP_INFO}`,
+                callback:(event, eventTarget, modelObject) => {
+                    toolkit.setSelection(modelObject.obj)
                 }
             }
         ],
@@ -113,6 +123,8 @@ ready(() => {
         }
     })
 
+/* ------------------------ CONTROLS ------------------------------------- */
+
     // handler for mode change (pan/zoom vs lasso), clear dataset, zoom to fit etc.
     new ControlsComponent(controlsElement, surface)
     // bind to graph cleared event and add a new main node, then center it.
@@ -126,6 +138,18 @@ ready(() => {
         })
         surface.zoomToFit()
     })
+
+/* ----------------------- INSPECTOR --------------------------------------------- */
+
+    const inspectorElement = document.querySelector(".inspector")
+
+    new MindmapBuilderInspector({
+        toolkit,
+        container:inspectorElement,
+        surface
+    })
+
+
 
     toolkit.load({
         type:MINDMAP_JSON,
