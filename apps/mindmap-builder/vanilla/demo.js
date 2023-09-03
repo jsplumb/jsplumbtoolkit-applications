@@ -6,7 +6,8 @@ import {
     BlankEndpoint,
     EVENT_TAP, uuid,
     ControlsComponent,
-    EVENT_GRAPH_CLEARED
+    EVENT_GRAPH_CLEARED,
+    MiniviewPlugin
 } from "@jsplumbtoolkit/browser-ui"
 
 import { SUBTOPIC, LEFT, RIGHT, MAIN, CLASS_MINDMAP_DELETE, CLASS_ADD_CHILD, CLASS_MINDMAP_INFO } from './definitions'
@@ -120,8 +121,17 @@ ready(() => {
                 AnchorLocations.Left, AnchorLocations.Right
             ],
             endpoint:BlankEndpoint.type
-        }
+        },
+        plugins:[
+            {
+                type:MiniviewPlugin.type,
+                options:{
+                    container:document.querySelector(".miniview")
+                }
+            }
+        ]
     })
+
 
 /* ------------------------ CONTROLS ------------------------------------- */
 
