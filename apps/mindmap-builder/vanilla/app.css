@@ -1,14 +1,5 @@
 :root {
 
-    --jtk-component-outline: #1b1b1b;
-    --jtk-component-select: yellowgreen;
-
-    /*
-    The space between the frame around a selected node and the node itself. Specify this as a negative value if you change it. Unless you want the
-    frame inside the element, I guess.
-  */
-    --jtk-draw-skeleton-padding:-0.6rem;
-
     --jtk-delete-icon:url(data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgLTI1NiAxNzkyIDE3OTIiIHZlcnNpb249IjEuMSI+CiAgICA8ZyB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSwxOTcuNDIzNzMsMTI1NS4wNTA4KSI+CiAgICAgICAgPHBhdGggc3Ryb2tlPSJjdXJyZW50Q29sb3IiIGQ9Ik0gNTEyLDgwMCBWIDIyNCBxIDAsLTE0IC05LC0yMyAtOSwtOSAtMjMsLTkgaCAtNjQgcSAtMTQsMCAtMjMsOSAtOSw5IC05LDIzIHYgNTc2IHEgMCwxNCA5LDIzIDksOSAyMyw5IGggNjQgcSAxNCwwIDIzLC05IDksLTkgOSwtMjMgeiBtIDI1NiwwIFYgMjI0IHEgMCwtMTQgLTksLTIzIC05LC05IC0yMywtOSBoIC02NCBxIC0xNCwwIC0yMyw5IC05LDkgLTksMjMgdiA1NzYgcSAwLDE0IDksMjMgOSw5IDIzLDkgaCA2NCBxIDE0LDAgMjMsLTkgOSwtOSA5LC0yMyB6IG0gMjU2LDAgViAyMjQgcSAwLC0xNCAtOSwtMjMgLTksLTkgLTIzLC05IGggLTY0IHEgLTE0LDAgLTIzLDkgLTksOSAtOSwyMyB2IDU3NiBxIDAsMTQgOSwyMyA5LDkgMjMsOSBoIDY0IHEgMTQsMCAyMywtOSA5LC05IDksLTIzIHogTSAxMTUyLDc2IHYgOTQ4IEggMjU2IFYgNzYgUSAyNTYsNTQgMjYzLDM1LjUgMjcwLDE3IDI3Ny41LDguNSAyODUsMCAyODgsMCBoIDgzMiBxIDMsMCAxMC41LDguNSA3LjUsOC41IDE0LjUsMjcgNywxOC41IDcsNDAuNSB6IE0gNDgwLDExNTIgaCA0NDggbCAtNDgsMTE3IHEgLTcsOSAtMTcsMTEgSCA1NDYgcSAtMTAsLTIgLTE3LC0xMSB6IG0gOTI4LC0zMiB2IC02NCBxIDAsLTE0IC05LC0yMyAtOSwtOSAtMjMsLTkgaCAtOTYgViA3NiBxIDAsLTgzIC00NywtMTQzLjUgLTQ3LC02MC41IC0xMTMsLTYwLjUgSCAyODggcSAtNjYsMCAtMTEzLDU4LjUgUSAxMjgsLTExIDEyOCw3MiB2IDk1MiBIIDMyIHEgLTE0LDAgLTIzLDkgLTksOSAtOSwyMyB2IDY0IHEgMCwxNCA5LDIzIDksOSAyMyw5IGggMzA5IGwgNzAsMTY3IHEgMTUsMzcgNTQsNjMgMzksMjYgNzksMjYgaCAzMjAgcSA0MCwwIDc5LC0yNiAzOSwtMjYgNTQsLTYzIGwgNzAsLTE2NyBoIDMwOSBxIDE0LDAgMjMsLTkgOSwtOSA5LC0yMyB6Ii8+CiAgICA8L2c+Cjwvc3ZnPgo=);
 }
 
@@ -36,12 +27,6 @@ body {
     background-color: #f9f9f9;
     flex: 0 0 250px;
     padding: 20px 5px 0 5px;
-}
-
-.node-palette {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .miniview {
@@ -92,8 +77,9 @@ body {
     text-align: center;
 }
 
-.jtk-mindmap-main {
-
+.jtk-surface-selected-element {
+    outline:1px solid orangered;
+    outline-offset: 1rem;
 }
 
 .jtk-add-mindmap-child {
@@ -163,6 +149,7 @@ body {
 }
 
 /* ----------------- INSPECTOR ----------------------- */
+
 .jtk-inspector input[type="text"], .jtk-inspector textarea {
     width:90%;
     margin:1rem;
