@@ -3,6 +3,7 @@ import {
     ready,
     SegmentedConnector,
     AnchorLocations,
+    BlankEndpoint,
     EVENT_TAP, uuid,
     ControlsComponent,
     EVENT_GRAPH_CLEARED
@@ -15,9 +16,7 @@ import { MindmapBuilderInspector } from "./mindmap-inspector";
 
 ready(() => {
 
-
-    const container = document.querySelector(".jtk-demo-canvas"),
-        controlsElement = document.querySelector(".jtk-controls-container")
+    const container = document.querySelector(".jtk-demo-canvas")
 
     const toolkit = newInstance()
 
@@ -119,14 +118,16 @@ ready(() => {
             },
             anchor:[
                 AnchorLocations.Left, AnchorLocations.Right
-            ]
+            ],
+            endpoint:BlankEndpoint.type
         }
     })
 
 /* ------------------------ CONTROLS ------------------------------------- */
 
     // handler for mode change (pan/zoom vs lasso), clear dataset, zoom to fit etc.
-    new ControlsComponent(controlsElement, surface)
+    new ControlsComponent(document.querySelector(".jtk-controls-container"), surface)
+
     // bind to graph cleared event and add a new main node, then center it.
     toolkit.bind(EVENT_GRAPH_CLEARED, () => {
         toolkit.addNode({
@@ -149,7 +150,7 @@ ready(() => {
         surface
     })
 
-
+/* ------------------------------------------------------------------------------- */
 
     toolkit.load({
         type:MINDMAP_JSON,
