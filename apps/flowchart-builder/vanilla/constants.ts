@@ -6,6 +6,7 @@ export const EDGE_TYPE_BOTH_ARROWS = "bothArrows"
 export const EDGE_TYPE_PLAIN = "plain"
 export const EDGE_TYPE_DASHED = "dashed"
 
+export const PROPERTY_TEXT = "text"
 export const PROPERTY_LINE_STYLE = "lineStyle"
 export const PROPERTY_FILL = "fill"
 export const PROPERTY_LABEL = "label"

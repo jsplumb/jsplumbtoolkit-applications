@@ -11,7 +11,7 @@ import {
     PROPERTY_FILL,
     PROPERTY_LABEL,
     PROPERTY_LINE_STYLE,
-    PROPERTY_OUTLINE,
+    PROPERTY_OUTLINE, PROPERTY_TEXT,
     PROPERTY_TEXT_COLOR
 } from "./constants"
 
@@ -27,7 +27,7 @@ const inspectorTemplates = {
             <div class="jtk-inspector jtk-node-inspector">
                 <div class="jtk-inspector-section">
                     <div>Text</div>
-                    <input type="text" jtk-att="text" jtk-focus/>
+                    <input type="text" jtk-att="${PROPERTY_TEXT}" jtk-focus/>
                 </div>
                 
                 <div class="jtk-inspector-section">
