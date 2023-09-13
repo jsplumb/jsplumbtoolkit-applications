@@ -21,7 +21,6 @@ const mindmapJsonParser = (jd, toolkit, parameters) => {
         c.forEach((_c) => {
             _c.direction = direction
             _c.type = SUBTOPIC
-            // _c.parent = focus.id
             _c.children = _c.children || []
             const __c = toolkit.addNode(_c)
             toolkit.addEdge({source:focus, target:__c})
@@ -35,7 +34,6 @@ const mindmapJsonParser = (jd, toolkit, parameters) => {
         n.forEach(l => {
             l.type = SUBTOPIC
             l.direction = direction
-            // l.parent = mainTopic.id
             l.children = l.children || []
             const ln = toolkit.addNode(l)
             toolkit.addEdge({source, target:ln, data:{direction:direction}})
