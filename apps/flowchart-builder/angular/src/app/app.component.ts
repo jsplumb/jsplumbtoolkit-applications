@@ -90,18 +90,20 @@ export class AppComponent implements AfterViewInit {
   }
 
   exportSVG() {
-    //new SvgExporterUI(this.surface, this.$jsplumb.retrieveShapeLibrary()).export({})
+    // use the `showSvgExportUI` method to popup the exporter window. Note that we do not need to provide a shapeLibrary
+    // shapeLibraryId here, as the service will use a default shape library id if none is provided. We also did not provide an
+    // id when we registered the shape library above, meaning it was registered with the default id.
     this.$jsplumb.showSvgExportUI({
       surface:this.surface
     })
   }
 
   exportPNG() {
-    new ImageExporterUI(this.surface, this.$jsplumb.retrieveShapeLibrary()).export({})
+    this.$jsplumb.showImageExportUI({surface:this.surface})
   }
 
   exportJPG() {
-    new ImageExporterUI(this.surface, this.$jsplumb.retrieveShapeLibrary()).export({type:"image/jpeg"})
+    this.$jsplumb.showImageExportUI({surface:this.surface, type:"image/jpeg"})
   }
 
   toolkitParams = {
