@@ -22,7 +22,7 @@
     },
     "homepage": "https://github.com/jsplumb/jsplumbtoolkit-application#readme",
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.5.0",
+        "@jsplumbtoolkit/browser-ui": "^6.6.0",
         "babel-cli": "^6.26.0",
         "babel-preset-env": "^1.7.0",
         "esbuild": "0.17.18"

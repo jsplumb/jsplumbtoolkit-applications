@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "vue": "^3.3.4",
-    "@jsplumbtoolkit/browser-ui-vue3": "^6.3.0"
+    "@jsplumbtoolkit/browser-ui-vue3": "^6.6.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
