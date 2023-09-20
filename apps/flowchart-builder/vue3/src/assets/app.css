@@ -38,6 +38,22 @@ body {
     overflow: hidden !important;
 }
 
+.jtk-export {
+    left: 25px;
+    position: absolute;
+    top: 60px;
+    z-index: 100;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    display:flex;
+}
+
+.jtk-export a {
+    display:inline-block;
+    margin:0 2px;
+}
+
 .jtk-demo-rhs {
     display: flex;
     flex-direction: column;

@@ -17,7 +17,9 @@
         DrawingToolsPlugin,
         LassoPlugin,
         BackgroundPlugin,
-        ShapeLibraryImpl
+        ShapeLibraryImpl,
+        SvgExporterUI,
+        ImageExporterUI
     } from "@jsplumbtoolkit/browser-ui"
 
     import {
@@ -188,6 +190,17 @@
                     zoomToFit:true
                 }
             }
+        },
+        methods:{
+            exportSvg:function() {
+                new SvgExporterUI(surface, shapeLibrary).export({})
+            },
+            exportPng:function() {
+                new ImageExporterUI(surface, shapeLibrary).export()
+            },
+            exportJpg:function() {
+                new ImageExporterUI(surface, shapeLibrary).export({type:"image/jpeg"})
+            }
         }
     }
 </script>
@@ -195,6 +208,13 @@
     <div id="app">
 
         <ControlsComponent surface-id="surfaceId"/>
+
+        <div class="jtk-export">
+            <span>Export:</span>
+            <a href="#" id="exportSvg" v-on:click="exportSvg()">SVG</a>
+            <a href="#" id="exportPng" v-on:click="exportPng()">PNG</a>
+            <a href="#" id="exportJpg" v-on:click="exportJpg()">JPG</a>
+        </div>
 
         <div class="jtk-demo-canvas">
 
