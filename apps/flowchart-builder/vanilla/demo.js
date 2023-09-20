@@ -15,7 +15,7 @@ import {
     initializeOrthogonalConnectorEditors,
     BackgroundPlugin,
     SelectionModes,
-    ShapeLibraryImpl, ShapeLibraryPalette, FLOWCHART_SHAPES, ControlsComponent
+    ShapeLibraryImpl, ShapeLibraryPalette, FLOWCHART_SHAPES, ControlsComponent, svg
 } from "@jsplumbtoolkit/browser-ui"
 
 import edgeMappings from './edge-mappings'
@@ -36,6 +36,11 @@ import {
 } from "./constants";
 
 import {FlowchartBuilderInspector} from "./flowchart-inspector";
+
+// import {SvgExporter, ImageExporter} from "./svg-exporter";
+
+// import {SvgExporter, ImageExporter, SvgExporterUI, ImageExporterUI} from "./svg-exporter-2";
+import {SvgExporter, ImageExporter, SvgExporterUI, ImageExporterUI} from "@jsplumbtoolkit/browser-ui";
 
 // this call ensures that the esbuild does not tree-shake the orthogonal connector editors out.
 initializeOrthogonalConnectorEditors()
@@ -93,6 +98,11 @@ ready(() => {
                 return data[PROPERTY_TEXT_COLOR] || DEFAULT_TEXT_COLOR
             }
         },
+        shapes:{
+            library:shapeLibrary,
+            showLabels:true,
+            labelAttribute:"text"
+        },
         view: {
             nodes: {
                 [DEFAULT]:{
@@ -103,8 +113,7 @@ ready(() => {
                     // act as connection drag sources. We use CSS to position them, but we also write out various
                     // `data-jtk-anchor-...` properties to control their anchor positions.
                     template:`<div style="left:{{left}}px;top:{{top}}px;width:{{width}}px;height:{{height}}px;color:{{#textColor}}" class="flowchart-object flowchart-{{type}}" data-jtk-target="true">
-                            <jtk-shape/>
-                            <span>{{text}}</span> 
+                            <jtk-shape/> 
                             ${anchorPositions.map(ap => `<div class="jtk-connect jtk-connect-${ap.id}"  data-jtk-anchor-x="${ap.x}" data-jtk-anchor-y="${ap.y}" data-jtk-orientation-x="${ap.ox}"  data-jtk-orientation-y="${ap.oy}" data-jtk-source="true"></div>`).join("\n")}
                             <div class="node-delete node-action delete"/>
                         </div>`,
@@ -263,5 +272,21 @@ ready(() => {
             renderer.zoomToFit()
         }
     })
+
+    document.querySelector("#exportSvg").addEventListener("click", () => {
+        const x = new SvgExporterUI(renderer)
+        x.export({margins: {x: 50, y: 50}})
+    })
+
+    document.querySelector("#exportPng").addEventListener("click", () => {
+        const x = new ImageExporterUI(renderer)
+        x.export({margins: {x: 50, y: 50}})
+    })
+
+    document.querySelector("#exportJpg").addEventListener("click", () => {
+        const x = new ImageExporterUI(renderer)
+        x.export({margins: {x: 50, y: 50}, type:"image/jpeg"})
+    })
+
 })
 

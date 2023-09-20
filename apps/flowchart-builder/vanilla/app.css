@@ -83,6 +83,15 @@ body {
     font-size:14px;
 }
 
+.jtk-export {
+    left: 25px;
+    position: absolute;
+    top: 60px;
+    z-index: 100;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
 
 /* ----------------------- drag/drop interactions -------------- */
 .drop-hover {
@@ -498,3 +507,4 @@ Applied to the drop down that lets the user pick their current shape set.
 .jtk-edge-type-picker-selected {
     background-color:white;
 }
+
