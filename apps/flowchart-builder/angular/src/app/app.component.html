@@ -18,6 +18,13 @@
         -->
         <jsplumb-controls surfaceId="surface"></jsplumb-controls>
 
+        <div class="jtk-export">
+            <span>Export:</span>
+            <a href="#" id="exportSvg" (click)="exportSVG()">SVG</a>
+            <a href="#" id="exportPng" (click)="exportPNG()">PNG</a>
+            <a href="#" id="exportJpg" (click)="exportJPG()">JPG</a>
+        </div>
+
         <!-- miniview -->
         <jsplumb-miniview surfaceId="surface"></jsplumb-miniview>
     </div>

@@ -83,6 +83,21 @@ body {
     font-size:14px;
 }
 
+.jtk-export {
+    left: 25px;
+    position: absolute;
+    top: 60px;
+    z-index: 100;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.jtk-export a {
+    display:inline-block;
+    margin:0 2px;
+}
+
 
 /* ----------------------- drag/drop interactions -------------- */
 .drop-hover {

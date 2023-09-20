@@ -23,7 +23,8 @@ import {
   FLOWCHART_SHAPES,
   initializeOrthogonalConnectorEditors,
   ObjectAnchorSpec,
-    SelectionModes
+    SelectionModes,
+    SvgExporterUI, ImageExporterUI
 } from "@jsplumbtoolkit/browser-ui"
 
 import edgeMappings from './edge-mappings'
@@ -86,6 +87,21 @@ export class AppComponent implements AfterViewInit {
       textColor:DEFAULT_TEXT_COLOR,
       outlineWidth:DEFAULT_OUTLINE_WIDTH
     }
+  }
+
+  exportSVG() {
+    //new SvgExporterUI(this.surface, this.$jsplumb.retrieveShapeLibrary()).export({})
+    this.$jsplumb.showSvgExportUI({
+      surface:this.surface
+    })
+  }
+
+  exportPNG() {
+    new ImageExporterUI(this.surface, this.$jsplumb.retrieveShapeLibrary()).export({})
+  }
+
+  exportJPG() {
+    new ImageExporterUI(this.surface, this.$jsplumb.retrieveShapeLibrary()).export({type:"image/jpeg"})
   }
 
   toolkitParams = {
