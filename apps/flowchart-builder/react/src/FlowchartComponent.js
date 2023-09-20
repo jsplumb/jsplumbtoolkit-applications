@@ -15,7 +15,7 @@ AbsoluteLayout, EVENT_CANVAS_CLICK,
     EdgePathEditor,
     ShapeLibraryImpl,
     FLOWCHART_SHAPES,
-    SelectionModes
+    SelectionModes, SvgExporterUI, ImageExporterUI
 } from "@jsplumbtoolkit/browser-ui"
 
 import Inspector from './InspectorComponent'
@@ -185,6 +185,18 @@ export default function FlowchartComponent() {
         zoomToFit:true
     }
 
+    function exportSVG() {
+        new SvgExporterUI(surfaceComponent.current.surface, shapeLibrary).export({})
+    }
+
+    function exportPNG() {
+        new ImageExporterUI(surfaceComponent.current.surface, shapeLibrary).export({})
+    }
+
+    function exportJPG() {
+        new ImageExporterUI(surfaceComponent.current.surface, shapeLibrary).export({type:"image/jpeg"})
+    }
+
     useEffect(() => {
 
         pathEditor.current = new EdgePathEditor(surfaceComponent.current.surface, {activeMode:true})
@@ -215,6 +227,12 @@ export default function FlowchartComponent() {
             <div className="jtk-demo-canvas">
                 <JsPlumbToolkitSurfaceComponent renderParams={renderParams} toolkit={toolkit} view={view} ref={ surfaceComponent }/>
                 <div className="controls" ref={ controlsContainer }/>
+                <div className="jtk-export">
+                    <span>Export:</span>
+                    <a href="#" id="exportSvg" onClick={() => exportSVG()}>SVG</a>
+                    <a href="#" id="exportPng" onClick={() => exportPNG()}>PNG</a>
+                    <a href="#" id="exportJpg" onClick={() => exportJPG()}>JPG</a>
+    </div>
                 <div className="miniview" ref={ miniviewContainer }/>
             </div>
             <div className="jtk-demo-rhs">
