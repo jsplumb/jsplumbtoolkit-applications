@@ -22,7 +22,8 @@
     "build:angular": "node ./scripts/build angular",
     "build:react": "node ./scripts/build react",
     "build:vue2": "node ./scripts/build vue2",
-    "build:vue3": "node ./scripts/build vue3"
+    "build:vue3": "node ./scripts/build vue3",
+    "update-versions": "node ./scripts/update-versions.js"
   },
   "repository": {
     "type": "git",

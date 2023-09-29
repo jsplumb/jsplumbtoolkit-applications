@@ -1,15 +1,15 @@
 {
-    "version": "6.0.0",
+    "version": "6.6.0",
     "scripts": {
         "build": "./node_modules/.bin/tsc;./node_modules/.bin/rollup -c rollup.config.js"
     },
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.0.0",
+        "@jsplumbtoolkit/browser-ui": "^6.6.0",
         "jsplumbtoolkit-demo-support": "^1.0.0"
     },
     "devDependencies": {
         "@types/node": "14.17.3",
-        "@types/estree":"1.0.0",
+        "@types/estree": "1.0.0",
         "@babel/cli": "^7.4.4",
         "@babel/core": "^7.4.4",
         "@babel/plugin-proposal-class-properties": "^7.4.4",

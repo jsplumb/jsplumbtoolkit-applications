@@ -1,6 +1,6 @@
 {
     "name": "segmented-connectors",
-    "version": "6.5.0",
+    "version": "6.6.0",
     "description": "",
     "main": "demo.js",
     "scripts": {
@@ -19,9 +19,8 @@
     },
     "homepage": "https://github.com/jsplumb/jsplumbtoolkit-demonstrations#readme",
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.5.0",
+        "@jsplumbtoolkit/browser-ui": "^6.6.0",
         "jsplumbtoolkit-demo-support": "^1.0.0"
-
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
