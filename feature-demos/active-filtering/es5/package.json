@@ -1,0 +1,22 @@
+{
+    "name": "active-filtering",
+    "version": "6.0.0",
+    "description": "",
+    "main": "demo.js",
+    "scripts": {
+        "build": "set -e;npx tsc;npx rollup -c rollup.config.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jsplumb-toolkit-demonstrations/active-filtering.git"
+    },
+    "author": "jsPlumb <hello@jsplumbtoolkit.com> (https://jsplumbtoolkit.com)",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jsplumb-toolkit-demonstrations/active-filtering/issues"
+    },
+    "homepage": "https://github.com/jsplumb-toolkit-demonstrations/active-filtering#readme",
+    "dependencies": {
+        "@jsplumbtoolkit/browser-ui": "^6.0.0"
+    }
+}

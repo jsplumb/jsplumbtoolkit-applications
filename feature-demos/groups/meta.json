@@ -1,0 +1,16 @@
+{
+  "name": "Groups",
+  "description": "Demonstration of the Toolkit's support for groups",
+  "keywords": [
+    "drag", "filter", "ports", "edge", "target", "group"
+  ],
+  "discussion": [
+    "Drag new nodes/groups from the palette on the left onto the workspace. You can also drag nodes directly into groups",
+    "Collapse/expand groups with the -/+ buttons",
+    "Drag existing nodes into groups to add them.",
+    "Nodes can be dragged out of group 1 but not out of group 2, due to the way each group is configured.",
+    "Click the 'Pencil' icon to enter 'select' mode, then select several nodes. Click the canvas to exit.",
+    "Click the 'Home' icon to zoom out and see all the nodes."
+
+  ]
+}

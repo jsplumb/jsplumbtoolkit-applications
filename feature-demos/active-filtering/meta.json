@@ -1,0 +1,13 @@
+{
+  "name": "Active Filtering",
+  "description": "Provides an example of how to use the active filtering mechanism to restrict drag targets",
+  "keywords": [
+    "drag", "filter", "constrain", "edge", "target"
+  ],
+  "discussion": [
+    "The Active filtering plugin provides a way to filter connection targets when a drag begins.",
+    "When an activeFiltering plugin is set on a Surface and a beforeConnect function is supplied to the Toolkit's constructor, that function is called before a new connection is dragged, for every possible target for the current source.",
+    "Whenever the beforeConnect method returns false, the corresponding target object (a Node, Group or Port) is disabled, and the user will not be able to drop the connection onto it.",
+    "Each Node contains a set of entries which each contain the name of two types of animal. Entries are deemed connectable if one or more animals from the source entry are matched in a given target."
+  ]
+}

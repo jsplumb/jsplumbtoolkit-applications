@@ -1,0 +1,53 @@
+
+#demo-grid {
+    justify-content: center;
+    width: 100%;
+    overflow: auto;
+    display:flex;
+    flex-wrap:wrap;
+
+}
+
+.multiple-demo {
+    outline: 1px solid #eee;
+    height:450px;
+    width:450px;
+    margin:25px;
+}
+
+
+
+
+
+.jtk-demo-canvas strong {
+    position: absolute;
+    left: 25px;
+    top: 55px;
+    color: #424040;
+}
+
+.jtk-node .add, .jtk-node .delete {
+    position:absolute;
+    top:3px;
+}
+
+
+.jtk-node {
+    border:1px solid #ccc;
+    background-color:white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:3px;
+}
+
+
+.jtk-connector path {
+    stroke-width: 1;
+    stroke: #89bcde;
+}
+
+.jtk-connector.jtk-hover path {
+    stroke-width: 2;
+    stroke: #FF6600;
+}

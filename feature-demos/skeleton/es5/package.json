@@ -1,0 +1,6 @@
+{
+    "version": "6.0.0",
+    "dependencies": {
+        "@jsplumbtoolkit/browser-ui": "^6.0.0"
+    }
+}

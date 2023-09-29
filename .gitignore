@@ -7,5 +7,7 @@ _build_es6
 **/dist/
 package-lock.json
 TODO.txt
+bundle.js
+bundle-es5.js
 
 /archive/

@@ -1,0 +1,86 @@
+{
+  "nodes":[
+    {
+      "id":"strategy",
+      "label":"Strategic goal",
+      "type": "strategy"
+    },
+    {
+      "id":"theme1",
+      "label":"Theme 1",
+      "type": "theme"
+    },
+    {
+      "id":"theme2",
+      "label":"Theme 2",
+      "type": "theme"
+    },
+    {
+      "id":"theme3",
+      "label":"Theme 3",
+      "type": "theme"
+    },
+    {
+      "id":"theme4",
+      "label":"Theme 4",
+      "type": "theme"
+    },
+    {
+      "id":"tactic1",
+      "label":"Tactic 1",
+      "type": "tactic"
+    },
+    {
+      "id":"tactic2",
+      "label":"Tactic 2",
+      "type": "tactic"
+    },
+    {
+      "id":"tactic3",
+      "label":"Tactic 3",
+      "type": "tactic"
+    },
+    {
+      "id":"measure1",
+      "label":"Measure 1",
+      "type": "measure"
+    },
+    {
+      "id":"measure2",
+      "label":"Measure 2",
+      "type": "measure"
+    },
+    {
+      "id":"measure3",
+      "label":"Measure 3",
+      "type": "measure"
+    },
+    {
+      "id":"measure4",
+      "label":"Measure 4",
+      "type": "measure"
+    },
+    {
+      "id":"measure5",
+      "label":"Measure 5",
+      "type": "measure"
+    }
+  ],
+  "edges": [
+    { "source": "strategy", "target": "theme1" },
+    { "source": "strategy", "target": "theme2" },
+    { "source": "strategy", "target": "theme3" },
+    { "source": "strategy", "target": "theme4" },
+    { "source": "theme2", "target": "tactic1" },
+    { "source": "theme2", "target": "tactic2" },
+    { "source": "theme2", "target": "tactic3" },
+    { "source": "tactic1", "target": "measure1" },
+    { "source": "tactic1", "target": "measure2" },
+    { "source": "tactic2", "target": "measure2" },
+    { "source": "tactic3", "target": "measure2" },
+    { "source": "tactic3", "target": "measure3" },
+    { "source": "tactic3", "target": "measure4" },
+    { "source": "tactic3", "target": "measure5" },
+    { "source": "measure4", "target": "measure5"}
+  ]
+}

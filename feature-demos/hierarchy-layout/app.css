@@ -1,0 +1,49 @@
+body * {
+    font-family:sans-serif;
+    font-size:15px;
+}
+
+.jtk-demo-canvas {
+    display: flex;
+    flex-direction: column;
+}
+
+.jtk-demo-canvas > div {
+    width: 100%;
+    flex-basis: 500px;
+    border: 1px solid;
+    position:relative;
+}
+
+.label {
+    position:absolute;
+    left:1rem;
+    top:1rem;
+}
+
+.jtk-node {
+    width:120px;
+    height:80px;
+    outline:1px solid;
+    padding:0.5rem;
+    z-index:10;
+    background-color: #edf7f7;
+}
+
+/* KPI tree example */
+
+[data-type='strategy'] {
+    border-left:4px solid green;
+}
+
+[data-type='theme'] {
+    border-left:4px solid orange;
+}
+
+[data-type='tactic'] {
+    border-left:4px solid purple;
+}
+
+[data-type='measure'] {
+    border-left:4px solid blue;
+}

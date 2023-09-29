@@ -1,0 +1,15 @@
+{
+  "name": "Layouts",
+  "description": "Demonstration of various layouts supported by the Toolkit",
+  "keywords": [
+    "layout", "force directed", "hierarchy", "balloon"
+  ],
+  "discussion": [
+    "Reapply Layout' resets the positions of the nodes. Note that the `ForceDirected` layout uses random positions to start and will not result in the same layout every time.",
+    "Use the + button to add a new child node to some node.",
+    "Click the 'Pencil' icon to enter 'select' mode, then select several nodes. Click the canvas to exit.",
+    "Click the 'Home' icon to zoom out and see all the nodes.",
+    "Use the undo/redo buttons to undo and redo deletion/addition operations"
+
+  ]
+}

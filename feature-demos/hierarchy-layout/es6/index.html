@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jsPlumb Toolkit - Active filtering demonstration</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css">
+        <!-- /CSS -->
+        <link rel="stylesheet" href="../app.css">
+    </head>
+    <body>
+
+
+        <div class="jtk-demo-main">
+            <!-- this is the main drawing area -->
+            <div class="jtk-demo-canvas canvas-wide">
+                <div id="canvas1">
+                    <div class="label">Vertical alignment, parent relative placement</div>
+                </div>
+                <div id="canvas2">
+                    <div class="label">Horizontal alignment, parent relative placement</div>
+                </div>
+                <div id="canvas3">
+                    <div class="label">Vertical alignment, centered placement</div>
+                </div>
+            </div>
+
+            <div class="jtk-demo-rhs">
+                <a href="../../../index.html" class="p-1">Back to demo list</a>
+                <div class="description">
+                    <h3>Hierarchy Layout</h3>
+                    <p>
+                        This layout renders nodes in a hierarchy. It is a newer version of the original `Hierarchical` layout, which is now deprecated.
+                    </p>
+                    <p>For a full discussion of this layout, see <a href="https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/layout-hierarchy" target="_blank">the Toolkit documentation</a></p>
+                </div>
+                <!-- the current dataset -->
+                <div class="jtk-demo-dataset"></div>
+            </div>
+        </div>
+
+        <!-- /content -->
+
+        <script src="_build/bundle-es5.js"></script>
+
+    </body>
+</html>

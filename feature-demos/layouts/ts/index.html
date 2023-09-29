@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <title>jsPlumb Toolkit - layouts</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+    <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css">
+    <!-- /CSS -->
+    <link rel="stylesheet" href="../app.css">
+</head>
+<body>
+
+<!-- content -->
+<script type="jtk" id="tmplNode">
+    <div style="width:{{w}}px;height:{{h}}px;">
+        {{name}}
+        <div class="delete" title="Click to delete"></div>
+        <div class="add" title="Add child node"></div>
+    </div>
+</script>
+
+    <div class="jtk-demo-main" id="jtk-demo-layouts">
+
+
+        <!-- this is the main drawing area -->
+        <div class="jtk-demo-canvas canvas-wide">
+            <!-- controls -->
+            <div class="controls">
+                <i class="fa fa-home" reset title="Zoom To Fit"></i>
+                <i class="fa fa-undo" undo title="Undo last action"></i>
+                <i class="fa fa-repeat" redo title="Redo last action"></i>
+            </div>
+            <!-- miniview -->
+            <div class="miniview"></div>
+
+        </div>
+
+        <div class="jtk-demo-rhs">
+            <a href="../../../index.html" class="p-1">Back to demo list</a>
+            <div class="jtk-demo-sidebar">
+                <label style="white-space: nowrap;">Layout:
+                    <select id="layout">
+                        <option value="Hierarchical" selected>Hierarchical</option>
+                        <option value="Hierarchical" extra="Compressed">Hierarchical - compressed</option>
+                        <option value="Hierarchical" extra="AlignStart">Hierarchical - align start</option>
+                        <option value="Hierarchical" extra="AlignEnd">Hierarchical - align end</option>
+
+                        <option value="Hierarchical" extra="Vertical">Hierarchical - vertical</option>
+                        <option value="Hierarchical" extra="VerticalAlignStart">Hierarchical - vertical, align start</option>
+                        <option value="Hierarchical" extra="VerticalAlignEnd">Hierarchical - vertical, align end</option>
+
+                        <option value="Hierarchical" extra="Inverted">Hierarchical - inverted</option>
+                        <option value="Hierarchical" extra="InvertedAlignStart">Hierarchical - inverted, align start</option>
+                        <option value="Hierarchical" extra="InvertedAlignEnd">Hierarchical - inverted, align end</option>
+
+                        <option value="Hierarchical" extra="VerticalInverted">Hierarchical - vertical, inverted</option>
+                        <option value="Hierarchical" extra="VerticalInvertedAlignStart">Hierarchical - vertical, inverted, align start</option>
+                        <option value="Hierarchical" extra="VerticalInvertedAlignEnd">Hierarchical - vertical, inverted, align end</option>
+
+                        <option value="ForceDirected">ForceDirected</option>
+                        <option value="Circular">Circular</option>
+                        <option value="Circular" extra="CenteredRoot">Circular (root at center)</option>
+                        <option value="Balloon">Balloon</option>
+                        <option value="Absolute">Absolute</option>
+                    </select>
+                </label>
+                <div class="config">
+                <pre>
+{
+  type: "Hierarchical",
+  orientation: "horizontal",
+    padding: [100, 60]
+}
+            </pre>
+                </div>
+                <div style="display:flex">
+                    <button id="btnRegenerate" class="sidebar-item">Load new</button>
+                    <button id="btnRelayout" class="sidebar-item">Reapply layout</button>
+                </div>
+
+                <ul>
+                    <li>'Reapply Layout' resets the positions of the nodes. Note that the Spring layout uses random positions to start and will not result in the same layout every time.</li>
+                    <li>Use the + button to add a new child node to some node. </li>
+                    <li>Click the 'Pencil' icon to enter 'select' mode, then select several nodes. Click the canvas to exit.</li>
+                    <li>Click the 'Home' icon to zoom out and see all the nodes.</li>
+                    <li>Use the undo/redo buttons to undo and redo deletion/addition operations</li>
+                </ul>
+
+            </div>
+
+
+            <div class="jtk-demo-dataset"></div>
+
+        </div>
+
+</div>
+
+<!-- /content -->
+
+<!-- imports -->
+    <script src="_build/demo.umd.js"></script>
+<!-- /imports -->
+
+</body>
+</html>

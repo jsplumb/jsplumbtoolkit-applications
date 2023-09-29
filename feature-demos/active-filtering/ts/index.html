@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jsPlumb Toolkit - Active filtering demonstration</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css">
+        <!-- /CSS -->
+        <link rel="stylesheet" href="../app.css">
+    </head>
+    <body>
+
+        <!-- content -->
+        <script type="jtk" id="tmplNode">
+            <div class="connectivity-node">
+                <h3>{{#id}}</h3>
+                <div style="display:flex;flex-direction:column">
+                    <r-each in="items">
+                        <div data-jtk-port="{{id}}" data-jtk-source="true" data-jtk-target="true">
+                            <span>{{#entryNames}}</span>
+                        </div>
+                    </r-each>
+                </div>
+            </div>
+        </script>
+
+        <div class="jtk-demo-main" id="jtk-demo-connectivity">
+            <!-- this is the main drawing area -->
+            <div class="jtk-demo-canvas canvas-wide">
+                <!-- controls -->
+                <div class="controls">
+                    <i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode"></i>
+                    <i class="fa fa-pencil" mode="select" title="Select Mode"></i>
+                    <i class="fa fa-home" reset title="Zoom To Fit"></i>
+                    <i class="fa fa-plus" add title="Add a Node"></i>
+                </div>
+                <!-- miniview -->
+                <div class="miniview"></div>
+            </div>
+
+            <div class="jtk-demo-rhs">
+                <a href="../../../index.html" class="p-1">Back to demo list</a>
+                <div class="description">
+                    <h3>Active Filtering</h3>
+                    <p>The Active filtering plugin provides a way to filter connection targets when a drag begins.</p>
+                    <p>
+                        When an <code>activeFiltering</code> plugin is set on a Surface and a <code>beforeConnect</code> function is supplied to the Toolkit's
+                        constructor, that function is called before a new connection is dragged, for every possible target for
+                        the current source.
+                    </p>
+                    <p>
+                        Whenever the <code>beforeConnect</code> method returns false, the corresponding target object (a Node, Group or Port) is disabled, and the
+                        user will not be able to drop the connection onto it.</p>
+                    <p>
+                        Each Node contains a set of entries which each contain the name of two types of animal. Entries are
+                        deemed connectable if one or more animals from the source entry are matched in a given target.
+                    </p>
+                </div>
+                <!-- the current dataset -->
+                <div class="jtk-demo-dataset"></div>
+            </div>
+        </div>
+
+        <!-- /content -->
+
+        <script src="_build/demo.umd.js"></script>
+
+    </body>
+</html>

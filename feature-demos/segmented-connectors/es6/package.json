@@ -1,0 +1,31 @@
+{
+    "name": "segmented-connectors",
+    "version": "6.5.0",
+    "description": "",
+    "main": "demo.js",
+    "scripts": {
+        "build-es6": "./node_modules/.bin/esbuild demo.js --target=es2016 --bundle --format=iife --outfile=_build/bundle.js",
+        "transpile-es5": "./node_modules/.bin/babel _build/bundle.js -o _build/bundle-es5.js",
+        "build": "npm run build-es6;npm run transpile-es5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jsplumb/jsplumbtoolkit-demonstrations.git"
+    },
+    "author": "jsPlumb <hello@jsplumbtoolkit.com> (https://jsplumbtoolkit.com)",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jsplumb/jsplumbtoolkit-demonstrations/issues"
+    },
+    "homepage": "https://github.com/jsplumb/jsplumbtoolkit-demonstrations#readme",
+    "dependencies": {
+        "@jsplumbtoolkit/browser-ui": "^6.5.0",
+        "jsplumbtoolkit-demo-support": "^1.0.0"
+
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "esbuild": "0.17.18"
+    }
+}

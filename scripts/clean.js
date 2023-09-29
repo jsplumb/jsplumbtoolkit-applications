@@ -1,58 +1,95 @@
 const g = require('./gatlight')
 const p = require('../package.json')
+const c = require('./common')
 
 const cleaners = {
-    "angular":(dir) => {
+    [c.ANGULAR]:(dir) => {
         g.rmdir(`${dir}/.angular`)
         g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
     },
-    "vue2":(dir) => {
+    [c.VUE2]:(dir) => {
         g.rmdir(`${dir}/node_modules/.vite`)
         g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
     },
-    "vue3":(dir) => {
+    [c.VUE3]:(dir) => {
         g.rmdir(`${dir}/node_modules/.vite`)
         g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
     },
-    "vanilla":(dir) => {
-        g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
+    [c.VANILLA]:(dir) => {
+        g.rmdir(`${dir}/node_modules`)
     },
-    "react":(dir) => {
+    [c.REACT]:(dir) => {
         g.rmdir(`${dir}/node_modules/.cache`)
         g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
     },
-    "svelte":(dir) => {
+    [c.SVELTE]:(dir) => {
         g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
+    },
+    [c.ES5]:(dir) => {
+        g.rmdir(`${dir}/node_modules`)
+        g.rm(`${dir}/package-lock.json`)
+    },
+    [c.ES6]:(dir) => {
+        g.rmdir(`${dir}/node_modules`)
+        g.rmdir(`${dir}/_build`)
+        g.rm(`${dir}/package-lock.json`)
+    },
+    [c.TS]:(dir) => {
+        g.rmdir(`${dir}/node_modules`)
+        g.rmdir(`${dir}/_build`)
+        g.rm(`${dir}/package-lock.json`)
     }
 }
 
-function clean(app, lib) {
-    const appDir = `./apps/${app}`,
-        libDir = `${appDir}/${lib}`
+function clean(prefix, app, lib) {
 
-    if(g.exists(libDir)) {
-        try {
-            cleaners[lib](libDir)
-            console.log(`  Cleaned ${libDir}`)
-        } catch (e) {
-            console.log(`Could not clean ${libDir}`)
+    const libs = lib === c.VANILLA ? [ c.VANILLA, c.TS, c.ES5, c.ES6 ] : [lib]
+
+    libs.forEach(l => {
+        const appDir = `./${prefix}/${app}`,
+            libDir = `${appDir}/${l}`
+
+        if(g.exists(libDir)) {
+            try {
+                cleaners[l](libDir)
+                console.log(`  Cleaned ${libDir}`)
+            } catch (e) {
+                console.log(`Could not clean ${libDir}`)
+            }
+        } else {
+            //console.log(`[ ${libDir} ] not found. Not fatal. Just a fact.`)
         }
-    } else {
-        console.log(`${libDir} not found`)
-    }
+    })
 }
 
 const lib = process.argv[2]
 
-g.ls("./apps").forEach(d => {
+g.ls(`./${c.APP_ROOT}`).forEach(d => {
 
     if (lib == null) {
         console.log(`Cleaning all libs for app ${d}`)
         p.libs.forEach(lib => {
-            clean(d, lib)
+            clean(c.APP_ROOT, d, lib)
         })
     } else {
-        clean(d, lib)
+        clean(c.APP_ROOT, d, lib)
+    }
+
+})
+
+g.ls(`./${c.FEATURE_DEMO_ROOT}`).forEach(d => {
+
+    if (lib == null) {
+        console.log(`Cleaning feature demonstration ${d}`)
+        p.libs.forEach(lib => {
+            clean(c.FEATURE_DEMO_ROOT, d, lib)
+        })
+
+        // p.jsTargets.forEach(t => {
+        //     clean(FEATURE_DEMO_ROOT, d, t)
+        // })
+    } else {
+        clean(c.FEATURE_DEMO_ROOT, d, lib)
     }
 
 })

@@ -1,0 +1,16 @@
+{
+  "name": "Path tracing",
+  "description": "Demonstration of tracing paths between nodes",
+  "keywords": [
+    "layout", "shortest path", "path", "route"
+  ],
+  "discussion": [
+    "This is a demonstration of the path tracing functionality",
+    "Nodes here are positioned using a ForceDirected layout.",
+    "Edges are directed in this demonstration - the arrow shows the direction.",
+    "Edges cannot be traversed in the opposite direction to the way the arrow points",
+    "Click a node to select it. Then click another node. The shortest path between the two nodes will be traversed with an overlay. If no path exists, an alert will show.",
+    "Use the pause/play/cancel buttons to change the state of the path trace animation."
+
+  ]
+}

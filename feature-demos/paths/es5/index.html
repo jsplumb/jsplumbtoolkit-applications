@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>jsPlumb Toolkit - Path Tracing Example</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+    <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css">
+    <!-- /CSS -->
+    <link rel="stylesheet" href="./app.css">
+</head>
+    <body>
+        <!-- content -->
+        <script type="jtk" id="jtk-template-default">
+            <div>
+                {{name}}
+            </div>
+        </script>
+
+        <div class="jtk-demo-main" id="jtk-demo-paths">
+
+            <div class="jtk-demo-canvas canvas-wide">
+                <div class="controls" state="stopped">
+                    <i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode"></i>
+                    <i class="fa fa-pencil" mode="select" title="Select Mode"></i>
+                    <i class="fa fa-home" reset title="Zoom To Fit"></i>
+                    <i class="fa transport" action="play" title="Play path trace"></i>
+                    <i class="fa transport" action="pause" title="Pause path trace"></i>
+                    <i class="fa transport" action="cancel" title="Cancel path trace"></i>
+                </div>
+                <div class="miniview"></div>
+            </div>
+            <div class="jtk-demo-rhs">
+                <a href="../../../index.html" class="p-1">Back to demo list</a>
+                <p>
+                    This is a demonstration of the path tracing functionality. Nodes here are positioned randomly
+                    and then moved as if they were connected with springs to each other.
+                </p>
+                <p>
+                    Click a node to select it. Then click another node. The shortest path between the two nodes
+                    will be traversed with an overlay. If no path exists, an alert will show.
+                </p>
+                <p>Use the pause/play/cancel buttons to change the state of the path trace animation.</p>
+
+            </div>
+        </div>
+
+        <!-- /content -->
+
+        <!-- imports -->
+        <script src="node_modules/@jsplumbtoolkit/browser-ui/js/jsplumbtoolkit.browser-ui.umd.js"></script>
+        <script src="node_modules/jsplumbtoolkit-demo-support/jsplumbtoolkit-demo-support.umd.js"></script>
+
+        <script src="./demo.js"></script>
+        <!-- /imports -->
+
+        <!-- demo -->
+        <!-- /demo -->
+
+    </body>
+</html>

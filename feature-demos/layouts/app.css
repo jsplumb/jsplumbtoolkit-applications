@@ -1,0 +1,37 @@
+#layout {
+    margin-bottom:25px;
+    height:35px;
+    outline:none;
+}
+
+
+.description {
+    display:flex;
+}
+
+.config {
+
+    opacity: 0.8;
+    z-index: 500;
+    border-top-right-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+
+.jtk-node {
+    z-index:50;
+    border:1px solid #ccc;
+    background-color:white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:3px;
+}
+
+.jtk-node .add, .jtk-node .delete {
+    position:absolute;
+    top:3px;
+}
+

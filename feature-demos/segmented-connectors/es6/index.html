@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <title>jsPlumb Toolkit - Path Tracing Example</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <!-- CSS -->
+    <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+    <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css">
+    <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-connector-editors.css">
+    <!-- /CSS -->
+    <link rel="stylesheet" href="./app.css">
+</head>
+    <body>
+        <!-- content -->
+        <script type="jtk" id="jtk-template-default">
+            <div>
+                {{name}}
+            </div>
+        </script>
+
+        <div class="jtk-demo-main" id="jtk-demo-connectors">
+
+            <div class="jtk-demo-canvas canvas-wide"></div>
+
+            <div class="jtk-demo-rhs">
+                <a href="../../../index.html" class="p-1">Back to demo list</a>
+                <h3>Segmented Connectors</h3>
+                This connector type consists of a set of straight line segments, with the option to smooth the segments into a series of Bezier curves.
+                <hr>
+                <h4>Editing paths</h4>
+                The editor for this connector type supports three operations:
+                <ol>
+                    <li>Segment end points can be dragged around</li>
+                    <li>The scissors icon cuts a segment into two.</li>
+                    <li>The trashcan icon deletes a segment. This icon is not shown when the connector has only one segment.</li>
+                </ol>
+                <hr>
+                <h4>Smoothing</h4>
+                Smoothing can be switched on via the `smooth` flag:
+                <div class="code">
+connector:{
+  type:SegmentedConnector.type,
+  options:{
+    smooth:true
+  }
+}
+                </div>
+                <button onclick="toggleConnectorSmoothing()">Toggle smoothing</button>
+                <em>Note: this will reset paths and node positions.</em>
+                <hr>
+                <h4>Editing smooth paths</h4>
+                When smoothing is switched on, the drag handles mark the control points of the Bezier curves.
+
+                <p>
+                    For a full discussion of this connector, see the <a target="_blank" href="https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/connectors#segmented">documentation.</a>
+                </p>
+
+            </div>
+        </div>
+
+        <!-- /content -->
+
+        <!-- imports -->
+        <script src="_build/bundle-es5.js"></script>
+        <!-- /imports -->
+
+        <!-- demo -->
+        <!-- /demo -->
+
+    </body>
+</html>

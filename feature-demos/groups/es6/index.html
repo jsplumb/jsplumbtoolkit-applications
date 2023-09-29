@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jsPlumb Toolkit - Groups</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+        <!-- CSS -->
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css">
+        <!-- /CSS -->
+        <link rel="stylesheet" href="../app.css">
+    </head>
+    <body>
+
+        <!-- content -->
+        <script type="jtk" id="tmplNode">
+            <div style="width:{{w}}px;height:{{h}}px;" data-jtk-target="true">
+                {{name}}
+                <div class="delete" title="Click to delete"/>
+                <div class="connect" data-jtk-source="true"/>
+            </div>
+        </script>
+
+        <script type="jtk" id="tmplGroup">
+            <div data-jtk-target="true">
+                <div class="group-title">
+                    {{title}}
+                    <button class="expand"></button>
+                    <button class="group-delete"></button>
+                </div>
+                <div data-jtk-group-content="true"></div>
+                <div class="group-connect connect" data-jtk-source="true">
+                    <i class="fa fa-chain"></i>
+                </div>
+            </div>
+        </script>
+
+        <div class="jtk-demo-main">
+
+            <!-- this is the main drawing area -->
+            <div class="jtk-demo-canvas">
+                <!-- controls -->
+                <div class="controls">
+                    <i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode"></i>
+                    <i class="fa fa-pencil" mode="select" title="Select Mode"></i>
+                    <i class="fa fa-home" reset title="Zoom To Fit"></i>
+                    <i class="fa fa-undo" undo title="Undo last action"></i>
+                    <i class="fa fa-repeat" redo title="Redo last action"></i>
+                </div>
+                <!-- miniview -->
+                <div class="miniview"></div>
+            </div>
+
+            <div class="jtk-demo-rhs">
+                <a href="../../../index.html" class="p-1">Back to demo list</a>
+                <div class="sidebar node-palette">
+                    <div title="Drag Node to canvas" data-node-type="node" class="sidebar-item">
+                        <i class="icon-tablet"></i>Drag Node
+                    </div>
+                    <div title="Drag Group to canvas" data-jtk-is-group="true" data-node-type="group" class="sidebar-item">
+                        <i class="icon-tablet"></i>Drag Group
+                    </div>
+                </div>
+                <div class="description">
+                    <p>
+                        This is a demonstration of the Groups functionality.
+                    </p>
+                    <ul>
+                        <li>Drag new Nodes/Groups from the palette on the left onto the workspace. You can drag Nodes directly into Groups.</li>
+                        <li>Collapse/Expand Groups with the -/+ buttons</li>
+                        <li>Drag existing Nodes into Groups to add them.</li>
+                        <li>Nodes can be dragged out of Group 1 but not out of Group 2</li>
+                        <li>Click the 'Pencil' icon to enter 'select' mode, then select several nodes. Click the canvas to exit.</li>
+                        <li>Click the 'Home' icon to zoom out and see all the nodes.</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- /content -->
+
+
+
+        <!-- demo -->
+        <script src="_build/bundle-es5.js"></script>
+        <!-- /demo -->
+
+    </body>
+</html>

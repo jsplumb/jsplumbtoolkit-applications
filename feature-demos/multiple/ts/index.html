@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        <title>jsPlumb Toolkit - Multiple Renderers Demonstration</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+        <!-- CSS -->
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css">
+        <!-- /CSS -->
+        <link rel="stylesheet" href="../app.css">
+    </head>
+    <body>
+
+        <!-- content -->
+        <script type="jtk" id="jtk-template-default">
+            <div style="width:{{w}}px;height:{{h}}px;">
+                {{name}}
+                <div class="delete" title="Click to delete"/>
+                <div class="add" title="Add child node"/>
+            </div>
+        </script>
+
+        <div class="jtk-demo-main">
+
+            <div class="jtk-demo-canvas">
+
+                <div id="demo-grid">
+                    <div class="multiple-demo" id="demo-hierarchy" data-id="hierarchy">
+                        <strong style="color:black;">Hierarchy Layout</strong>
+                        <div class="controls">
+                            <i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode"></i>
+                            <i class="fa fa-pencil" mode="select" title="Select Mode"></i>
+                            <i class="fa fa-home" reset title="Zoom To Fit"></i>
+                        </div>
+                        <div class="miniview" id="miniview-hierarchy"></div>
+                    </div>
+                    <div class="multiple-demo" id="demo-circular" data-id="circular">
+                        <strong style="color:black;">Circular Layout</strong>
+                        <div class="controls">
+                            <i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode"></i>
+                            <i class="fa fa-pencil" mode="select" title="Select Mode"></i>
+                            <i class="fa fa-home" reset title="Zoom To Fit"></i>
+                        </div>
+                        <div class="miniview" id="miniview-circular"></div>
+                    </div>
+                    <div class="multiple-demo" id="demo-force-directed" data-id="force-directed">
+                        <strong style="color:black;">Force Directed Layout</strong>
+                        <div class="controls">
+                            <i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode"></i>
+                            <i class="fa fa-pencil" mode="select" title="Select Mode"></i>
+                            <i class="fa fa-home" reset title="Zoom To Fit"></i>
+                        </div>
+                        <div class="miniview" id="miniview-force-directed"></div>
+                    </div>
+                    <div class="multiple-demo" id="demo-balloon" data-id="balloon">
+                        <strong style="color:black;">Balloon Layout</strong>
+                        <div class="controls">
+                            <i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode"></i>
+                            <i class="fa fa-pencil" mode="select" title="Select Mode"></i>
+                            <i class="fa fa-home" reset title="Zoom To Fit"></i>
+                        </div>
+                        <div class="miniview" id="miniview-balloon"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="jtk-demo-rhs">
+                <a href="../../../index.html" class="p-1">Back to demo list</a>
+                <button id="btnRegenerate">Load new dataset</button>
+                    <p>
+                        In this demonstration we render the same instance of the Toolkit to four different Surfaces, each with its own layout.
+                    </p>
+                    <ul>
+                        <li>Use the X button to delete nodes. Each of the Surfaces will update in response to this action.</li>
+                        <li>Use the + button to add a new child node to some node.  Each of the Surfaces will update in response to this action.</li>
+                        <li>Click the 'Pencil' icon to enter 'select' mode, then select several nodes. Click the canvas to exit.</li>
+                        <li>Click the 'Home' icon to zoom out and see all the nodes in each Surface.</li>
+                    </ul>
+            </div>
+
+        </div>
+
+
+
+        <!-- /content -->
+
+        <!-- imports -->
+        <script src="_build/demo.umd.js"></script>
+        <!-- /imports -->
+
+    </body>
+</html>

@@ -1,0 +1,82 @@
+
+.jtk-node {
+    border:1px solid #ccc;
+    background-color:white;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:3px;
+    min-width:100px;
+    padding:10px;
+}
+
+.jtk-connector path {
+    stroke:#89bcde;
+    stroke-width:1px;
+}
+
+.jtk-animate-source {
+    border: 4px solid yellow;
+}
+
+/** applied to a node that a path is traversing on its way to another node */
+.jtk-animate-node-traversing {
+    border: 4px solid orangered;
+}
+
+.jtk-animate-edge-traversable path {
+    stroke: green;
+    stroke-width: 2px;
+}
+
+.jtk-animate-edge-traversed path {
+    stroke: purple;
+}
+
+/** applied to an edge that an overlay is traversing */
+.jtk-animate-edge-traversing path {
+    stroke:orangered;
+    stroke-width:2;
+}
+
+
+
+/* -------------- transport controls -------------------------------------*/
+
+.transport {
+    font-style: normal;
+    font-size: 14px !important;
+}
+
+[action='play'] {
+    margin-left:20px;
+}
+
+[action='play']:after {
+    font-style: normal;
+    content:"►";
+}
+
+[action='pause']:after {
+    content:"||";
+}
+
+[action='cancel']:after {
+    content:"✖";
+}
+
+.controls[state='stopped'] .transport {
+    background-color:grey !important;
+    color:#CCC !important;
+}
+
+.controls[state='playing'] .transport[action='play'] {
+    background-color:grey !important;
+    color:#CCC !important;
+}
+
+.controls[state='paused'] .transport[action='pause'] {
+    background-color:grey !important;
+    color:#CCC !important;
+}
+

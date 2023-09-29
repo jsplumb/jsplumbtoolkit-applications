@@ -1,0 +1,53 @@
+
+.connectivity-node {
+    border:1px solid #ccc;
+    width:250px;
+    text-align: center;
+    transition:outline 0.5s;
+    background-color:white;
+}
+
+.hl {
+    outline:12px solid #ffc06c;
+}
+
+.connectivity-node > div > div{
+    text-align: left;
+    list-style-type:none;
+    border-bottom: 1px solid #CCC;
+    border-top: 1px solid #CCC;
+    margin-bottom:10px;
+    padding:10px;
+    background-color: #edf7f7;
+}
+
+.jtk-node {
+    align-items: stretch;
+    flex-direction: column;
+}
+
+.jtk-drag-active {
+    transition: outline 0.05s;
+}
+
+.jtk-drag-hover {
+    outline:3px solid #2ba5f7;
+}
+
+[data-jtk-enabled='false'] {
+    color:#999;
+    opacity:0.3;
+    outline:none;
+}
+
+.jtk-connector path {
+    stroke: #2ba5f7;
+}
+
+.jtk-endpoint circle {
+    fill:#2ba5f7;
+}
+
+.jtk-demo-dataset {
+    font-size:12px;
+}
