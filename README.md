@@ -1,16 +1,18 @@
 # jsplumbtoolkit-applications
 
-Starter applications built with the jsPlumb Toolkit.
+Starter applications and feature demos built with the jsPlumb Toolkit. Starter applications are fully featured apps and most of them come in Vanilla JS, Angular, Vue 2, Vue 3, React and Svelte versions. Feature demonstrations are smaller demos that are focused on some specific aspect of the Toolkit's functionality, and do not use one of the library integrations, but the concepts are easily ported to an app that does use Angular etc.
+
+Some feature demos are provided in a number of different versions - ES5, ES6 and Typescript. The versions available vary between the demos. 
 
 ## Requirements
 
-You'll need to be a licensee or evaluator of the [jsPlumb Toolkit](https://jsplumbtoolkit.com) to use the applications in this repository, and you will need to have access to at least version 6.2.4 of the Toolkit.
+You'll need to be a licensee or evaluator of the [jsPlumb Toolkit](https://jsplumbtoolkit.com) to use the applications in this repository.
 
 If you are not a licensee or an evaluator, you can request an evaluation of the Toolkit [on our site](https://jsplumbtoolkit.com/trial).
 
 ### Evaluators
 
-If you are an evaluator and you are accessing the starter apps from your evaluation bundle, the Toolkit packages were delivered in the bundle and are referenced via `file:..` urls.  You can also access the Toolkit packages via our NPM repository, instructions for which can be found [here](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/npm-repository). 
+If you are an evaluator and you are accessing the starter apps and feature demos from your evaluation bundle, the Toolkit packages were delivered in the bundle and are referenced via `file:..` urls.  You can also access the Toolkit packages via our NPM repository, instructions for which can be found [here](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/npm-repository). 
 
 ### Licensees
 
@@ -37,7 +39,7 @@ npm run install:vue3
 
 ## Building
 
-`package.json` contains targets for building some given version of the apps (of all the apps):
+`package.json` contains targets for building some given version of the apps (of all the apps and feature demos):
 
 ```bash
 
@@ -49,7 +51,7 @@ npm run build:vue3
 
 ```
 
-but you can also build one individually:
+but you can also build one individually, for instance to build the vanilla JS Flowchart Builder starter application:
 
 ```
 cd apps/flowchart-builder/vanilla
@@ -79,7 +81,7 @@ Each app can be run via npm, the command varying depending on the library integr
 
 ## Apps available
 
-This repository currently contains two starter apps, with versions available for Vanilla JS, Angular, React, Vue 2 and Vue 3.
+This repository currently contains two starter apps (Flowchart Builder and Database Schema Builder) with versions available for Vanilla JS, Angular, React, Vue 2 and Vue 3, plus a Mindmap Builder, written for Vanilla JS.
 
 The Angular apps were created with Angular 16 as a dependency, but will run in previous versions of Angular down to Angular 12.  The React apps require React 17+ and were created with `create-react-app`. The Vue 2 and Vue 3 apps were created with `vite`.
 
@@ -99,3 +101,34 @@ Documentation can be found at [https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/s
 You can test this app on our site at [https://jsplumbtoolkit.com/demonstrations/schema-builder](https://jsplumbtoolkit.com/demonstrations/schema-builder).
 
 Documentation can be found at [https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-schema-builder](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-schema-builder).
+
+
+### Mindmap Builder
+
+![](img/mindmap-builder.png)
+
+You can test this app on our site at [https://jsplumbtoolkit.com/demonstrations/mindmap-builder](https://jsplumbtoolkit.com/demonstrations/mindmap-builder).
+
+Documentation can be found at [https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-mindmap-builder](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-mindmap-builder).
+
+---
+
+## Feature Demonstrations
+
+There are a number of demonstrations inside the `feature-demos` directory.
+
+### Active Filtering
+
+### Groups
+
+### Hierarchy Layout
+
+### Layouts
+
+### Multiple renderers
+
+### Path Tracing
+
+### Segmented Connectors
+
+### Skeleton app
