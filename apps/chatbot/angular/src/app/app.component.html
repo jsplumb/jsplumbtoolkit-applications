@@ -1,0 +1,38 @@
+<div class="jtk-demo-main" id="jtk-demo-chatbot">
+
+
+
+
+  <!-- main drawing area -->
+  <div class="jtk-demo-canvas">
+    <jsplumb-surface surfaceId="surface"
+                     toolkitId="toolkit"
+                     [toolkitParams]="toolkitParams"
+                     [renderParams]="renderParams"
+                     [view]="view"></jsplumb-surface>
+
+    <!-- controls -->
+    <div class="jtk-controls-container"></div>
+    <jsplumb-controls surfaceId="surface"></jsplumb-controls>
+
+    <!-- miniview -->
+    <div class="miniview"></div>
+  </div>
+  <div class="jtk-demo-rhs">
+
+    <!-- the node palette -->
+    <div class="sidebar node-palette"
+         jsplumb-surface-drop
+         selector=".jtk-chatbot-palette-item"
+         surfaceId="surface"
+         [dataGenerator]="dataGenerator">
+      <div *ngFor="let nodeType of nodeTypes" class="jtk-chatbot-palette-item" [attr.data-type]="nodeType.type" title="Drag to add new">{{nodeType.label}}</div>
+    </div>
+
+    <!-- node/edge inspector -->
+    <app-inspector surfaceId="surface"></app-inspector>
+
+  </div>
+
+
+</div>
