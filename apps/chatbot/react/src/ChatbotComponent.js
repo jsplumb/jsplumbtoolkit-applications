@@ -174,6 +174,9 @@ export default function ChatbotComponent({ctx}) {
         const i = createRoot(inspectorContainer.current)
         i.render(<InspectorComponent surface={surfaceComponent.current.surface}/>)
 
+        const m = createRoot(miniviewContainer.current)
+        m.render(<JsPlumbToolkitMiniviewComponent surface={surfaceComponent.current.surface}/>)
+
         toolkit.load({
             url:`/dataset.json?q=${uuid()}`
         })
