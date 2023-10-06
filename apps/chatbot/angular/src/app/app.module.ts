@@ -9,6 +9,7 @@ import {EndComponent} from "./end.component"
 import {MessageComponent} from "./message.component"
 import {InputComponent} from "./input.component"
 import {ChoiceComponent} from "./choice.component"
+import {TestComponent} from './test.component'
 import {InspectorComponent} from "./inspector.component"
 
 @NgModule({
@@ -19,7 +20,8 @@ import {InspectorComponent} from "./inspector.component"
     MessageComponent,
     InputComponent,
     ChoiceComponent,
-    InspectorComponent
+    InspectorComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

@@ -8,12 +8,13 @@ jsplumb-surface, .jtk-surface {
 
 :root {
   --bg-choice:rebeccapurple;
-  --bg-choice-option:palevioletred;
+  --bg-choice-option:#bb99a4;
   --bg-input:coral;
   --bg-start:navy;
   --bg-end: #ff667b;
   --bg-message:mediumseagreen;
   --bg-delete:orangered;
+  --bg-test: #e1b987;
 }
 
 body {
@@ -75,6 +76,10 @@ body {
   background-color: var(--bg-end);
 }
 
+.jtk-chatbot-palette-item[data-type='test'] {
+  background-color: var(--bg-test);
+}
+
 
 .miniview {
   position: absolute;
@@ -83,7 +88,7 @@ body {
   z-index: 100;
 }
 
-jsplumb-controls {
+.jtk-controls-container {
   top: 25px;
   position: absolute;
   left: 25px;
@@ -166,7 +171,7 @@ jsplumb-controls {
   content:'END';
 }
 
-.jtk-chatbot-message, .jtk-chatbot-input, .jtk-chatbot-choice {
+.jtk-chatbot-message, .jtk-chatbot-input, .jtk-chatbot-choice, .jtk-chatbot-test {
   color:white;
   display:flex;
   padding:1rem;
@@ -198,17 +203,28 @@ jsplumb-controls {
   flex-direction: column;
 }
 
-.jtk-chatbot-choice-option {
-  display:flex;
-  align-items: center;
-  margin:3px 0;
-  background-color: var(--bg-choice-option);
-  padding:3px;
-  border-radius:3px;
-  cursor:pointer;
+.jtk-chatbot-test {
+  min-width:150px;
+  background-color: var(--bg-test);
+  flex-direction: column;
 }
 
-.jtk-choice-add {
+.jtk-chatbot-choice-option {
+
+  display: flex;
+  align-items: center;
+  margin: 3px 0;
+  background-color: var(--bg-choice-option);
+  padding: 4px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.jtk-choice-add + .jtk-chatbot-choice-option {
+  margin-top:10px;
+}
+
+.jtk-choice-add, .jtk-test-add {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
@@ -216,7 +232,7 @@ jsplumb-controls {
   cursor: pointer;
 }
 
-.jtk-choice-add::after {
+.jtk-choice-add::after, .jtk-test-add::after {
   content:'+'
 }
 

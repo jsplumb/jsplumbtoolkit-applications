@@ -2,7 +2,7 @@ import {
     VanillaInspector, isNode, isEdge
 } from "@jsplumbtoolkit/browser-ui"
 
-import { ACTION_INPUT, ACTION_MESSAGE, ACTION_CHOICE, START, END } from "./demo";
+import { ACTION_INPUT, ACTION_MESSAGE, ACTION_CHOICE, START, END, ACTION_TEST } from "./demo";
 
 const PROPERTY_MESSAGE = "message"
 const PROPERTY_PROMPT = "prompt"
@@ -29,6 +29,10 @@ export class ChatbotInspector extends VanillaInspector {
                             <input type="text" jtk-att="${PROPERTY_PROMPT}" placeholder="prompt"/>
                             </div>`,
         [ACTION_CHOICE]:`<div class="jtk-chatbot-inspector">
+                        <span>Message:</span>
+                            <input type="text" jtk-att="${PROPERTY_MESSAGE}" placeholder="message"/>
+                            </div>`,
+        [ACTION_TEST]:`<div class="jtk-chatbot-inspector">
                         <span>Message:</span>
                             <input type="text" jtk-att="${PROPERTY_MESSAGE}" placeholder="message"/>
                             </div>`,

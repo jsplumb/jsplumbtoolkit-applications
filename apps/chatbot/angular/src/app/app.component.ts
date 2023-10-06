@@ -15,12 +15,13 @@ import {
   Surface,
   Base
 } from "@jsplumbtoolkit/browser-ui"
-import {ACTION_CHOICE, ACTION_INPUT, ACTION_MESSAGE, END, SELECTABLE, START} from "./constants"
+import {ACTION_CHOICE, ACTION_INPUT, ACTION_MESSAGE, ACTION_TEST, END, SELECTABLE, START} from "./constants"
 import {ChoiceComponent} from "./choice.component"
 import {InputComponent} from "./input.component"
 import {MessageComponent} from "./message.component"
 import {EndComponent} from "./end.component"
 import {StartComponent} from "./start.component"
+import {TestComponent} from "./test.component"
 
 @Component({
   selector: 'app-root',
@@ -52,7 +53,8 @@ export class AppComponent {
     {type:END, label:"End"},
     {type:ACTION_MESSAGE, label:"Message"},
     {type:ACTION_INPUT, label:"Input"},
-    {type:ACTION_CHOICE, label:"Choice"}
+    {type:ACTION_CHOICE, label:"Choice"},
+    {type:ACTION_TEST, label:"Test"}
   ]
 
   toolkitParams = {
@@ -99,6 +101,10 @@ export class AppComponent {
       [ACTION_CHOICE]:{
         parent:SELECTABLE,
         component:ChoiceComponent
+      },
+      [ACTION_TEST]:{
+        parent:SELECTABLE,
+        component:TestComponent
       }
     },
     edges:{
@@ -138,10 +144,18 @@ export class AppComponent {
       Object.assign(base, { message:"Grab some input", prompt:"please enter input"})
     } else if (type === ACTION_CHOICE) {
       Object.assign(base, {
-        message:"Make a selection!",
+        message:"Please choose:",
         choices:[
           { id:"1", label:"Choice 1"},
           { id:"2", label:"Choice 2"},
+        ]
+      })
+    }else if (type === ACTION_TEST) {
+      Object.assign(base, {
+        message:"Test",
+        choices:[
+          { id:"1", label:"Result 1"},
+          { id:"2", label:"Result 2"},
         ]
       })
     }

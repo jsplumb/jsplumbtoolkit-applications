@@ -7,8 +7,9 @@ import {
   ACTION_CHOICE,
   ACTION_INPUT,
   ACTION_MESSAGE,
+  ACTION_TEST,
   PROPERTY_MESSAGE,
-  PROPERTY_LABEL, PROPERTY_PROMPT,
+  PROPERTY_LABEL, PROPERTY_PROMPT
 } from "./constants"
 
 @Component({
@@ -30,6 +31,16 @@ import {
     </div>
     
     <div *ngIf='currentType === "${ACTION_CHOICE}"' class="jtk-chatbot-inspector">
+        <span>Message:</span>
+        <input type="text" jtk-att="${PROPERTY_MESSAGE}" placeholder="message"/>
+    </div>
+    
+    <div *ngIf='currentType === "${ACTION_TEST}"' class="jtk-chatbot-inspector">
+        <span>Message:</span>
+        <input type="text" jtk-att="${PROPERTY_MESSAGE}" placeholder="message"/>
+    </div>
+    
+    <div *ngIf='currentType === "${ACTION_TEST}"' class="jtk-chatbot-inspector">
         <span>Message:</span>
         <input type="text" jtk-att="${PROPERTY_MESSAGE}" placeholder="message"/>
     </div>

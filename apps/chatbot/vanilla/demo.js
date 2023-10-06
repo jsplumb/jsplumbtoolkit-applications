@@ -18,6 +18,7 @@ export const END = "end"
 export const ACTION_MESSAGE = "message"
 export const ACTION_INPUT = "input"
 export const ACTION_CHOICE = "choice"
+export const ACTION_TEST = "test"
 const SELECTABLE = "selectable"
 
 ready(() => {
@@ -90,6 +91,23 @@ ready(() => {
                             </div>    
                         </r-each>
                     </div>`
+                },
+                [ACTION_TEST]:{
+                    parent:SELECTABLE,
+                    template:`<div class="jtk-chatbot-test" data-jtk-target="true">
+                        <div class="jtk-delete"></div>
+                        {{message}}
+                        <div class="jtk-test-add"></div>
+                        <r-each in="choices" key="id">
+                            <div class="jtk-chatbot-choice-option" 
+                                 data-jtk-source="true" 
+                                 data-jtk-port-type="choice"
+                                 data-jtk-port="{{id}}">
+                                 {{label}}
+                                 <div class="jtk-choice-delete"></div>
+                            </div>    
+                        </r-each>
+                    </div>`
                 }
             },
             edges:{
@@ -105,7 +123,6 @@ ready(() => {
                         }
                     ],
                     label:"{{label}}",
-                    useHTMLLabel:true,
                     events:{
                         [EVENT_TAP]:(p) => {
                             toolkit.setSelection(p.edge)
@@ -131,6 +148,13 @@ ready(() => {
                 selector:".jtk-choice-add",
                 callback:(event, eventTarget, modelObject) => {
                     toolkit.setSelection(toolkit.addPort(modelObject.obj, { id:uuid(), label:"Choice"}))
+                }
+            },
+            {
+                event:EVENT_TAP,
+                selector:".jtk-test-add",
+                callback:(event, eventTarget, modelObject) => {
+                    toolkit.setSelection(toolkit.addPort(modelObject.obj, { id:uuid(), label:"Test"}))
                 }
             },
             {
@@ -171,10 +195,18 @@ ready(() => {
                 Object.assign(base, { message:"Grab some input", prompt:"please enter input"})
             } else if (type === ACTION_CHOICE) {
                 Object.assign(base, {
-                    message:"Make a selection!",
+                    message:"Please choose:",
                     choices:[
                         { id:"1", label:"Choice 1"},
                         { id:"2", label:"Choice 2"},
+                    ]
+                })
+            } else if (type === ACTION_TEST) {
+                Object.assign(base, {
+                    message:"Apply test",
+                    choices:[
+                        { id:"1", label:"Result 1"},
+                        { id:"2", label:"Result 2"},
                     ]
                 })
             }

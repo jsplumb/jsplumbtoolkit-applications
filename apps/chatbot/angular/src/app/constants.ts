@@ -3,6 +3,7 @@ export const END = "end"
 export const ACTION_MESSAGE = "message"
 export const ACTION_INPUT = "input"
 export const ACTION_CHOICE = "choice"
+export const ACTION_TEST = "test"
 export const SELECTABLE = "selectable"
 
 export const PROPERTY_MESSAGE = "message"

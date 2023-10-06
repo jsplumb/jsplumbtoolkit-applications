@@ -74,7 +74,7 @@
     },
     {
       "id": "10",
-      "type": "choice",
+      "type": "test",
       "left": 869,
       "top": -36,
       "message": "Check PIN",
@@ -106,8 +106,8 @@
     {
       "left": 890,
       "top": 701,
-      "type": "choice",
-      "message": "Make a selection!",
+      "type": "test",
+      "message": "Check password",
       "choices": [
         {
           "id": "1",
@@ -202,7 +202,7 @@
       "source": "11",
       "target": "2",
       "data": {
-        "label": ""
+        "label": "success"
       }
     },
     {
@@ -245,32 +245,5 @@
         "type": "default"
       }
     }
-  ],
-  "ports": [
-    {
-      "id": "5.pin",
-      "label": "PIN"
-    },
-    {
-      "id": "5.password",
-      "label": "Password"
-    },
-    {
-      "id": "10.ok",
-      "label": "PIN OK"
-    },
-    {
-      "id": "10.fail",
-      "label": "Wrong PIN"
-    },
-    {
-      "id": "a67a8ae3-8171-49ad-af04-a376bf672804.1",
-      "label": "Password OK"
-    },
-    {
-      "id": "a67a8ae3-8171-49ad-af04-a376bf672804.2",
-      "label": "Wrong Password"
-    }
-  ],
-  "groups": []
+  ]
 }
