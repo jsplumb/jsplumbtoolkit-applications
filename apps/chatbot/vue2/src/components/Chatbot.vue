@@ -87,7 +87,9 @@
 
                     return base
                 },
-                toolkitParams:{},
+                toolkitParams:{
+                    portDataProperty:"choices"
+                },
                 view:{
                     nodes:{
                         [SELECTABLE]:{
