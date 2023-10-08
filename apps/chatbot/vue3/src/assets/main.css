@@ -1,0 +1,10 @@
+@import '../../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css';
+@import '../../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css';
+@import './chatbot.css';
+
+
+#app {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
