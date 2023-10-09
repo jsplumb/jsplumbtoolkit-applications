@@ -1,0 +1,129 @@
+:root {
+    --bg-choice:rebeccapurple;
+    --bg-choice-option:#bb99a4;
+    --bg-input:coral;
+    --bg-start:navy;
+    --bg-end: #ff667b;
+    --bg-message:mediumseagreen;
+    --bg-delete:orangered;
+    --bg-test: #e1b987;
+
+    --color-selected:cadetblue;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.jtk-demo-main {
+    display: flex;
+    height: 100vh;
+}
+
+.jtk-demo-canvas {
+    background-color: white;
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden !important;
+}
+
+.jtk-demo-rhs {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f9f9f9;
+    flex: 0 0 250px;
+    padding: 20px 5px 0 5px;
+}
+
+.node-palette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f2f0ee;
+    padding:0.25rem;
+}
+
+
+.miniview {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 100;
+}
+
+.jtk-controls-container {
+    top: 25px;
+    position: absolute;
+    left: 25px;
+    z-index: 1;
+    font-size:14px;
+}
+
+/* ------------------- edge styles -------------------------- */
+
+.jtk-connector path {
+    stroke:black;
+    stroke-width: 2px;
+}
+
+
+/* -------------- node styles ------------------- */
+
+ .jtk-node {
+     padding:0.5rem;
+     border:1px solid #3177b8;
+     border-radius: 3px;
+     display:flex;
+     align-items: center;
+     width:190px;
+     height:100px;
+ }
+
+ .jtk-node img {
+     width:90px;
+     margin-right:0.5rem;
+ }
+
+.jtk-node > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.jtk-surface-selected-element {
+    outline:1px dotted seagreen;
+    outline-offset: 1rem;
+    background-color:var(--color-selected);
+    color:white;
+}
+
+/* ----------- inspector --------------------- */
+.jtk-orgchart-inspector {
+    padding: 0.5rem;
+    display:flex;
+    flex-direction: column;
+}
+
+.jtk-orgchart-inspector-person {
+    display:flex;
+    align-items: center;
+    padding:0.25rem;
+    text-decoration: none;
+    cursor:pointer;
+    color:var(--color-selected);
+}
+
+.jtk-orgchart-inspector-person:visited {
+    color:var(--color-selected);
+}
+
+.jtk-orgchart-inspector-person img {
+    width:40px;
+    margin-right:0.25rem;
+}
+
+.jtk-orgchart-inspector-person:hover {
+    background-color: white;
+}
+
