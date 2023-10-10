@@ -1,0 +1,18 @@
+<div style="width:100%;height:100%;display:flex">
+  <div class="jtk-demo-canvas">
+    <jsplumb-surface surfaceId="surface"
+                     toolkitId="toolkit"
+                     [renderParams]="renderParams"
+                     [view]="view"></jsplumb-surface>
+
+    <jsplumb-miniview surfaceId="surface"></jsplumb-miniview>
+  </div>
+  <div class="jtk-demo-rhs">
+    <div id="inspector">
+      <app-inspector surfaceId="surface" (personSelected)="selectPerson($event)"></app-inspector>
+    </div>
+    <div class="description">
+
+    </div>
+  </div>
+</div>

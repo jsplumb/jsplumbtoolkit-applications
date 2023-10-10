@@ -18,8 +18,8 @@
 </template>
 <script>
 
-    import Vue from "vue"
-    import {getSurface} from "@jsplumbtoolkit/browser-ui-vue2";
+    import { nextTick } from "vue"
+    import {loadSurface} from "@jsplumbtoolkit/browser-ui-vue3";
     import { Inspector } from "@jsplumbtoolkit/browser-ui"
 
     function retrieveDirectReports(person){
@@ -50,7 +50,7 @@
             selectPerson:Function
         },
         mounted() {
-            getSurface(this.surfaceId, (surface) => {
+            loadSurface(this.surfaceId, (surface) => {
 
                 // create an inspector. give it the container element
                 // and the surface and functions to use to render an
@@ -68,7 +68,7 @@
                         this.current = obj
                         this.reports = retrieveDirectReports(obj)
                         this.manager = getManager(obj)
-                        Vue.nextTick(cb)
+                        nextTick()
                     }
                 })
 

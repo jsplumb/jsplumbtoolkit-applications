@@ -3,8 +3,8 @@
         <div class="jtk-demo-canvas">
             <jsplumb-toolkit ref="toolkitComponent"
                              surface-id="surfaceId"
-                             v-bind:render-params="renderParams"
-                             v-bind:view="view"
+                             :render-params="this.renderParams()"
+                             :view="this.viewParams()"
                              url="dataset.json"
             >
 
@@ -23,6 +23,8 @@
 </template>
 <script>
 
+    import {defineComponent } from "vue"
+
     import { HierarchyLayout, BlankEndpoint, EVENT_CANVAS_CLICK, DEFAULT, PlainArrowOverlay, AnchorLocations, EVENT_TAP } from "@jsplumbtoolkit/browser-ui"
 
     import PersonComponent from "./PersonComponent.vue";
@@ -32,7 +34,7 @@
     let toolkit
     let surface
 
-    export default {
+    export default defineComponent({
         name:"orgchart",
         components: {Inspector},
         mounted() {
@@ -45,13 +47,9 @@
             selectPerson:function(p) {
                 toolkit.setSelection(p)
                 surface.centerOnAndZoom(p, 0.15)
-            }
-        },
-        data:() => {
-
-            return {
-
-                view:{
+            },
+            viewParams:function() {
+                return {
                     nodes:{
                         [DEFAULT]:{
                             events:{
@@ -77,8 +75,10 @@
                             ]
                         }
                     }
-                },
-                renderParams:{
+                }
+            },
+            renderParams:function() {
+                return {
                     consumeRightClick:false,
                     elementsDraggable:false,
                     defaults:{
@@ -97,6 +97,6 @@
                 }
             }
         }
-    }
+    })
 
 </script>
