@@ -10,15 +10,9 @@ import {jsPlumbService} from "@jsplumbtoolkit/browser-ui-angular"
       <h1>{{current.data['name']}}</h1>
       <h2>{{current.data['title']}}</h2>
       <h5 *ngIf="reports.length > 0">Reports:</h5>
-      <a *ngFor="let r of reports" class="jtk-orgchart-inspector-person" href="#" [attr.data-id]="r.data['id']" (click)="selectPerson(r)">
-        <img [src]="getImage(r)" [alt]="r.data['name']"/>
-        {{r.data['name']}}
-      </a>
+      <app-inspector-person *ngFor="let r of reports" [person]="r" (personSelected)="selectPerson($event)"></app-inspector-person>
       <h5 *ngIf="manager != null">Reports to:</h5>
-      <a *ngIf="manager != null" class="jtk-orgchart-inspector-person" href="#" [attr.data-id]="manager.data['id']" (click)="selectPerson(manager)">
-        <img [src]="getImage(manager)" [alt]="manager.data['name']"/>
-        {{manager.data['name']}}
-      </a>
+      <app-inspector-person *ngIf="manager != null" [person]="manager" (personSelected)="selectPerson($event)"></app-inspector-person>
     </div>
     
   `,
@@ -35,10 +29,6 @@ export class InspectorComponent implements AfterViewInit {
   @Output() personSelected:EventEmitter<Vertex> = new EventEmitter<Vertex>()
 
   inspector!:Inspector
-
-  getImage(person:Vertex) {
-    return `/assets/avatars/${person.data['img']}`
-  }
 
   retrieveDirectReports(person:Node){
     this.reports = person.getSourceEdges().map(e => e.target)

@@ -136,4 +136,14 @@ body {
   background-color: white;
 }
 
+.jtk-orgchart-inspector-person div {
+  display:flex;
+  flex-direction: column;
+}
+
+.jtk-orgchart-inspector-person div span {
+  font-size:11px;
+  color:black;
+}
+
 
