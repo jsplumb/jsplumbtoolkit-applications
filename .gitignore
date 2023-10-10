@@ -11,3 +11,8 @@ bundle.js
 bundle-es5.js
 
 /archive/
+/apps/orgchart/angular/src/assets/avatars/
+/apps/orgchart/vue2/public/avatars
+/apps/orgchart/vue3/public/avatars
+/apps/orgchart/vanilla/avatars
+/apps/orgchart/react/public/avatars
