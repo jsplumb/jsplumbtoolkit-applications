@@ -1,0 +1,173 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "name": "Marek",
+      "img": "tile-0.jpg",
+      "title": "VP Marketing"
+    },
+    {
+      "id": "2",
+      "name": "Sven",
+      "img": "tile-1.jpg",
+      "title": "Marketing"
+    },
+    {
+      "id": "3",
+      "name": "Barry",
+      "img": "tile-2.jpg",
+      "title": "Sales"
+    },
+    {
+      "id": "4",
+      "name": "Alicia",
+      "img": "tile-3.jpg",
+      "title": "VP Sales"
+    },
+    {
+      "id": "5",
+      "name": "Amanda",
+      "img": "tile-4.jpg",
+      "title": "CEO"
+    },
+    {
+      "id": "6",
+      "name": "Sonia",
+      "img": "tile-5.jpg",
+      "title": "VP Engineering"
+    },
+    {
+      "id": "7",
+      "name": "Tony",
+      "img": "tile-6.jpg",
+      "title": "CTO"
+    },
+    {
+      "id": "8",
+      "name": "Frank",
+      "img": "tile-7.jpg",
+      "title": "Development Manager"
+    },
+    {
+      "id": "9",
+      "name": "Jim",
+      "img": "tile-8.jpg",
+      "title": "Sales"
+    },
+    {
+      "id": "10",
+      "name": "Barb",
+      "img": "tile-9.jpg",
+      "title": "CMO"
+    },
+    {
+      "id": "11",
+      "name": "Janet",
+      "img": "tile-10.jpg",
+      "title": "Sales"
+    },
+    {
+      "id": "12",
+      "name": "Joanne",
+      "img": "tile-11.jpg",
+      "title": "Sales"
+    },
+    {
+      "id": "13",
+      "name": "Alphonse",
+      "img": "tile-12.jpg",
+      "title": "CFO"
+    },
+    {
+      "id": "14",
+      "name": "Steve",
+      "img": "tile-13.jpg",
+      "title": "Finance"
+    },
+    {
+      "id": "15",
+      "name": "Brenda",
+      "img": "tile-14.jpg",
+      "title": "Finance"
+    },
+    {
+      "id": "16",
+      "name": "Wendy",
+      "img": "tile-15.jpg",
+      "title": "Development Manager"
+    },
+    {
+      "id": "17",
+      "name": "Fiona",
+      "img": "tile-16.jpg",
+      "title": "VP HR"
+    },
+    {
+      "id": "18",
+      "name": "James",
+      "img": "tile-17.jpg",
+      "title": "HR"
+    },
+    {
+      "id": "19",
+      "name": "Andy",
+      "img": "tile-18.jpg",
+      "title": "HR"
+    },
+    {
+      "id": "20",
+      "name": "In In",
+      "img": "tile-19.jpg",
+      "title": "Development"
+    },
+    {
+      "id": "21",
+      "name": "Dave",
+      "img": "tile-20.jpg",
+      "title": "Development"
+    },
+    {
+      "id": "22",
+      "name": "Gabbie",
+      "img": "tile-21.jpg",
+      "title": "Development"
+    },
+    {
+      "id": "23",
+      "name": "Nash",
+      "img": "tile-22.jpg",
+      "title": "Development"
+    },
+    {
+      "id": "24",
+      "name": "Roman",
+      "img": "tile-23.jpg",
+      "title": "Development"
+    }
+  ],
+  "edges": [
+    { "source": "5", "target": "10"},
+    { "source": "5", "target": "7"},
+    { "source": "5", "target": "13"},
+    { "source": "5", "target": "17"},
+    { "source": "10", "target": "4"},
+    { "source": "10", "target": "1"},
+    { "source": "7", "target": "6"},
+    { "source": "1", "target": "2"},
+    { "source": "4", "target": "3"},
+    { "source": "4", "target": "9"},
+    { "source": "6", "target": "8"},
+    { "source": "6", "target": "16"},
+    { "source": "4", "target": "11"},
+    { "source": "4", "target": "12"},
+    { "source": "13", "target": "14"},
+    { "source": "13", "target": "15"},
+    { "source": "17", "target": "18"},
+    { "source": "17", "target": "19"},
+    { "source": "8", "target": "21"},
+    { "source": "8", "target": "22"},
+    { "source": "16", "target": "23"},
+    { "source": "16", "target": "24"},
+    { "source": "16", "target": "20"}
+  ]
+}
