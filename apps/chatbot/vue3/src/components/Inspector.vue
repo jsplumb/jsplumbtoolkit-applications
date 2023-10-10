@@ -42,7 +42,6 @@
 </template>
 <script>
 
-    import { defineComponent } from "vue";
     import { nextTick } from "vue"
     import {loadSurface} from "@jsplumbtoolkit/browser-ui-vue3";
     import { Inspector, isNode, isPort } from "@jsplumbtoolkit/browser-ui"
