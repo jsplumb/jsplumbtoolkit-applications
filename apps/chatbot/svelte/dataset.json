@@ -1,0 +1,249 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "type": "start",
+      "left": 0,
+      "top": 0
+    },
+    {
+      "id": "3",
+      "type": "message",
+      "left": -30,
+      "top": 150,
+      "message": "Hi! I am a chatbot. Welcome."
+    },
+    {
+      "id": "4",
+      "type": "input",
+      "left": 200,
+      "top": 120,
+      "message": "Please enter your name",
+      "prompt": "your name, please!"
+    },
+    {
+      "id": "5",
+      "type": "choice",
+      "left": 200,
+      "top": 350,
+      "message": "Select logon method",
+      "choices": [
+        {
+          "id": "pin",
+          "label": "PIN"
+        },
+        {
+          "id": "password",
+          "label": "Password"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "type": "end",
+      "left": 1595,
+      "top": 164
+    },
+    {
+      "id": "6",
+      "type": "input",
+      "left": 450,
+      "top": 250,
+      "message": "Enter PIN:"
+    },
+    {
+      "id": "7",
+      "type": "input",
+      "left": 450,
+      "top": 450,
+      "message": "Enter Password:"
+    },
+    {
+      "id": "8",
+      "type": "message",
+      "left": 700,
+      "top": 280,
+      "message": "Thanks! Checking it now"
+    },
+    {
+      "id": "9",
+      "type": "message",
+      "left": 700,
+      "top": 480,
+      "message": "Thanks! Checking it now"
+    },
+    {
+      "id": "10",
+      "type": "test",
+      "left": 869,
+      "top": -36,
+      "message": "Check PIN",
+      "choices": [
+        {
+          "id": "ok",
+          "label": "PIN OK"
+        },
+        {
+          "id": "fail",
+          "label": "Wrong PIN"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "type": "message",
+      "left": 1236,
+      "top": -10,
+      "message": "Your PIN was accepted!"
+    },
+    {
+      "left": 472,
+      "top": 10,
+      "type": "message",
+      "message": "The PIN was incorrect",
+      "id": "a132061f-d4ea-4c9d-afa7-895a1405a74d"
+    },
+    {
+      "left": 890,
+      "top": 701,
+      "type": "test",
+      "message": "Check password",
+      "choices": [
+        {
+          "id": "1",
+          "label": "Password OK"
+        },
+        {
+          "id": "2",
+          "label": "Wrong Password"
+        }
+      ],
+      "id": "a67a8ae3-8171-49ad-af04-a376bf672804"
+    },
+    {
+      "left": 1280,
+      "top": 343,
+      "type": "message",
+      "message": "That is the right password.",
+      "id": "dd51b83c-69fa-4cda-9e51-b2491a79461e"
+    },
+    {
+      "left": 491.0060352783804,
+      "top": 724.3732321811578,
+      "type": "message",
+      "message": "Your password was incorrect.",
+      "id": "014fd27c-e83f-449e-a731-58519ba4c882"
+    }
+  ],
+  "edges": [
+    {
+      "source": "1",
+      "target": "3",
+      "data": {}
+    },
+    {
+      "source": "3",
+      "target": "4",
+      "data": {}
+    },
+    {
+      "source": "4",
+      "target": "5",
+      "data": {}
+    },
+    {
+      "source": "5.pin",
+      "target": "6",
+      "data": {}
+    },
+    {
+      "source": "5.password",
+      "target": "7",
+      "data": {}
+    },
+    {
+      "source": "6",
+      "target": "8",
+      "data": {}
+    },
+    {
+      "source": "7",
+      "target": "9",
+      "data": {}
+    },
+    {
+      "source": "8",
+      "target": "10",
+      "data": {}
+    },
+    {
+      "source": "9",
+      "target": "a67a8ae3-8171-49ad-af04-a376bf672804",
+      "data": {
+        "id": "05b76da0-fb0b-4dc2-9b6e-ba0ff9af5a31",
+        "type": "default"
+      }
+    },
+    {
+      "source": "10.ok",
+      "target": "11",
+      "data": {}
+    },
+    {
+      "source": "10.fail",
+      "target": "a132061f-d4ea-4c9d-afa7-895a1405a74d",
+      "data": {
+        "id": "cfe9c23e-bed9-49ab-af59-5e4225d606fa",
+        "type": "default",
+        "label": "get pin again"
+      }
+    },
+    {
+      "source": "11",
+      "target": "2",
+      "data": {
+        "label": "success"
+      }
+    },
+    {
+      "source": "a132061f-d4ea-4c9d-afa7-895a1405a74d",
+      "target": "6",
+      "data": {
+        "id": "53c1eca7-0899-4773-afc4-e5ccfe623bc0",
+        "type": "default"
+      }
+    },
+    {
+      "source": "a67a8ae3-8171-49ad-af04-a376bf672804.1",
+      "target": "dd51b83c-69fa-4cda-9e51-b2491a79461e",
+      "data": {
+        "id": "b712b092-fbb3-4e92-a3cc-de5293846789",
+        "type": "default"
+      }
+    },
+    {
+      "source": "a67a8ae3-8171-49ad-af04-a376bf672804.2",
+      "target": "014fd27c-e83f-449e-a731-58519ba4c882",
+      "data": {
+        "id": "dd62712e-27cf-41b5-bc3f-8565ff25a52f",
+        "type": "default"
+      }
+    },
+    {
+      "source": "dd51b83c-69fa-4cda-9e51-b2491a79461e",
+      "target": "2",
+      "data": {
+        "id": "333af473-52c7-42b9-8ceb-094c039a02f7",
+        "type": "default"
+      }
+    },
+    {
+      "source": "014fd27c-e83f-449e-a731-58519ba4c882",
+      "target": "7",
+      "data": {
+        "id": "60f7b466-ec4f-4592-aad3-1761197de97e",
+        "type": "default"
+      }
+    }
+  ]
+}

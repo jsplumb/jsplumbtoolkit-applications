@@ -1,0 +1,13 @@
+{
+  "main": "buildscript.js",
+  "scripts": {
+    "build": "node buildscript.js"
+  },
+  "dependencies": {
+    "@jsplumbtoolkit/browser-ui-svelte": "^6.6.4",
+    "esbuild": "^0.18.10",
+    "esbuild-svelte": "^0.7.3",
+    "svelte": "^4.0.0"
+  },
+  "private": true
+}
