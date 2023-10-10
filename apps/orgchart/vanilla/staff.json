@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "name": "Marek",
+    "img": "tile-0.jpg",
+    "title": "VP Marketing"
+  },
+  {
+    "id": "2",
+    "name": "Sven",
+    "img": "tile-1.jpg",
+    "title": "Marketing"
+  },
+  {
+    "id": "3",
+    "name": "Barry",
+    "img": "tile-2.jpg",
+    "title": "Sales"
+  },
+  {
+    "id": "4",
+    "name": "Alicia",
+    "img": "tile-3.jpg",
+    "title": "VP Sales"
+  },
+  {
+    "id": "5",
+    "name": "Amanda",
+    "img": "tile-4.jpg",
+    "title": "CEO"
+  },
+  {
+    "id": "6",
+    "name": "Sonia",
+    "img": "tile-5.jpg",
+    "title": "VP Engineering"
+  },
+  {
+    "id": "7",
+    "name": "Tony",
+    "img": "tile-6.jpg",
+    "title": "Development"
+  },
+  {
+    "id": "8",
+    "name": "Frank",
+    "img": "tile-7.jpg",
+    "title": "Development"
+  },
+  {
+    "id": "9",
+    "name": "Jim",
+    "img": "tile-8.jpg",
+    "title": "Sales"
+  },
+  {
+    "id": "10",
+    "name": "Barb",
+    "img": "tile-9.jpg",
+    "title": "CMO"
+  }
+]
