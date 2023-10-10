@@ -3,10 +3,9 @@
         <div class="jtk-demo-canvas">
             <jsplumb-toolkit ref="toolkitComponent"
                              surface-id="surfaceId"
-                             v-bind:render-params="renderParams"
-                             v-bind:view="view"
-                             url="dataset.json"
-            >
+                             v-bind:render-params="this.renderParams()"
+                             v-bind:view="this.viewParams()"
+                             url="dataset.json">
 
             </jsplumb-toolkit>
             <jsplumb-miniview surface-id="surfaceId"></jsplumb-miniview>
@@ -32,6 +31,11 @@
     let toolkit
     let surface
 
+    function selectPerson(p) {
+        toolkit.setSelection(p)
+        surface.centerOnAndZoom(p, 0.15)
+    }
+
     export default {
         name:"orgchart",
         components: {Inspector},
@@ -42,21 +46,14 @@
             surface = toolkitComponent.surface;
         },
         methods:{
-            selectPerson:function(p) {
-                toolkit.setSelection(p)
-                surface.centerOnAndZoom(p, 0.15)
-            }
-        },
-        data:() => {
-
-            return {
-
-                view:{
+            selectPerson,
+            viewParams:() => {
+                return {
                     nodes:{
                         [DEFAULT]:{
                             events:{
                                 [EVENT_TAP]:(p) => {
-                                    this.selectPerson(p.obj)
+                                    selectPerson(p.obj)
                                 }
                             },
                             component:PersonComponent
@@ -77,8 +74,10 @@
                             ]
                         }
                     }
-                },
-                renderParams:{
+                }
+            },
+            renderParams:() => {
+                return {
                     consumeRightClick:false,
                     elementsDraggable:false,
                     defaults:{

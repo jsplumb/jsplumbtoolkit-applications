@@ -6,12 +6,18 @@
             <h5 v-if="reports.length > 0">Reports:</h5>
             <a v-for="r in reports" :key="r.id" class="jtk-orgchart-inspector-person" href="#" :data-id="r.data.id" @click="selectPerson(r)">
                 <img :src="getImage(r)" :alt="r.data.name"/>
-                {{r.data.name}}
+                <div>
+                    {{r.data.name}}
+                    <span>{{r.data.title}}</span>
+                </div>
             </a>
             <h5 v-if="manager != null">Reports to:</h5>
             <a v-if="manager != null" class="jtk-orgchart-inspector-person" href="#" :data-id="manager.data.id" @click="selectPerson(manager)">
                 <img :src="getImage(manager)" :alt="manager.data.name"/>
-                {{manager.data.name}}
+                <div>
+                    {{manager.data.name}}
+                    <span>{{manager.data.title}}</span>
+                </div>
             </a>
         </div>
     </div>
