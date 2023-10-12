@@ -1,12 +1,16 @@
 {
   "main": "svelte-groups",
   "scripts": {
-    "build": "node buildscript.js"
+    "build": "node buildscript.js",
+    "serve": "./node_modules/.bin/http-server ./dist"
   },
   "dependencies": {
     "@jsplumbtoolkit/browser-ui-svelte": "^6.6.0",
     "esbuild": "^0.18.10",
     "esbuild-svelte": "^0.7.3",
     "svelte": "^4.0.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }
