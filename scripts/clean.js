@@ -24,6 +24,7 @@ const cleaners = {
     },
     [c.SVELTE]:(dir) => {
         g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
+        g.rmdir(`${dir}/dist`)
     },
     [c.ES5]:(dir) => {
         g.rmdir(`${dir}/node_modules`)
@@ -84,10 +85,6 @@ g.ls(`./${c.FEATURE_DEMO_ROOT}`).forEach(d => {
         p.libs.forEach(lib => {
             clean(c.FEATURE_DEMO_ROOT, d, lib)
         })
-
-        // p.jsTargets.forEach(t => {
-        //     clean(FEATURE_DEMO_ROOT, d, t)
-        // })
     } else {
         clean(c.FEATURE_DEMO_ROOT, d, lib)
     }
