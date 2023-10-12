@@ -1,5 +1,5 @@
 {
-  "main": "buildscript.js",
+  "main": "svelte-chatbot",
   "scripts": {
     "build": "node buildscript.js"
   },
@@ -8,6 +8,5 @@
     "esbuild": "^0.18.10",
     "esbuild-svelte": "^0.7.3",
     "svelte": "^4.0.0"
-  },
-  "private": true
+  }
 }
