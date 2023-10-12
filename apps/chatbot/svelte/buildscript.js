@@ -36,6 +36,10 @@ fs.copyFile("./app.css", "./dist/app.css", (err) => {
     if (err) throw err;
 });
 
+fs.copyFile("./dataset.json", "./dist/dataset.json", (err) => {
+    if (err) throw err;
+});
+
 fs.copyFile("./node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css", "./dist/jsplumbtoolkit.css", (err) => {
     if (err) throw err;
 });
