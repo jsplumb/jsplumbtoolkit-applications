@@ -23,6 +23,7 @@
     "build:react": "node ./scripts/build react",
     "build:vue2": "node ./scripts/build vue2",
     "build:vue3": "node ./scripts/build vue3",
+    "build:svelte": "node ./scripts/build svelte",
     "update-versions": "node ./scripts/update-versions.js"
   },
   "repository": {
@@ -35,5 +36,5 @@
     "url": "https://github.com/jsplumb/jsplumbtoolkit-applications/issues"
   },
   "homepage": "https://github.com/jsplumb/jsplumbtoolkit-applications#readme",
-  "libs": ["angular", "vanilla", "vue2", "vue3", "react"]
+  "libs": ["angular", "vanilla", "vue2", "vue3", "react", "svelte"]
 }
