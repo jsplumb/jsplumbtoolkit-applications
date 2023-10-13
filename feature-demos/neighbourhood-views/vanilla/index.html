@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" href="node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css">
+        <link rel="stylesheet" href="app.css">
+    </head>
+
+    <body>
+
+        <div id="main">
+
+            <div id="canvas"></div>
+
+            <div id="toggles">
+                <div id="toggleneighbours">Neighbours</div>
+                <div id="togglesuccessors">Successors</div>
+                <div id="togglepredecessors">Predecessors</div>
+                <div id="togglesiblings">Siblings</div>
+            </div>
+
+            <div id="neighbours" class="popup">
+                <div class="title">
+                    <span>Neighbours</span>
+                </div>
+                <div class="content"></div>
+            </div>
+            <div id="successors" class="popup">
+                <div class="title">
+                    <span>Successors</span>
+                </div>
+                <div class="content"></div>
+            </div>
+            <div id="predecessors" class="popup">
+                <div class="title">
+                    <span>Predecessors</span>
+                </div>
+                <div class="content"></div>
+            </div>
+            <div id="siblings" class="popup">
+                <div class="title">
+                    <span>Siblings</span>
+                </div>
+                <div class="content"></div>
+            </div>
+
+        </div>
+
+        <script src="bundle.js"></script>
+
+    </body>
+</html>
