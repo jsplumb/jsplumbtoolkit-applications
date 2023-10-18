@@ -22,6 +22,12 @@ jsplumb-miniview {
   right:1rem;
 }
 
+jsplumb-controls {
+  position:absolute;
+  top:1rem;
+  left:1rem;
+}
+
 .jtk-node {
   border:1px solid #ccc;
   background-color:white;
