@@ -35,6 +35,8 @@ npm run install:vue2
 
 npm run install:vue3
 
+npm run install:svelte
+
 ```
 
 ## Building
@@ -48,6 +50,7 @@ npm run build:angular
 npm run build:react
 npm run build:vue2
 npm run build:vue3
+npm run build:svelte
 
 ```
 
@@ -74,61 +77,11 @@ Each app can be run via npm, the command varying depending on the library integr
 
 `npm run preview`
 
+#### Svelte
+
+`npm run start`
+
 #### Vanilla
 
 `npm run serve`
 
-
-## Apps available
-
-This repository currently contains two starter apps (Flowchart Builder and Database Schema Builder) with versions available for Vanilla JS, Angular, React, Vue 2 and Vue 3, plus a Mindmap Builder, written for Vanilla JS.
-
-The Angular apps were created with Angular 16 as a dependency, but will run in previous versions of Angular down to Angular 12.  The React apps require React 17+ and were created with `create-react-app`. The Vue 2 and Vue 3 apps were created with `vite`.
-
-
-### Flowchart Builder
-
-![](img/flowchart-builder.png)
-
-You can test this app on our site at [https://jsplumbtoolkit.com/demonstrations/flowchart-builder](https://jsplumbtoolkit.com/demonstrations/flowchart-builder). 
-
-Documentation can be found at [https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-flowchart-builder](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-flowchart-builder).
-
-### Schema Builder
-
-![](img/schema-builder.png)
-
-You can test this app on our site at [https://jsplumbtoolkit.com/demonstrations/schema-builder](https://jsplumbtoolkit.com/demonstrations/schema-builder).
-
-Documentation can be found at [https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-schema-builder](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-schema-builder).
-
-
-### Mindmap Builder
-
-![](img/mindmap-builder.png)
-
-You can test this app on our site at [https://jsplumbtoolkit.com/demonstrations/mindmap-builder](https://jsplumbtoolkit.com/demonstrations/mindmap-builder).
-
-Documentation can be found at [https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-mindmap-builder](https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-mindmap-builder).
-
----
-
-## Feature Demonstrations
-
-There are a number of demonstrations inside the `feature-demos` directory.
-
-### Active Filtering
-
-### Groups
-
-### Hierarchy Layout
-
-### Layouts
-
-### Multiple renderers
-
-### Path Tracing
-
-### Segmented Connectors
-
-### Skeleton app
