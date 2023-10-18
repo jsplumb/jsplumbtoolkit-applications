@@ -1,0 +1,47 @@
+
+<div class="jtk-demo-main" id="jtk-demo-groups">
+
+  <!-- main drawing area -->
+  <div class="jtk-demo-canvas">
+
+    <jsplumb-surface surfaceId="surface"
+                     toolkitId="toolkitId"
+                     [view]="view"
+                     [renderParams]="renderParams"
+                     [toolkitParams]="toolkitParams"
+    >
+
+    </jsplumb-surface>
+
+    <!--
+        A helper component that ships in the Toolkit since 6.2.0. Provides undo/redo, zoom to fit, etc.
+    -->
+    <jsplumb-controls surfaceId="surface"></jsplumb-controls>
+
+
+    <!-- miniview -->
+    <jsplumb-miniview surfaceId="surface"></jsplumb-miniview>
+  </div>
+  <div class="jtk-demo-rhs">
+    <!-- the node palette -->
+    <div class="sidebar node-palette" jsplumb-surface-drop
+         selector="div"
+         surfaceId="surface"
+         [dataGenerator]="dataGenerator">
+      <div title="Drag Node to canvas" data-node-type="node" class="sidebar-item">
+        <i class="icon-tablet"></i>Drag Node
+      </div>
+      <div title="Drag Group to canvas" data-jtk-is-group="true" data-node-type="group" class="sidebar-item">
+        <i class="icon-tablet"></i>Drag Group
+      </div>
+    </div>
+
+
+    <div class="description">
+
+    </div>
+  </div>
+</div>
+
+
+

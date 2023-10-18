@@ -1,0 +1,185 @@
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css";
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css";
+
+#jtk-demo-groups {
+  display:flex;
+}
+
+jsplumb-surface, .jtk-surface {
+  width:100%;
+  height:100%;
+}
+
+.jtk-demo-canvas {
+  height:100vh;
+  position:relative;
+  flex-basis: 80%;
+}
+
+jsplumb-miniview {
+  position:absolute;
+  top:1rem;
+  right:1rem;
+}
+
+.jtk-node {
+  border:1px solid #ccc;
+  background-color:white;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  border-radius:3px;
+  min-width:100px;
+  padding:10px;
+  z-index:11;
+}
+
+.jtk-group {
+  border:2px solid #9e9e9e;
+  z-index: 10;
+  min-width: 250px;
+  min-height: 250px;
+}
+
+.jtk-group.jtk-drag-hover, .jtk-node.jtk-drag-hover {
+  outline:2px solid red;
+}
+
+.group-title {
+  margin:0;
+  width:100%;
+  display:flex;
+  align-items: center;
+  background-color:#9e9e9e;
+  color:white;
+  font-size: 13px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-indent:7px;
+  padding:7px;
+  box-sizing: border-box;
+}
+
+.group-title button {
+
+
+  cursor:pointer;
+  color: black;
+  background-color: transparent;
+  outline: none;
+  width: 20px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding-bottom: 3px;
+  margin-left:5px;
+  border:1px solid transparent;
+
+}
+
+.group-title button:hover {
+  background-color:#f7f7f7;
+}
+
+.group-title .expand {
+  margin-left:auto;
+}
+
+.group-title .expand:after {
+  content:"-";
+}
+
+.group-title .group-delete {
+  right:45px;
+}
+
+.group-title .group-delete:after {
+  content:"x";
+}
+
+.group-connect {
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  width:20px;
+  height:20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.connect {
+  cursor:pointer;
+}
+
+.jtk-group {
+  background-color: #f7f7f7;
+}
+
+.jtk-group.jtk-group-collapsed {
+  height:40px;
+  min-height:0;
+}
+
+.jtk-group.jtk-group-collapsed .group-title .expand:after {
+  content:"+";
+}
+
+.jtk-group [jtk-group-content] {
+  min-height:210px;
+  margin:5px;
+  width: auto ;
+}
+
+.jtk-group.jtk-group-collapsed [jtk-group-content] {
+  display:none;
+  min-height: 0;
+}
+
+.jtk-connector {
+  z-index:12;
+}
+
+.jtk-node .add, .jtk-node .delete {
+  position:absolute;
+  top:3px;
+}
+
+
+.jtk-surface.jtk-drag-drop-active {
+  outline:6px dotted #4ea758 !important;
+}
+
+.jtk-surface.jtk-drag-drop-hover {
+  outline: 6px solid #f7a45d !important;
+}
+
+[data-jtk-managed].jtk-drag-drop-hover {
+  outline: 6px solid #f7a45d !important;
+}
+
+.sidebar-item {
+  background-color: #CCC;
+  border-radius: 11px;
+  color: #585858;
+  cursor: move;
+  padding: 8px;
+  width: 128px;
+  text-align: center;
+  margin: 10px;
+  outline: none;
+}
+
+.connect {
+  width: 10px;
+  height: 10px;
+  background-color: #f76258;
+  position: absolute;
+  bottom: 13px;
+  right: 5px;
+  cursor:pointer;
+}
