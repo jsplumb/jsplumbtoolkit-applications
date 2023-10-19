@@ -37,10 +37,7 @@ import {
 
 import {FlowchartBuilderInspector} from "./flowchart-inspector";
 
-// import {SvgExporter, ImageExporter} from "./svg-exporter";
-
-// import {SvgExporter, ImageExporter, SvgExporterUI, ImageExporterUI} from "./svg-exporter-2";
-import {SvgExporter, ImageExporter, SvgExporterUI, ImageExporterUI} from "@jsplumbtoolkit/browser-ui";
+import {SvgExporterUI, ImageExporterUI} from "@jsplumbtoolkit/browser-ui";
 
 // this call ensures that the esbuild does not tree-shake the orthogonal connector editors out.
 initializeOrthogonalConnectorEditors()
