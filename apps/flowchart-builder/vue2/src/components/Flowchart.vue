@@ -8,8 +8,8 @@
         AbsoluteLayout,
         initializeOrthogonalConnectorEditors,
         EVENT_TAP,
-        EdgePathEditor,
         FLOWCHART_SHAPES,
+        BASIC_SHAPES,
         BlankEndpoint,
         OrthogonalConnector,
         DEFAULT, SelectionModes,
@@ -40,7 +40,7 @@
     let surface
     let edgeEditor
 
-    const shapeLibrary = new ShapeLibraryImpl([FLOWCHART_SHAPES])
+    const shapeLibrary = new ShapeLibraryImpl([FLOWCHART_SHAPES, BASIC_SHAPES])
 
     export const anchorPositions = [
         {x:0, y:0.5, ox:-1, oy:0, id:"left"},
@@ -59,8 +59,6 @@
             surface = toolkitComponent.surface;
 
             window.tk = toolkit
-
-            edgeEditor = new EdgePathEditor(surface, { activeMode:true})
 
             initializeOrthogonalConnectorEditors()
         },
@@ -106,7 +104,7 @@
                             maxConnections: -1,
                             events: {
                                 [EVENT_TAP]: (params) => {
-                                    edgeEditor.stopEditing()
+                                    surface.stopEditingPath()
                                     // if zero nodes currently selected, or the shift key wasnt pressed, make this node the only one in the selection.
                                     if (toolkit.getSelection()._nodes.length < 1 || params.e.shiftKey !== true) {
                                       toolkit.setSelection(params.obj)
@@ -139,7 +137,7 @@
                             events: {
                                 click:(p) => {
                                     toolkit.setSelection(p.edge)
-                                    edgeEditor.startEditing(p.edge, {
+                                    surface.startEditingPath(p.edge, {
                                         deleteButton:true
                                     })
                                 }
@@ -154,10 +152,11 @@
                     grid:{
                         size:GRID_SIZE
                     },
+                    editablePaths:true,
                     events: {
                         [EVENT_CANVAS_CLICK]: (e) => {
                             toolkit.clearSelection()
-                            edgeEditor.stopEditing()
+                            surface.stopEditingPath()
                         }
                     },
                     propertyMappings:{
@@ -236,7 +235,8 @@
             <div class="sidebar node-palette">
                 <jsplumb-shape-palette surface-id="surfaceId"
                                        :shape-library="shapeLibrary"
-                                       :data-generator="dataGenerator"/>
+                                       :data-generator="dataGenerator"
+                                        initial-set="flowchart"/>
             </div>
             <!-- node/edge inspector -->
             <InspectorComponent surface-id="surfaceId" v-bind:edge-mappings="edgeMappings"/>
