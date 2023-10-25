@@ -1,0 +1,24 @@
+{
+  "name": "hello-world",
+  "version": "6.7.0",
+  "description": "",
+  "scripts": {
+    "serve": "./node_modules/.bin/http-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsplumb/jsplumbtoolkit-applications.git"
+  },
+  "author": "jsPlumb <hello@jsplumbtoolkit.com> (https://jsplumbtoolkit.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsplumb/jsplumbtoolkit-applications/issues"
+  },
+  "homepage": "https://github.com/jsplumb/jsplumbtoolkit-applications#readme",
+  "dependencies": {
+    "@jsplumbtoolkit/browser-ui": "^6.7.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

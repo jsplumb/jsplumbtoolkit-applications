@@ -1,0 +1,30 @@
+{
+  "name": "hello-world",
+  "version": "6.7.0",
+  "description": "",
+  "scripts": {
+    "build-es6": "./node_modules/.bin/esbuild app.js --target=es2016 --bundle --format=iife --outfile=_build/bundle.js",
+    "transpile-es5": "./node_modules/.bin/babel _build/bundle.js -o _build/bundle-es5.js",
+    "build": "npm run build-es6;npm run transpile-es5",
+    "serve": "./node_modules/.bin/http-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsplumb/jsplumbtoolkit-applications.git"
+  },
+  "author": "jsPlumb <hello@jsplumbtoolkit.com> (https://jsplumbtoolkit.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsplumb/jsplumbtoolkit-applications/issues"
+  },
+  "homepage": "https://github.com/jsplumb/jsplumbtoolkit-applications#readme",
+  "dependencies": {
+    "@jsplumbtoolkit/browser-ui": "^6.7.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "esbuild": "^0.19.5",
+    "http-server": "^14.1.1"
+  }
+}
