@@ -202,7 +202,7 @@ export default {
                                                         },
                                                         {
                                                             id:"it-35",
-                                                            labelid:"Gallic",
+                                                            label:"Gallic",
                                                             family:true,
                                                             children:[
                                                                 {
