@@ -15,7 +15,9 @@ import {
     initializeOrthogonalConnectorEditors,
     BackgroundPlugin,
     SelectionModes,
-    ShapeLibraryImpl, ShapeLibraryPalette, FLOWCHART_SHAPES, ControlsComponent, svg
+    ShapeLibraryImpl, ShapeLibraryPalette,
+    FLOWCHART_SHAPES,
+    BASIC_SHAPES, ControlsComponent, svg
 } from "@jsplumbtoolkit/browser-ui"
 
 import edgeMappings from './edge-mappings'
@@ -51,8 +53,7 @@ const anchorPositions = [
 
 ready(() => {
 
-    const shapeLibrary = new ShapeLibraryImpl([FLOWCHART_SHAPES]);
-    let edgeEditor;
+    const shapeLibrary = new ShapeLibraryImpl([FLOWCHART_SHAPES, BASIC_SHAPES]);
     let renderer;
 
     // get the various dom elements
@@ -121,7 +122,7 @@ ready(() => {
                     events: {
                         [EVENT_TAP]: (params) => {
                             // cancel any edge edits when the user taps a node.
-                            edgeEditor.stopEditing()
+                            renderer.stopEditingPath()
                             // if zero nodes currently selected, or the shift key wasnt pressed, make this node the only one in the selection.
                             if (toolkit.getSelection()._nodes.length < 1 || params.e.shiftKey !== true) {
                                 toolkit.setSelection(params.obj)
@@ -156,7 +157,7 @@ ready(() => {
                             // on edge click, select the edge (the inspector will update to
                             // show this edge), and start editing it
                             toolkit.setSelection(p.edge)
-                            edgeEditor.startEditing(p.edge, {
+                            renderer.startEditingPath(p.edge, {
                                 deleteButton:true
                             })
                         }
@@ -170,6 +171,8 @@ ready(() => {
         propertyMappings:{
             edgeMappings:edgeMappings()
         },
+        // enable path editing
+        editablePaths:true,
         // Layout the nodes using an absolute layout
         layout: {
             type: AbsoluteLayout.type
@@ -183,7 +186,7 @@ ready(() => {
             // on whitespace click, clear selected node/edge and stop editing any edges.
             [EVENT_CANVAS_CLICK]: (e) => {
                 toolkit.clearSelection()
-                edgeEditor.stopEditing()
+                renderer.stopEditingPath()
             }
         },
         // this is mostly for dev: by default the surface will consume right clicks.
@@ -235,9 +238,6 @@ ready(() => {
         ]
     })
 
-    // manager for editing edge paths
-    edgeEditor = new EdgePathEditor(renderer, {activeMode: true})
-
     // handler for mode change (pan/zoom vs lasso), clear dataset, zoom to fit etc.
     new ControlsComponent(controlsElement, renderer)
 
@@ -245,6 +245,7 @@ ready(() => {
     new ShapeLibraryPalette ({
         container:nodePaletteElement,
         shapeLibrary,
+        initialSet:FLOWCHART_SHAPES.id,
         surface:renderer,
         dataGenerator:(el) => {
             return {

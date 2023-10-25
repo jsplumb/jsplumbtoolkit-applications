@@ -85,3 +85,40 @@ Each app can be run via npm, the command varying depending on the library integr
 
 `npm run serve`
 
+
+## Starter Apps
+
+### Chatbot
+
+[https://jsplumbtoolkit.com/demonstrations/chatbot](https://jsplumbtoolkit.com/demonstrations/chatbot)
+
+Use the Toolkit to build a chatbot flow, with actions, messages, input and choices. Angular, Vue 2, Vue 3, React and Svelte versions available.
+
+### Flowchart Builder
+
+[https://jsplumbtoolkit.com/demonstrations/flowchart-builder](https://jsplumbtoolkit.com/demonstrations/flowchart-builder)
+
+Fully featured flowchart builder for you to use as a base for your own apps. Includes support for custom shapes, edge routing, node resizing, and SVG/PNG/JPG export. Angular, Vue 2, Vue 3, React and Svelte versions available.
+
+### Schema Builder
+
+[https://jsplumbtoolkit.com/demonstrations/schema-builder](https://jsplumbtoolkit.com/demonstrations/schema-builder)
+
+Includes support for tables, views, multiple columns types, and column relationships. Easily extensible. Angular, Vue 2, Vue 3 and React versions available.
+
+### Org chart
+
+[https://jsplumbtoolkit.com/demonstrations/orgchart](https://jsplumbtoolkit.com/demonstrations/orgchart)
+
+The Toolkit makes it simple to build interactive org charts. This starter app uses the classic org chart layout and provides an inspector from which the user can navigate around. Angular, Vue 2, Vue 3 and React versions available.
+
+### Mindmap Builder
+
+[https://jsplumbtoolkit.com/demonstrations/mindmap-builder](https://jsplumbtoolkit.com/demonstrations/mindmap-builder)
+
+Simple mindmap builder, highlighting several advanced features the Toolkit offers, such as custom layouts, parsers and exporters
+
+
+### Hello World
+
+This app is designed to give you a basic starter app from which you can build your own, without any of the bells and whistles included in our other starter apps.

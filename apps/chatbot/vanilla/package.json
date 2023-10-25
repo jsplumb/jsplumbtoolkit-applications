@@ -1,28 +1,28 @@
 {
-  "name": "vanilla",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build-es6": "./node_modules/.bin/esbuild demo.js --target=es2016 --bundle --format=iife --outfile=bundle.js",
-    "build-es6-min": "./node_modules/.bin/esbuild demo.js --target=es2016 --bundle --minify --format=iife --outfile=bundle-min.js",
-    "transpile-es5": "./node_modules/.bin/babel bundle.js -o bundle-es5.js",
-    "transpile-es5-min": "./node_modules/.bin/babel bundle-min.js -o bundle-min-es5.js",
-    "build": "npm run build-es6;npm run transpile-es5",
-    "build-min": "npm run build-es6-min;npm run transpile-es5-min",
-    "dev": "./node_modules/.bin/esbuild demo.js --target=es2016 --bundle --format=iife --outfile=bundle.js --watch",
-    "serve": "./node_modules/.bin/http-server .",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "jsPlumb <hello@jsplumbtoolkit.com> (https://jsplumbtoolkit.com/)",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "esbuild": "^0.19.4",
-    "http-server": "^14.1.1"
-  },
-  "dependencies": {
-    "@jsplumbtoolkit/browser-ui": "^6.6.2"
-  }
+    "name": "vanilla",
+    "version": "6.7.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build-es6": "./node_modules/.bin/esbuild demo.js --target=es2016 --bundle --format=iife --outfile=bundle.js",
+        "build-es6-min": "./node_modules/.bin/esbuild demo.js --target=es2016 --bundle --minify --format=iife --outfile=bundle-min.js",
+        "transpile-es5": "./node_modules/.bin/babel bundle.js -o bundle-es5.js",
+        "transpile-es5-min": "./node_modules/.bin/babel bundle-min.js -o bundle-min-es5.js",
+        "build": "npm run build-es6;npm run transpile-es5",
+        "build-min": "npm run build-es6-min;npm run transpile-es5-min",
+        "dev": "./node_modules/.bin/esbuild demo.js --target=es2016 --bundle --format=iife --outfile=bundle.js --watch",
+        "serve": "./node_modules/.bin/http-server .",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "jsPlumb <hello@jsplumbtoolkit.com> (https://jsplumbtoolkit.com/)",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "esbuild": "^0.19.4",
+        "http-server": "^14.1.1"
+    },
+    "dependencies": {
+        "@jsplumbtoolkit/browser-ui": "^6.7.0"
+    }
 }

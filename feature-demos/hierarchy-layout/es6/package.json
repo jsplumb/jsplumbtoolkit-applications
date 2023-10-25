@@ -1,6 +1,6 @@
 {
     "name": "hierarchy-layout",
-    "version": "6.6.0",
+    "version": "6.7.0",
     "description": "",
     "main": "demo.js",
     "scripts": {
@@ -19,7 +19,7 @@
     },
     "homepage": "https://github.com/jsplumb-toolkit-demonstrations/active-filtering#readme",
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.6.0"
+        "@jsplumbtoolkit/browser-ui": "^6.7.0"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",

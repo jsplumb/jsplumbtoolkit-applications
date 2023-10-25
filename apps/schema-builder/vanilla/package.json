@@ -1,6 +1,6 @@
 {
     "name": "schema-builder",
-    "version": "6.6.0",
+    "version": "6.7.0",
     "description": "",
     "scripts": {
         "tsc": "tsc",
@@ -23,7 +23,7 @@
     },
     "homepage": "https://github.com/jsplumb/jsplumbtoolkit-application#readme",
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.6.0",
+        "@jsplumbtoolkit/browser-ui": "^6.7.0",
         "babel-cli": "^6.26.0",
         "babel-preset-env": "^1.7.0",
         "esbuild": "0.17.18"
