@@ -341,15 +341,18 @@ export default {
                                                         },
                                                         {
                                                             id:"it-59",
-                                                            label:"Neapolitan"
+                                                            label:"Neapolitan",
+                                                            link:"https://en.wikipedia.org/wiki/Neapolitan_language"
                                                         },
                                                         {
                                                             id:"it-60",
-                                                            label:"Sassarese"
+                                                            label:"Sassarese",
+                                                            link:"https://en.wikipedia.org/wiki/Sassarese_language"
                                                         },
                                                         {
                                                             id:"it-61",
-                                                            label:"Sicilian"
+                                                            label:"Sicilian",
+                                                            link:"https://en.wikipedia.org/wiki/Sicilian_language"
                                                         }
                                                     ]
                                                 }
