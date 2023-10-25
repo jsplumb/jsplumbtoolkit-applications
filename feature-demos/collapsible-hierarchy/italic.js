@@ -202,7 +202,8 @@ export default {
                                                         },
                                                         {
                                                             id:"it-35",
-                                                            label:"Gallic",
+                                                            label:"Gallo-Romance",
+                                                            link:"https://en.wikipedia.org/wiki/Gallo-Romance_languages",
                                                             family:true,
                                                             children:[
                                                                 {
