@@ -21,6 +21,7 @@ import {
   EVENT_CANVAS_CLICK,
   EVENT_CLICK,
   FLOWCHART_SHAPES,
+    BASIC_SHAPES,
   initializeOrthogonalConnectorEditors,
   ObjectAnchorSpec,
     SelectionModes,
@@ -59,8 +60,10 @@ export class AppComponent implements AfterViewInit {
   surface:Surface
   edgeEditor:EdgePathEditor
 
+  initialShapeSet = FLOWCHART_SHAPES.id
+
   constructor(public $jsplumb:jsPlumbService) {
-    this.$jsplumb.registerShapeLibrary([FLOWCHART_SHAPES])
+    this.$jsplumb.registerShapeLibrary([FLOWCHART_SHAPES, BASIC_SHAPES])
   }
 
   ngAfterViewInit() {
