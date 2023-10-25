@@ -37,7 +37,10 @@
                     nodes:{
                         clickable:{
                             events:{
-                                tap:function(p) { console.log(`You clicked on ${p.obj}`) }
+                                tap:function(p) {
+                                    console.log(`You clicked on ${p.obj}`)
+                                    toolkit.setSelection(p.obj)
+                                }
                             }
                         },
                         hello:{
