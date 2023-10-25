@@ -1,0 +1,45 @@
+@import "./base.css";
+@import "../../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css";
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+
+#container {
+  width:600px;
+  height:600px;
+  outline:1px solid;
+}
+
+.jtk-node > div {
+  outline:1px solid;
+  padding:3px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.hello-node {
+  width:100px;
+  height:80px;
+  background-color:white;
+}
+
+.world-node {
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background-color:purple;
+  color:white;
+  font-weight:bold;
+}
+
+
+.jtk-surface-selected-element {
+  outline:1px dotted cadetblue;
+  outline-offset:0.5rem;
+}
