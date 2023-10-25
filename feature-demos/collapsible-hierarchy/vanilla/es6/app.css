@@ -1,0 +1,120 @@
+:root {
+    --color-extinct:#bf4b21;
+    --color-active:#0f650f;
+    --color-selected:#5c8080;
+    --color-edge:gray;
+}
+
+body {
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+#container {
+    width:100vw;
+    height:100vh;
+    outline:1px solid;
+    display:flex;
+}
+
+#canvas {
+    flex:0 0 100%;
+}
+
+#ifDetails {
+    flex:0 0 0;
+    border: none;
+    box-shadow:0 0 10px gray;
+}
+
+#container[data-details='true'] #canvas {
+    flex:0 0 65%;
+}
+
+#container[data-details='true'] #ifDetails {
+    flex:0 0 35%;
+}
+
+.jtk-node {
+    width:100px;
+    height:40px;
+    padding:3px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color:var(--color-active);
+    color:white;
+    border-radius: 1px;
+    box-shadow: 0 0 5px black;
+}
+
+[data-extinct='true'] {
+    background-color: var(--color-extinct);
+}
+
+[data-family='true'] {
+    text-transform: uppercase;
+    background-color:white;
+    color:black;
+}
+
+.jtk-selected-language  {
+    border: none;
+    outline: 4px dashed var(--color-selected);
+    outline-offset: 10px;
+}
+
+.jtk-collapse {
+    position: absolute;
+    right: 2px;
+    top: -2px;
+    transform:rotate(90deg);
+    cursor:pointer;
+    transition: transform 0.2s;
+}
+
+[data-collapsed='true'] .jtk-collapse {
+    transform:rotate(0);
+}
+
+.jtk-label {
+    cursor:pointer;
+}
+
+.jtk-label:hover {
+    text-decoration: underline;
+}
+
+/* ------------ style for edges ------------- */
+
+.jtk-connector path {
+    stroke:var(--color-edge);
+}
+
+
+/* -------- controls ------------ */
+
+#controls {
+    position:absolute;
+    left:50%;
+    top:1rem;
+    display:flex;
+    transform: translateX(-50%);
+    z-index:150;
+}
+
+#controls img {
+    cursor:pointer;
+    width:40px;
+    margin:0 0.5rem;
+}
+
+#controls > div {
+    padding:0.25rem;
+    border-radius:3px;
+    background-color:white;
+}
+
+#controls > div:hover {
+    background-color: var(--color-selected);
+}
+
