@@ -11,7 +11,7 @@
         initializeOrthogonalConnectorEditors,
         EVENT_TAP,
         EdgePathEditor,
-        FLOWCHART_SHAPES,
+        FLOWCHART_SHAPES, BASIC_SHAPES,
         BlankEndpoint,
         OrthogonalConnector,
         DEFAULT, findClosestPoint,
@@ -46,7 +46,7 @@
     let surface
     let edgeEditor
 
-    const shapeLibrary = new ShapeLibraryImpl([FLOWCHART_SHAPES])
+    const shapeLibrary = new ShapeLibraryImpl([FLOWCHART_SHAPES, BASIC_SHAPES])
 
     export const anchorPositions = [
         {x:0, y:0.5, ox:-1, oy:0, id:"left"},
@@ -251,7 +251,8 @@
             <div class="sidebar node-palette">
                 <jsplumb-shape-palette surface-id="surfaceId"
                                        :shape-library="shapeLibrary"
-                                       :data-generator="dataGenerator"/>
+                                       :data-generator="dataGenerator"
+                initial-set="flowchart"/>
             </div>
 
             <!-- node/edge inspector -->
