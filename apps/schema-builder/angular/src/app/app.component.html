@@ -22,8 +22,9 @@
   </div>
   <div class="jtk-demo-rhs">
     <!-- the node palette -->
-    <div class="sidebar node-palette">
-
+    <div class="sidebar node-palette" jsplumb-surface-drop selector="div" surfaceId="surface" [dataGenerator]="dataGenerator">
+      <div data-type="table" class="jtk-schema-palette-item">Table</div>
+      <div data-type="view" class="jtk-schema-palette-item">View</div>
     </div>
     <!-- node/edge inspector -->
     <app-inspector surfaceId="surface"></app-inspector>
