@@ -14,7 +14,7 @@ LassoPlugin, DrawingToolsPlugin,
 AbsoluteLayout, EVENT_CANVAS_CLICK,
     EdgePathEditor,
     ShapeLibraryImpl,
-    FLOWCHART_SHAPES,
+    FLOWCHART_SHAPES, BASIC_SHAPES,
     SelectionModes, SvgExporterUI, ImageExporterUI
 } from "@jsplumbtoolkit/browser-ui"
 
@@ -44,7 +44,7 @@ export const anchorPositions = [
 
 export default function FlowchartComponent() {
 
-    const shapeLibrary = new ShapeLibraryImpl(FLOWCHART_SHAPES)
+    const shapeLibrary = new ShapeLibraryImpl([FLOWCHART_SHAPES, BASIC_SHAPES])
 
     const pathEditor = useRef(null)
     const surfaceComponent = useRef(null)
@@ -213,7 +213,13 @@ export default function FlowchartComponent() {
 
         // palette from which to drag new shapes onto the canvas
         const slp = createRoot(paletteContainer.current)
-        slp.render(<ShapeLibraryPaletteComponent surface={surfaceComponent.current.surface} shapeLibrary={shapeLibrary} container={paletteContainer.current} dataGenerator={dataGenerator}/>);
+        slp.render(<ShapeLibraryPaletteComponent
+                        surface={surfaceComponent.current.surface}
+                        shapeLibrary={shapeLibrary}
+                        container={paletteContainer.current}
+                        dataGenerator={dataGenerator}
+                        initialSet={FLOWCHART_SHAPES.id}
+        />);
 
         // node/edge inspector.
         const ic = createRoot(inspectorContainer.current)
