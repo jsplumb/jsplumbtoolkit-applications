@@ -1,0 +1,33 @@
+#container {
+    width:600px;
+    height:600px;
+    outline:1px solid;
+}
+
+.jtk-surface {
+    width:100%;
+    height:100%;
+}
+
+.hello-node, .world-node {
+    outline:1px solid;
+    padding:3px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hello-node {
+    width:100px;
+    height:80px;
+    background-color:white;
+}
+
+.world-node {
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background-color:purple;
+    color:white;
+    font-weight:bold;
+}

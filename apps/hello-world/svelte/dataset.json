@@ -1,0 +1,9 @@
+{
+  "nodes":[
+    { "id":"1", "type":"hello", "label":"Hello", "left":50, "top":50 },
+    { "id":"2", "type":"world", "label":"World", "left":350, "top":50 }
+  ],
+  "edges":[
+    { "source":"1", "target":"2", "data":{"label":"a label", "color":"purple"} }
+  ]
+}
