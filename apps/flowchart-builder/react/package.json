@@ -1,6 +1,6 @@
 {
     "name": "flowchart-builder-react",
-    "version": "6.7.2",
+    "version": "6.8.0",
     "private": true,
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.5",
@@ -10,7 +10,7 @@
         "react-dom": "^18.2.0",
         "react-scripts": "5.0.1",
         "web-vitals": "^2.1.4",
-        "@jsplumbtoolkit/browser-ui-react": "^6.7.2"
+        "@jsplumbtoolkit/browser-ui-react": "^6.8.0"
     },
     "scripts": {
         "start": "react-scripts start",

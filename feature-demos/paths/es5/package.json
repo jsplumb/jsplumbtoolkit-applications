@@ -1,7 +1,7 @@
 {
-    "version": "6.7.2",
+    "version": "6.8.0",
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.7.2",
+        "@jsplumbtoolkit/browser-ui": "^6.8.0",
         "jsplumbtoolkit-demo-support": "^1.0.0"
     }
 }
