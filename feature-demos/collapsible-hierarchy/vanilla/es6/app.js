@@ -7,6 +7,7 @@ import {
     BlankEndpoint,
     consume,
     EVENT_CLICK,
+    EVENT_TAP,
     EVENT_CANVAS_CLICK
 } from "@jsplumbtoolkit/browser-ui";
 
@@ -53,7 +54,7 @@ ready(() => {
         modelEvents:[
             {
                 selector:".jtk-collapse",
-                event:EVENT_CLICK,
+                event:EVENT_TAP,
                 callback:(e, el, info) => {
                     consume(e)
                     expansionManager.toggleNode(info.obj)
@@ -61,7 +62,7 @@ ready(() => {
             },
             {
                 selector:".jtk-label",
-                event:EVENT_CLICK,
+                event:EVENT_TAP,
                 callback:(e, el, info) => {
                     consume(e)
                     languageViewer.setCurrent(info)
@@ -81,10 +82,12 @@ ready(() => {
             expansionManager = new ExpansionManager(document.getElementById("canvas"), tk, surfaceOptions)
             surface = expansionManager.surface
             languageViewer = new LanguageDetailsView(iframe, surface, (link) => document.getElementById("container").setAttribute("data-details", link != null))
+
+            surface.jsplumb.on(document.querySelector("[data-pan]"), EVENT_TAP, () => languageViewer.panToCurrent())
+            surface.jsplumb.on(document.querySelector("[data-zoom]"), EVENT_TAP, () => surface.zoomToFit())
         }
     })
 
-    document.querySelector("[data-pan]").addEventListener(EVENT_CLICK, () => languageViewer.panToCurrent())
-    document.querySelector("[data-zoom]").addEventListener(EVENT_CLICK, () => surface.zoomToFit())
+
 
 })
