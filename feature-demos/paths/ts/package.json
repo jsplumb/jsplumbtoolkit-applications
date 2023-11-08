@@ -1,10 +1,10 @@
 {
-    "version": "6.7.0",
+    "version": "6.7.2",
     "scripts": {
         "build": "set -e; ./node_modules/.bin/tsc;./node_modules/.bin/rollup -c rollup.config.js"
     },
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.7.0",
+        "@jsplumbtoolkit/browser-ui": "^6.7.2",
         "jsplumbtoolkit-demo-support": "^1.0.0"
     },
     "devDependencies": {
