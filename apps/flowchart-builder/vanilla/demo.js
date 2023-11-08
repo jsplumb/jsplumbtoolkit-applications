@@ -17,7 +17,7 @@ import {
     SelectionModes,
     ShapeLibraryImpl, ShapeLibraryPalette,
     FLOWCHART_SHAPES,
-    BASIC_SHAPES, ControlsComponent, svg
+    BASIC_SHAPES, ControlsComponent, SnaplinesPlugin
 } from "@jsplumbtoolkit/browser-ui"
 
 import edgeMappings from './edge-mappings'
@@ -224,7 +224,8 @@ ready(() => {
             {
                 type:BackgroundPlugin.type,
                 options:GRID_BACKGROUND_OPTIONS
-            }
+            },
+            SnaplinesPlugin.type
         ],
         modelEvents:[
             // catch the TAP event on the delete buttons inside nodes and remove the node from the model.
