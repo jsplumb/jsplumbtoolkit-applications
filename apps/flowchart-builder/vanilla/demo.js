@@ -278,13 +278,21 @@ ready(() => {
     })
 
     document.querySelector("#exportPng").addEventListener("click", () => {
-        const x = new ImageExporterUI(renderer)
+        // show an image export ui, which will default tp PNG.  `dimensions` is optional - if not supplied the resulting PNG
+        // will have the same size as the content.
+        const x = new ImageExporterUI(renderer, {
+            dimensions:[
+                { width:3000}, { width:1200}, {width:800}
+            ]
+        })
         x.export({margins: {x: 50, y: 50}})
     })
 
     document.querySelector("#exportJpg").addEventListener("click", () => {
+        // show an image export ui targetting a JPG output. Here we show an alternative to providing a list of dimensions - we just mandate the
+        // width we want for the output. Again, this is optional. You don't need to provide this or `dimensions`. See note above.
         const x = new ImageExporterUI(renderer)
-        x.export({margins: {x: 50, y: 50}, type:"image/jpeg"})
+        x.export({margins: {x: 50, y: 50}, type:"image/jpeg", width:3000})
     })
 
 })

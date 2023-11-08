@@ -102,11 +102,17 @@ export class AppComponent implements AfterViewInit {
   }
 
   exportPNG() {
-    this.$jsplumb.showImageExportUI({surface:this.surface})
+    // show an image export ui, which will default tp PNG.  `dimensions` is optional - if not supplied the resulting PNG
+    // will have the same size as the content.
+    this.$jsplumb.showImageExportUI({surface:this.surface, dimensions:[
+            { width:3000}, { width:1200}, {width:800}
+        ]})
   }
 
   exportJPG() {
-    this.$jsplumb.showImageExportUI({surface:this.surface, type:"image/jpeg"})
+    // show an image export ui targetting a JPG output. Here we show an alternative to providing a list of dimensions - we just mandate the
+    // width we want for the output. Again, this is optional. You don't need to provide this or `dimensions`. See note above.
+    this.$jsplumb.showImageExportUI({surface:this.surface, type:"image/jpeg", width:3000})
   }
 
   toolkitParams = {
