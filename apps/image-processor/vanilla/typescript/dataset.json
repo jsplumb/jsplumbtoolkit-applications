@@ -1,0 +1,82 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "type": "basic.source",
+      "url":"/351032562.jpg",
+      "left": 50,
+      "top": 50,
+      "label": "COW"
+    },
+    {
+      "id": "2",
+      "type": "basic.source",
+      "url":"/gafas.png",
+      "left": 50,
+      "top": 360,
+      "label": "GAFAS"
+    },
+    {
+      "id": "3",
+      "type": "transform.overlay",
+      "left": 350,
+      "top": 180,
+      "label": "Overlay"
+    },
+    {
+      "id": "4",
+      "type": "basic.display",
+      "left": 650,
+      "top": 150,
+      "label": "Output"
+    },
+    {
+      "id": "5",
+      "type": "input.number",
+      "left": 650,
+      "top": 550,
+      "label": "Number",
+      "value": 80
+    },
+    {
+      "id": "6",
+      "type": "filter.invert",
+      "left": 950,
+      "top": 250,
+      "label": "Invert"
+    },
+    {
+      "id": "7",
+      "type": "basic.display",
+      "left": 1220,
+      "top": 150,
+      "label": "Inverted cow+gafas"
+    }
+  ],
+  "edges": [
+    {
+      "source": "1.out:image",
+      "target": "3.in:image"
+    },
+    {
+      "source": "2.out:image",
+      "target": "3.in:overlay"
+    },
+    {
+      "source": "3.out:image",
+      "target": "4.in:image"
+    },
+    {
+      "source": "4.out:image",
+      "target": "6.in:image"
+    },
+    {
+      "source": "5.out:value",
+      "target": "6.in:amount"
+    },
+    {
+      "source": "6.out:image",
+      "target": "7.in:image"
+    }
+  ]
+}

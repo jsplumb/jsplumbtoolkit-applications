@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "outDir": "_build",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "declaration":true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false,
+    "lib": [ "esnext", "dom" ],
+    "noImplicitAny": true,
+    "allowJs":false,
+    "rootDir": ".",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "include": ["./app.ts"],
+  "exclude":["node_modules", "**/*.d.ts"]
+}
