@@ -1,6 +1,6 @@
 {
     "name": "vue3",
-    "version": "6.8.1",
+    "version": "6.9.1",
     "private": true,
     "scripts": {
         "copy-avatars": "cp -R ../../../img/avatars ./public/avatars",
@@ -9,7 +9,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui-vue3": "^6.8.1",
+        "@jsplumbtoolkit/browser-ui-vue3": "^6.9.1",
         "vue": "^3.3.4"
     },
     "devDependencies": {

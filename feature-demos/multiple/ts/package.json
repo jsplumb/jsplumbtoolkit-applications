@@ -1,10 +1,10 @@
 {
-    "version": "6.8.1",
+    "version": "6.9.1",
     "scripts": {
         "build": "./node_modules/.bin/tsc;./node_modules/.bin/rollup -c rollup.config.js"
     },
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.8.1",
+        "@jsplumbtoolkit/browser-ui": "^6.9.1",
         "jsplumbtoolkit-demo-support": "^1.0.0"
     },
     "devDependencies": {

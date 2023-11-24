@@ -22,6 +22,10 @@ const cleaners = {
         g.rmdir(`${dir}/node_modules/.cache`)
         g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
     },
+    [c.NEXTJS]:(dir) => {
+        g.rmdir(`${dir}/node_modules/.next`)
+        g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
+    },
     [c.SVELTE]:(dir) => {
         g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
         g.rmdir(`${dir}/dist`)
