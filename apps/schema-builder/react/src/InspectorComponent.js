@@ -57,14 +57,14 @@ export default function InspectorComponent({surface}) {
                     <div>Name</div>
                     <input type="text" jtk-att="name" jtk-focus="true"/>
                 <div>Datatype</div>
-                    {datatypes.map(d =><label><input type="radio" jtk-att="datatype" name="datatype" value={d.id}/>{d.description}</label>)}
+                    {datatypes.map(d =><label key={d.id}><input type="radio" jtk-att="datatype" name="datatype" value={d.id}/>{d.description}</label>)}
                 </div>
             }
 
     { currentType === RELATIONSHIP &&
         <div className="jtk-inspector jtk-edge-inspector">
             <div>Cardinality</div>
-            {  cardinalities.map(c => <label><input type="radio" name={PROPERTY_CARDINALITY} jtk-att={PROPERTY_CARDINALITY} value={c.id}/>{c.name}</label>)}
+            {  cardinalities.map(c => <label key={c.id}><input type="radio" name={PROPERTY_CARDINALITY} jtk-att={PROPERTY_CARDINALITY} value={c.id}/>{c.name}</label>)}
 
 
         </div>
