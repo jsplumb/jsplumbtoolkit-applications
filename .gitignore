@@ -16,3 +16,4 @@ bundle-es5.js
 /apps/orgchart/vue3/public/avatars
 /apps/orgchart/vanilla/avatars
 /apps/orgchart/react/public/avatars
+/apps/image-processor/vanilla/typescript/_build/
