@@ -11,7 +11,7 @@ export default function TableComponent({ctx}) {
     const { vertex, surface, toolkit } = ctx
 
     function addColumn() {
-        toolkit.addNewPort(this.node, "column", {
+        toolkit.addNewPort(vertex, "column", {
             id: uuid(),
             name: "new column",
             primaryKey: false,
