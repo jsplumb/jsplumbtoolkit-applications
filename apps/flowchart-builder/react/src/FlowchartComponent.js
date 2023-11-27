@@ -32,6 +32,8 @@ import {
 } from "./constants";
 import edgeMappings from "./edge-mappings";
 
+import './index.css'
+
 //
 // these anchor positions are used by the drag/drop of new edges, and also by the edge path editor
 //
