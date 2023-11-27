@@ -1,7 +1,7 @@
 {
   "name": "jsplumbtoolkit-applications",
   "version": "6.9.1",
-  "description": "Starter applications built with the jsPlumb Toolkit, for use with Toolkit version 6.7.0 or later.",
+  "description": "Starter applications built with the jsPlumb Toolkit, for use with Toolkit version 6.9.1 or later.",
   "main": "index.js",
   "scripts": {
     "clean": "node ./scripts/clean.js",
@@ -12,7 +12,7 @@
     "clean:vue2": "node ./scripts/clean vue2",
     "clean:vue3": "node ./scripts/clean vue3",
     "clean:vanilla": "node ./scripts/clean vanilla",
-    "install": "node ./scripts/install",
+    "install": "echo Please choose a specific integration type to build [angular, react, svelte, vue, vue, nextjs, vanilla]. `react` is for apps built with create-react-app. ",
     "install:angular": "node ./scripts/install angular",
     "install:svelte": "node ./scripts/install svelte",
     "install:react": "node ./scripts/install react",
@@ -39,5 +39,5 @@
     "url": "https://github.com/jsplumb/jsplumbtoolkit-applications/issues"
   },
   "homepage": "https://github.com/jsplumb/jsplumbtoolkit-applications#readme",
-  "libs": ["angular", "vanilla", "vue2", "vue3", "react", "svelte"]
+  "libs": ["angular", "vanilla", "vue2", "vue3", "react", "svelte", "nextjs"]
 }
