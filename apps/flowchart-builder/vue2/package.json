@@ -1,6 +1,6 @@
 {
     "name": "flowchart-builder-vue2",
-    "version": "6.9.1",
+    "version": "6.10.0",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -8,7 +8,7 @@
     },
     "dependencies": {
         "vue": "^2.7.7",
-        "@jsplumbtoolkit/browser-ui-vue2": "^6.9.1"
+        "@jsplumbtoolkit/browser-ui-vue2": "^6.10.0"
     },
     "devDependencies": {
         "@vitejs/plugin-legacy": "^2.0.0",

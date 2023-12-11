@@ -30,6 +30,10 @@ const cleaners = {
         g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
         g.rmdir(`${dir}/dist`)
     },
+    [c.SVELTE_KIT]:(dir) => {
+        g.rmdir(`${dir}/node_modules/.svelte-kit`)
+        g.rmdir(`${dir}/node_modules/@jsplumbtoolkit`)
+    },
     [c.ES5]:(dir) => {
         g.rmdir(`${dir}/node_modules`)
         g.rm(`${dir}/package-lock.json`)
