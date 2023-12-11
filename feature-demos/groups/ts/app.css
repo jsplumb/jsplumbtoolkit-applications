@@ -187,6 +187,10 @@
     height: 3rem !important;
 }
 
+.headless-group.jtk-group-collapsed > .jtk-node, .headless-group.jtk-group-collapsed > .jtk-group {
+    display:none;
+}
+
 .headless-group.jtk-group-collapsed button {
     top: 0.75rem;
 }

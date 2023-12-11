@@ -22,6 +22,7 @@
 
     import NodeComponent from './NodeComponent.svelte'
     import GroupComponent from './GroupComponent.svelte'
+	import HeadlessGroupComponent from './HeadlessGroupComponent.svelte'
 
     import {onMount} from "svelte"
 
@@ -63,15 +64,17 @@
                 layout:{
                     type:AbsoluteLayout.type
                 },
-                events:{
-                    [EVENT_CLICK]:function(){
-                        console.log(arguments)
-                    }
-                }
+                padding:10
             },
             constrained:{
                 parent:DEFAULT,
                 constrain:true
+            },
+            elastic:{
+                component:HeadlessGroupComponent,
+                elastic:true,
+                minSize:{ w:250, h:250 },
+                padding:10
             }
         },
         edges:{
@@ -128,31 +131,6 @@
         zoomToFit:true
     }
 
-    const data = {
-        "groups":[
-            {"id":"one", "title":"Group 1", "left":100, top:50 },
-            {"id":"two", "title":"Group 2", "left":750, top:250, type:"constrained"  },
-            {"id":"three", "title":"Nested Group", "left":50, "top":50, "group":"two"  }
-        ],
-        "nodes": [
-            { "id": "window1", "name": "1", "left": 10, "top": 20, group:"one" },
-            { "id": "window2", "name": "2", "left": 140, "top": 50, group:"one" },
-            { "id": "window3", "name": "3", "left": 450, "top": 50 },
-            { "id": "window4", "name": "4", "left": 110, "top": 370 },
-            { "id": "window5", "name": "5", "left": 140, "top": 150, group:"one" },
-            { "id": "window6", "name": "6", "left": 450, "top": 50, group:"two" },
-            { "id": "window7", "name": "7", "left": 50, "top": 450 }
-        ],
-        "edges": [
-            { source:"window3", target:"one"},
-            { source:"window3", target:"window4"},
-            { source:"one", target:"two"},
-            { source:"window5", target:"window6"},
-            { source:"window1", target:"window2"},
-            { source:"window1", target:"window5"}
-        ]
-    };
-
     onMount(async() => {
 
         const surface = surfaceComponent.getSurface()
@@ -173,16 +151,16 @@
         new SurfaceDropManager({
             surface,
             source:document.querySelector(".node-palette"),
-            selector:"[data-node-type]",
+            selector:"[data-type]",
             dataGenerator:(e) => {
                 return {
-                    type:"default"
+                    type:e.getAttribute("data-type")
                 };
             }
         })
 
         // load initial dataset
-        toolkit.load({data:data})
+        toolkit.load({url:"./dataset.json"})
     })
 
 
@@ -206,25 +184,42 @@
     <div class="jtk-demo-rhs">
 
         <div class="sidebar node-palette">
-            <div title="Drag Node to canvas" data-node-type="node" class="sidebar-item">
+            <div title="Drag Node to canvas" data-type="default" class="sidebar-item">
                 <i class="icon-tablet"></i>Drag Node
             </div>
-            <div title="Drag Group to canvas" data-jtk-is-group="true" data-node-type="group" class="sidebar-item">
+            <div title="Drag Group to canvas" data-jtk-is-group="true" data-type="default" class="sidebar-item">
                 <i class="icon-tablet"></i>Drag Group
             </div>
+			<div title="Drag Group to canvas" data-jtk-is-group="true" data-type="elastic"
+				 class="sidebar-item">
+				<i class="icon-tablet"></i>Drag Elastic Group
+			</div>
         </div>
         <div class="description">
-            <p>
-                This is a demonstration of the Groups functionality using the Toolkit's Svelte integration.
-            </p>
-            <ul>
-                <li>Drag new Nodes/Groups from the palette on the left onto the workspace. You can drag Nodes directly into Groups.</li>
-                <li>Collapse/Expand Groups with the -/+ buttons</li>
-                <li>Drag existing Nodes into Groups to add them.</li>
-                <li>Nodes can be dragged out of Group 1 but not out of Group 2</li>
-                <li>Click the 'Pencil' icon to enter 'select' mode, then select several nodes. Click the canvas to exit.</li>
-                <li>Click the 'Home' icon to zoom out and see all the nodes.</li>
-            </ul>
+			<div class="h3">Nested Groups</div>
+			<p>The Toolkit has comprehensive support for groups, which can be nested to an arbitrary level. When groups are collapsed any edges to/from
+				children of the group are relocated to the group. You can collapse and expand groups in this demo with the `-` and `+` buttons.
+			</p>
+			<p>Group 1 in this demo has `autoSize` switched on, and will resize when new nodes are dropped into the group, or nodes are deleted or dragged
+				out.</p>
+			<p>Group 2 has `constrain` set, meaning that child nodes cannot be dragged outside of its bounds.</p>
+
+			<div class="h5 my-3">Elastic Groups</div>
+			<p>The headless group in this app is an <strong>elastic</strong> group, which is a type of group that is available from 6.10.0 onwards. When you drag a child node
+				around in an elastic group, the group will resize to always encompass its child nodes (while still respecting any <code>minSize</code> or <code>maxSize</code> you
+				may have set).  If you want to drag a node out of an elastic group, hold down the Shift key while dragging. </p>
+			<p>By default, an elastic group will resize from any edge. This can be switched off programmatically via setting `allowResizeFromOrigin:false` on a
+				group definition, and you can also switch it off on an ad-hoc basis by holding down the Ctrl or Meta key while dragging (on a Mac the Meta key
+				is the Command key).
+			</p>
+
+			<div class="h5 my-3">Further reading</div>
+			<p>
+				Read about this demo itself in our docs: <a href="https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-groups" target="_blank">https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/starter-app-groups</a>
+			</p>
+			<p>
+				Read about groups in detail here:<a href="https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/groups" target="_blank">https://docs.jsplumbtoolkit.com/toolkit/6.x/lib/groups</a>
+			</p>
         </div>
     </div>
 

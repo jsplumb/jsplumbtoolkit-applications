@@ -1,12 +1,13 @@
 {
     "name": "active-filtering",
-    "version": "6.9.1",
+    "version": "6.10.0",
     "description": "",
     "main": "demo.js",
     "scripts": {
         "build-es6": "./node_modules/.bin/esbuild demo.js --target=es2016 --bundle --format=iife --outfile=_build/bundle.js",
         "transpile-es5": "./node_modules/.bin/babel _build/bundle.js -o _build/bundle-es5.js",
-        "build": "npm run build-es6;npm run transpile-es5"
+        "build": "npm run build-es6;npm run transpile-es5",
+        "serve": "./node_modules/.bin/http-server ."
     },
     "repository": {
         "type": "git",
@@ -19,11 +20,12 @@
     },
     "homepage": "https://github.com/jsplumb/jsplumbtoolkit-applications#readme",
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.9.1"
+        "@jsplumbtoolkit/browser-ui": "^6.10.0"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",
         "babel-preset-env": "^1.7.0",
-        "esbuild": "0.17.18"
+        "esbuild": "0.17.18",
+        "http-server": "^14.1.1"
     }
 }

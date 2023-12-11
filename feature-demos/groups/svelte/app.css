@@ -38,87 +38,52 @@ body {
 }
 
 /* ----------- / page structure ---------------- */
-
-/* ------------ sidebar (drag/drop nodes) ---------------- */
-.sidebar-item {
-    background-color: #CCC;
-    border-radius: 11px;
-    color: #585858;
-    cursor: move;
-    padding: 8px;
-    width: 128px;
-    text-align: center;
-    margin: 10px;
-    outline: none;
+.jtk-demo-groups {
+    display: flex;
+    height: 100%;
 }
-
-.node-palette {
-    font-size:15px;
-}
-
-ul {
-    padding-inline-start: 10px;
-}
-
-li {
-    list-style-type:none;
-    margin:5px 0;
-}
-/* ------------ nodes/groups ---------------- */
 
 .jtk-node {
-    border:1px solid #ccc;
-    background-color:white;
-    display:flex;
+    border: 1px solid #ccc;
+    background-color: white;
+    display: flex;
     align-items: center;
     justify-content: center;
-    border-radius:3px;
-    min-width:100px;
-    padding:10px;
-    z-index:11;
+    border-radius: 3px;
+    min-width: 100px;
+    padding: 10px;
+    z-index: 11;
 }
 
 .jtk-group {
-    border:2px solid #9e9e9e;
+    border: 2px solid #9e9e9e;
     z-index: 10;
     min-width: 250px;
     min-height: 250px;
 }
 
-.connect {
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background-color: crimson;
-    position:absolute;
-    right:0.25rem;
-    bottom:0.25rem;
-    cursor:pointer;
-}
-
 .jtk-group.jtk-drag-hover, .jtk-node.jtk-drag-hover {
-    outline:2px solid red;
+    outline: 2px solid red;
 }
 
 .group-title {
-    margin:0;
-    width:100%;
-    display:flex;
+    margin: 0;
+    width: 100%;
+    display: flex;
     align-items: center;
-    background-color:#9e9e9e;
-    color:white;
+    background-color: #9e9e9e;
+    color: white;
     font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    text-indent:7px;
-    padding:7px;
+    text-indent: 7px;
+    padding: 7px;
     box-sizing: border-box;
 }
 
-.group-title button {
+.jtk-group button {
 
-
-    cursor:pointer;
+    cursor: pointer;
     color: black;
     background-color: transparent;
     outline: none;
@@ -129,37 +94,37 @@ li {
     justify-content: center;
     border-radius: 50%;
     padding-bottom: 3px;
-    margin-left:5px;
-    border:1px solid transparent;
+    margin-left: 5px;
+    border: 1px solid transparent;
 
 }
 
-.group-title button:hover {
-    background-color:#f7f7f7;
+.jtk-group button:hover {
+    background-color: #f76258;
 }
 
-.group-title .expand {
-    margin-left:auto;
+.jtk-group .expand {
+    margin-left: auto;
 }
 
-.group-title .expand:after {
-    content:"-";
+.jtk-group .group-delete {
+    right: 45px;
 }
 
-.group-title .group-delete {
-    right:45px;
+.jtk-group .expand:after {
+    content: "-";
 }
 
-.group-title .group-delete:after {
-    content:"x";
+.jtk-group .group-delete:after {
+    content: "x";
 }
 
 .group-connect {
-    position:absolute;
-    bottom:10px;
-    left:10px;
-    width:20px;
-    height:20px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -168,7 +133,16 @@ li {
 }
 
 .connect {
-    cursor:pointer;
+    cursor: pointer;
+}
+
+.jtk-node .connect {
+    width: 10px;
+    height: 10px;
+    background-color: #f76258;
+    position: absolute;
+    bottom: 0.25rem;
+    left: 0.75rem;
 }
 
 .jtk-group {
@@ -176,37 +150,37 @@ li {
 }
 
 .jtk-group.jtk-group-collapsed {
-    height:40px;
-    min-height:0;
+    height: 40px;
+    min-height: 0;
 }
 
-.jtk-group.jtk-group-collapsed .group-title .expand:after {
-    content:"+";
+.jtk-group.jtk-group-collapsed .expand:after {
+    content: "+";
 }
 
 .jtk-group [jtk-group-content] {
-    min-height:210px;
-    margin:5px;
-    width: auto ;
+    min-height: 210px;
+    margin: 5px;
+    width: auto;
 }
 
 .jtk-group.jtk-group-collapsed [jtk-group-content] {
-    display:none;
+    display: none;
     min-height: 0;
 }
 
 .jtk-connector {
-    z-index:12;
+    z-index: 12;
 }
 
 .jtk-node .add, .jtk-node .delete {
-    position:absolute;
-    top:3px;
+    position: absolute;
+    top: 3px;
 }
 
 
 .jtk-surface.jtk-drag-drop-active {
-    outline:6px dotted #4ea758 !important;
+    outline: 6px dotted #4ea758 !important;
 }
 
 .jtk-surface.jtk-drag-drop-hover {
@@ -217,7 +191,48 @@ li {
     outline: 6px solid #f7a45d !important;
 }
 
-.jtk-surface-selected-element {
-    outline:1px dotted red;
-    outline-offset: 5px;
+.groups-endpoint circle {
+    fill: #89bcde;
 }
+
+.jtk-drag-original-group {
+    z-index: 12;
+}
+
+.jtk-drag-active {
+    outline: 2px solid forestgreen;
+}
+
+.jtk-drag-hover {
+    outline: 2px solid orangered;
+}
+
+/* --------------- styles specific to the headless group type ------------------------------ */
+
+.headless-group button {
+    position: absolute;
+    top: 0.5rem;
+    background-color: antiquewhite;
+}
+
+.headless-group .expand {
+    right: 2rem;
+}
+
+.headless-group .group-delete {
+    right: 0.5rem;
+}
+
+.headless-group.jtk-group-collapsed {
+    height: 3rem !important;
+}
+
+.headless-group.jtk-group-collapsed > .jtk-node, .headless-group.jtk-group-collapsed > .jtk-group {
+    display:none;
+}
+
+.headless-group.jtk-group-collapsed button {
+    top: 0.75rem;
+}
+
+/* --------------- / styles specific to the headless group type ------------------------------ */

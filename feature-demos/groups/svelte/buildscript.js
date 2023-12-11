@@ -40,6 +40,14 @@ fs.copyFile("./node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css", 
     if (err) throw err;
 });
 
+fs.copyFile("./node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-demo-support.css", "./dist/jsplumbtoolkit-demo-support.css", (err) => {
+    if (err) throw err;
+});
+
 fs.copyFile("./node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css", "./dist/jsplumbtoolkit-controls.css", (err) => {
+    if (err) throw err;
+});
+
+fs.copyFile("./dataset.json", "./dist/dataset.json", (err) => {
     if (err) throw err;
 });

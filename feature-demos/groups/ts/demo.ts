@@ -29,32 +29,6 @@ ready(() => {
 
 // jsPlumbToolkit code.
 
-    // 1. declare some JSON data for the graph. This syntax is a JSON equivalent of GraphML.
-    const data = {
-        "groups":[
-            {"id":"one", "title":"Group 1", "left":100, top:50 },
-            {"id":"two", "title":"Group 2", "left":750, top:250, type:"constrained"  },
-            {"id":"three", "title":"Nested Group", "left":50, "top":50, "group":"two"  }
-        ],
-        "nodes": [
-           { "id": "window1", "name": "1", "left": 10, "top": 20, group:"one" },
-            { "id": "window2", "name": "2", "left": 140, "top": 50, group:"one" },
-            { "id": "window3", "name": "3", "left": 450, "top": 50 },
-            { "id": "window4", "name": "4", "left": 110, "top": 370 },
-            { "id": "window5", "name": "5", "left": 140, "top": 150, group:"one" },
-            { "id": "window6", "name": "6", "left": 450, "top": 50, group:"two" },
-            { "id": "window7", "name": "7", "left": 50, "top": 450 }
-        ],
-        "edges": [
-            { source:"window3", target:"one"},
-            { source:"window3", target:"window4"},
-            { source:"one", target:"two"},
-            { source:"window5", target:"window6"},
-            { source:"window1", target:"window2"},
-            { source:"window1", target:"window5"}
-        ]
-    };
-
     const view:SurfaceViewOptions = {
         nodes: {
             [DEFAULT]: {
@@ -78,15 +52,17 @@ ready(() => {
                 layout:{
                     type:AbsoluteLayout.type
                 },
-                events:{
-                    [EVENT_CLICK]:function(){
-                        console.log(arguments)
-                    }
-                }
+                padding:10
             },
             constrained:{
                 parent:DEFAULT,
                 constrain:true
+            },
+            elastic:{
+                templateId:"tmplElasticGroup",
+                elastic:true,
+                minSize:{ w:250, h:250 },
+                padding:10
             }
         },
         edges:{
@@ -176,9 +152,6 @@ ready(() => {
         zoomToFit:true
     });
 
-    // load the data.
-    toolkit.load({type: "json", data: data});
-
     // pan mode/select mode
     const controls = document.querySelector(".controls")
     renderer.on(controls, EVENT_TAP, "[mode]", function () {
@@ -219,7 +192,7 @@ ready(() => {
     //
     // listen for group expand/collapse
     //
-    renderer.bindModelEvent(EVENT_TAP, ".group-title .expand", (event: Event, eventTarget: HTMLElement, info: ObjectInfo<Group>) => {
+    renderer.bindModelEvent(EVENT_TAP, ".expand", (event: Event, eventTarget: HTMLElement, info: ObjectInfo<Group>) => {
         if (info.obj) {
             renderer.toggleGroup(info.obj)
         }
@@ -239,12 +212,15 @@ ready(() => {
     createSurfaceDropManager({
         surface:renderer,
         source:document.querySelector(".node-palette"),
-        selector:"[data-node-type]",
+        selector:"[data-type]",
         dataGenerator:(e:Element) => {
             return {
-                type:"default"
+                type:e.getAttribute("data-type")
             };
         }
     })
+
+    // load the data.
+    toolkit.load({url:"./dataset.json"});
 })
 
