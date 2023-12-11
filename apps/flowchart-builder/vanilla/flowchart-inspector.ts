@@ -3,7 +3,7 @@ import {
     isNode,
     isEdge,
     VanillaInspectorOptions,
-    VanillaInspector, createEdgeTypePickerTag
+    VanillaInspector, createEdgeTypePickerTag, JsPlumbToolkit
 } from "@jsplumbtoolkit/browser-ui"
 
 import {
@@ -20,7 +20,9 @@ import edgeMappings from "./edge-mappings"
 const TMPL_NODE_INSPECTOR = "tmplNodeInspector"
 const TMPL_EDGE_INSPECTOR = "tmplEdgeInspector"
 
-export interface FlowchartInspectorOptions extends VanillaInspectorOptions { }
+export interface FlowchartInspectorOptions extends VanillaInspectorOptions {
+    toolkit:JsPlumbToolkit
+}
 
 const inspectorTemplates = {
     [TMPL_NODE_INSPECTOR] : `
@@ -74,7 +76,7 @@ export class FlowchartBuilderInspector extends VanillaInspector {
             }
         }))
 
-        this.registerTag("jtk-line-style", createEdgeTypePickerTag(PROPERTY_LINE_STYLE, edgeMappings(), (v:string) => {
+        this.registerTag("jtk-line-style", createEdgeTypePickerTag(options.toolkit, PROPERTY_LINE_STYLE, edgeMappings(), (v:string) => {
             this.setValue(PROPERTY_LINE_STYLE, v)
         }))
 
