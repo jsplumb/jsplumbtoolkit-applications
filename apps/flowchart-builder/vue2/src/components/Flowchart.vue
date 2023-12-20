@@ -162,6 +162,7 @@
                     propertyMappings:{
                         edgeMappings:edgeMappings()
                     },
+                    useModelForSizes:true,
                     consumeRightClick: false,
                     dragOptions: {
                         filter: ".jtk-draw-handle, .node-action, .node-action i"
