@@ -224,6 +224,7 @@ export class AppComponent implements AfterViewInit {
         options:GRID_BACKGROUND_OPTIONS
       }
     ],
+    useModelForSizes:true,
     zoomToFit:true
   }
 
