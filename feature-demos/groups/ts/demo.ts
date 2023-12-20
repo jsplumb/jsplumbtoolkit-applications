@@ -22,7 +22,8 @@ import {
     ForceDirectedLayout,
     MiniviewPlugin,
     StateMachineConnector,
-    LassoPlugin} from "@jsplumbtoolkit/browser-ui"
+    LassoPlugin, BrowserElement
+} from "@jsplumbtoolkit/browser-ui"
 
 ready(() => {
 
@@ -141,8 +142,8 @@ ready(() => {
                 toolkit.clearSelection()
             },
             [EVENT_SURFACE_MODE_CHANGED]: (mode:string) => {
-                renderer.removeClass(document.querySelector("[mode]"), "selected-mode");
-                renderer.addClass(document.querySelector("[mode='" + mode + "']"), "selected-mode");
+                renderer.removeClass(document.querySelector("[mode]") as BrowserElement, "selected-mode");
+                renderer.addClass(document.querySelector("[mode='" + mode + "']") as BrowserElement, "selected-mode");
             },
             [EVENT_GROUP_ADDED]:(group:Group) => {
                 console.log("New group " + group.id + " added")
@@ -153,7 +154,7 @@ ready(() => {
     });
 
     // pan mode/select mode
-    const controls = document.querySelector(".controls")
+    const controls = document.querySelector(".controls") as BrowserElement
     renderer.on(controls, EVENT_TAP, "[mode]", function () {
         renderer.setMode(this.getAttribute("mode"));
     });
