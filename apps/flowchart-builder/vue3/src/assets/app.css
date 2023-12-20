@@ -122,12 +122,14 @@ body {
     align-items: center;
     justify-content: center;
     background-color:transparent;
+    height:100%;
 }
 
 .flowchart-object svg {
     position: absolute;
     left: 0;
     top: 0;
+    overflow:visible;
 }
 
 .flowchart-object span {
