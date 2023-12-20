@@ -188,6 +188,7 @@ export default function FlowchartComponent() {
                 options:GRID_BACKGROUND_OPTIONS
             }
         ],
+        useModelForSizes:true,
         zoomToFit:true
     }
 
