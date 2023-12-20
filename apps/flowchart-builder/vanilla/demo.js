@@ -110,7 +110,7 @@ ready(() => {
                     // In this template we render a div for each value in the `anchorPositions` array, and these elements
                     // act as connection drag sources. We use CSS to position them, but we also write out various
                     // `data-jtk-anchor-...` properties to control their anchor positions.
-                    template:`<div style="left:{{left}}px;top:{{top}}px;width:{{width}}px;height:{{height}}px;color:{{#textColor}}" class="flowchart-object flowchart-{{type}}" data-jtk-target="true">
+                    template:`<div style="color:{{#textColor}}" class="flowchart-object flowchart-{{type}}" data-jtk-target="true">
                             <jtk-shape/> 
                             ${anchorPositions.map(ap => `<div class="jtk-connect jtk-connect-${ap.id}"  data-jtk-anchor-x="${ap.x}" data-jtk-anchor-y="${ap.y}" data-jtk-orientation-x="${ap.ox}"  data-jtk-orientation-y="${ap.oy}" data-jtk-source="true"></div>`).join("\n")}
                             <div class="node-delete node-action delete"/>
@@ -189,6 +189,7 @@ ready(() => {
                 renderer.stopEditingPath()
             }
         },
+        useModelForSizes:true,
         // this is mostly for dev: by default the surface will consume right clicks.
         consumeRightClick: false,
         // a selector identifying which parts of each node should not cause the element to be dragged.
