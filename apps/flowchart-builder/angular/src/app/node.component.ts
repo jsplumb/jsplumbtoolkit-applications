@@ -6,7 +6,7 @@ import { anchorPositions } from "./app.component"
 @Component({
     template:`<div style="color:{{obj.textColor}}" class="flowchart-object" data-jtk-target="true">
         
-        <jtk-shape [obj]="obj" showLabels="true" labelProperty="text"></jtk-shape>
+        <jtk-shape [obj]="obj" showLabels="true" labelProperty="text" [width]="obj.width" [height]="obj.height"></jtk-shape>
 
         <div *ngFor="let anchor of anchorPositions" 
              class="jtk-connect jtk-connect-{{anchor.id}}" 
