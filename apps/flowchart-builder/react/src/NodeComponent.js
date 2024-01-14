@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ShapeComponent } from "@jsplumbtoolkit/browser-ui-react"
 
-import { anchorPositions } from "./FlowchartComponent";
+import anchorPositions from "./anchor-positions"
 
 export default function NodeComponent({ctx, shapeLibrary}) {
 
