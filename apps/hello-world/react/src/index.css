@@ -15,15 +15,24 @@ body {
   height:100%;
 }
 
-.jtk-node > div {
-  outline:1px solid;
+.jtk-miniview {
+  position:absolute;
+  right:1rem;
+  top:1rem;
+}
+
+.jtk-node  {
   padding:3px;
+}
+
+.jtk-node > div {
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
 .hello-node {
+  outline:1px solid;
   width:100px;
   height:80px;
   background-color:white;
