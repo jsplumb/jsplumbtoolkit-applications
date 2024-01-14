@@ -18,25 +18,25 @@ import {
 } from "@jsplumbtoolkit/browser-ui"
 
 import {
-    JsPlumbToolkitSurfaceComponent,
-    JsPlumbToolkitMiniviewComponent,
+    SurfaceComponent,
+    MiniviewComponent,
     ControlsComponent
 } from "@jsplumbtoolkit/browser-ui-react";
 
-import InspectorComponent from './InspectorComponent'
+import Inspector from './InspectorComponent'
 import PersonComponent from "./PersonComponent";
+
+const SURFACE_ID = "surfaceId"
 
 export default function OrgchartComponent(props) {
 
-    const toolkit = newInstance()
-
     const surfaceComponent = useRef(null)
-    const miniviewContainer = useRef(null)
-    const controlsContainer = useRef(null)
     const inspectorContainer = useRef(null)
+    const toolkit = useRef(null)
+    const surface = useRef(null)
 
     function selectPerson(person) {
-        toolkit.setSelection(person)
+        toolkit.current.setSelection(person)
         surfaceComponent.current.surface.centerOnAndZoom(person, 0.15)
     }
 
@@ -49,7 +49,7 @@ export default function OrgchartComponent(props) {
         },
         events: {
             [EVENT_CANVAS_CLICK]: (e) => {
-                this.toolkit.clearSelection()
+                toolkit.current.clearSelection()
             }
         },
         zoomToFit:true,
@@ -87,13 +87,10 @@ export default function OrgchartComponent(props) {
     }
 
     useEffect(() => {
-        const i = createRoot(inspectorContainer.current)
-        i.render(<InspectorComponent surface={surfaceComponent.current.surface} onSelect={(e) => selectPerson(e)}/>)
 
-        const m = createRoot(miniviewContainer.current)
-        m.render(<JsPlumbToolkitMiniviewComponent surface={surfaceComponent.current.surface}/>)
-
-        toolkit.load({
+        surface.current = surfaceComponent.current.getSurface()
+        toolkit.current = surface.current.toolkitInstance
+        toolkit.current.load({
             url:`/dataset.json?q=${uuid()}`
         })
     }, [])
@@ -101,11 +98,14 @@ export default function OrgchartComponent(props) {
 
     return <div style={{width:"100%",height:"100%",display:"flex"}}>
             <div className="jtk-demo-canvas">
-                <JsPlumbToolkitSurfaceComponent renderParams={renderParams} toolkit={toolkit} view={view} ref={ surfaceComponent }/>
-                <div className="miniview" ref={ miniviewContainer }/>
+
+                <SurfaceComponent renderParams={renderParams} toolkit={toolkit} view={view} ref={ surfaceComponent } surfaceId={SURFACE_ID}>
+                    <MiniviewComponent/>
+                </SurfaceComponent>
+
             </div>
             <div className="jtk-demo-rhs">
-                <div id="inspector" ref={inspectorContainer}/>
+                <Inspector  surfaceId={SURFACE_ID}/>
             </div>
         </div>
 

@@ -1,14 +1,17 @@
 import React, {useEffect, useRef, useState} from "react";
 
 import { Inspector, Vertex } from "@jsplumbtoolkit/browser-ui"
+import { getSurfaceComponent} from "@jsplumbtoolkit/browser-ui-react"
 
-export default function InspectorComponent({surface, onSelect}) {
+export default function InspectorComponent({surfaceId, onSelect}) {
 
     const container = useRef(null)
     const [current, setCurrent] = useState(null)
     const [inspector, setInspector] = useState(null)
     const [manager, setManager] = useState(null)
     const [reports, setReports] = useState([])
+
+    const initialized = useRef(false)
 
     function getImage(person) {
         return `/avatars/${person.data.img}`
@@ -20,22 +23,27 @@ export default function InspectorComponent({surface, onSelect}) {
 
     useEffect(() => {
 
-        setInspector(new Inspector({
-            container:container.current,
-            surface,
-            renderEmptyContainer:() => {
-                setCurrent(null)
-                setManager(null)
-                setReports([])
-            },
-            refresh:(obj, cb) => {
-                setCurrent(obj)
-                setManager(obj.getTargetEdges().map(e => e.source)[0])
-                setReports(obj.getSourceEdges().map(e => e.target))
-                // next tick
-                setTimeout(cb)
-            }
-        }))
+        if (!initialized.current) {
+            initialized.current = true
+            getSurfaceComponent(surfaceId, surfaceComponentRef => {
+                setInspector(new Inspector({
+                    container: container.current,
+                    surface:surfaceComponentRef.getSurface(),
+                    renderEmptyContainer: () => {
+                        setCurrent(null)
+                        setManager(null)
+                        setReports([])
+                    },
+                    refresh: (obj, cb) => {
+                        setCurrent(obj)
+                        setManager(obj.getTargetEdges().map(e => e.source)[0])
+                        setReports(obj.getSourceEdges().map(e => e.target))
+                        // next tick
+                        setTimeout(cb)
+                    }
+                }))
+            })
+        }
 
     }, [])
 
