@@ -1,6 +1,9 @@
+'use client'
+
 import React, {useEffect, useRef, useState} from "react";
 
 import { Inspector, isNode, isPort} from "@jsplumbtoolkit/browser-ui"
+import { getSurfaceComponent } from "@jsplumbtoolkit/browser-ui-react"
 
 import {datatypes, cardinalities } from "./definitions";
 import {
@@ -11,25 +14,32 @@ import {
     TABLE, VIEW, COLUMN, RELATIONSHIP
 } from "./constants";
 
-export default function InspectorComponent({surface}) {
+export default function InspectorComponent({surfaceId}) {
 
+    const initialized = useRef(false)
     const container = useRef(null)
     const [currentType, setCurrentType] = useState('')
     const [inspector, setInspector] = useState(null)
 
     useEffect(() => {
 
-        setInspector(new Inspector({
-            container:container.current,
-            surface,
-            renderEmptyContainer:() => setCurrentType(''),
-            refresh:(obj, cb) => {
-                const ct = isNode(obj) ? obj.data.type : isPort(obj) ? COLUMN : RELATIONSHIP
-                setCurrentType(ct)
-                // next tick
-                setTimeout(cb)
-            }
-        }))
+        if (!initialized.current) {
+            initialized.current = true
+            getSurfaceComponent(surfaceId, surfaceComponentRef => {
+
+                setInspector(new Inspector({
+                    container: container.current,
+                    surface:surfaceComponentRef.getSurface(),
+                    renderEmptyContainer: () => setCurrentType(''),
+                    refresh: (obj, cb) => {
+                        const ct = isNode(obj) ? obj.data.type : isPort(obj) ? COLUMN : RELATIONSHIP
+                        setCurrentType(ct)
+                        // next tick
+                        setTimeout(cb)
+                    }
+                }))
+            })
+        }
 
     }, [])
 
@@ -39,7 +49,7 @@ export default function InspectorComponent({surface}) {
             { currentType === TABLE &&
                 <div className="jtk-inspector jtk-node-inspector">
                     <div>Name</div>
-                    <input type="text" jtk-att="name" jtk-focus/>
+                    <input type="text" jtk-att="name" jtk-focus="true"/>
                 </div>
             }
 

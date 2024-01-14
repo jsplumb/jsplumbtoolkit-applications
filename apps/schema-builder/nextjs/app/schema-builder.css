@@ -23,14 +23,14 @@
     align-items: center;
 }
 
-.miniview {
+.jtk-miniview {
     position: absolute;
     top: 25px;
     right: 25px;
     z-index: 100;
 }
 
-.jtk-controls-container {
+.jtk-controls {
     top: 25px;
     position: absolute;
     left: 25px;

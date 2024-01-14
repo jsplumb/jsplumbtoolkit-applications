@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit.css";
+@import "../node_modules/@jsplumbtoolkit/browser-ui/css/jsplumbtoolkit-controls.css";
 
 :root {
   --foreground-rgb: 0, 0, 0;
