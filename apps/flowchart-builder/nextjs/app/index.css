@@ -41,12 +41,14 @@
   position:absolute;
   right:1rem;
   top:1rem;
+  z-index:50;
 }
 
 .jtk-controls {
   position: absolute;
   left:1rem;
   top:1rem;
+  z-index:50;
 }
 
 .jtk-export {
