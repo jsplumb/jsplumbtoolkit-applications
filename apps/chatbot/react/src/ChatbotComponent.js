@@ -1,12 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { createRoot } from "react-dom/client";
 
 import './chatbot.css'
 
 import {
-    newInstance,
-    isPort,
-    DEFAULT,
     AnchorLocations,
     BlankEndpoint,
     EVENT_CLICK,
@@ -17,19 +13,21 @@ import {
 } from "@jsplumbtoolkit/browser-ui"
 
 import {
-    JsPlumbToolkitSurfaceComponent,
-    JsPlumbToolkitMiniviewComponent,
-    ControlsComponent
+    SurfaceComponent,
+    MiniviewComponent,
+    ControlsComponent,
+    SurfaceDropComponent
 } from "@jsplumbtoolkit/browser-ui-react";
 
-import { CHOICES,
+import {
+    CHOICES,
     START,
     END,
     ACTION_CHOICE,
     ACTION_INPUT,
     ACTION_MESSAGE,
     ACTION_TEST,
-    SELECTABLE
+    SELECTABLE, nodeTypes
 } from "./constants";
 
 import StartComponent from './StartComponent'
@@ -38,24 +36,21 @@ import MessageComponent from './MessageComponent'
 import InputComponent from './InputComponent'
 import ChoiceComponent from './ChoiceComponent'
 import TestComponent from './TestComponent'
-import Palette from './Palette'
 import InspectorComponent from "./InspectorComponent";
 
+const SURFACE_ID = "surface"
 
 export default function ChatbotComponent({ctx}) {
 
     const surfaceComponent = useRef(null)
-    const miniviewContainer = useRef(null)
-    const controlsContainer = useRef(null)
-    const paletteContainer = useRef(null)
-    const inspectorContainer = useRef(null)
+    const surface = useRef(null)
+    const toolkit = useRef(null)
 
-    const toolkit = newInstance({
+    const toolkitParams ={
         // the name of the property in each node's data that is the key for the data for the ports for that node.
         // for more complex setups you can use `portExtractor` and `portUpdater` functions - see the documentation for examples.
         portDataProperty:CHOICES
-
-    })
+    }
 
     const renderParams= {
         zoomToFit:true,
@@ -160,41 +155,33 @@ export default function ChatbotComponent({ctx}) {
 
     useEffect(() => {
 
-        const cc = createRoot(controlsContainer.current)
-        cc.render(<ControlsComponent surface={surfaceComponent.current.surface}/>)
-
-        const pc = createRoot(paletteContainer.current)
-        pc.render(<Palette
-                surface={surfaceComponent.current.surface}
-                dataGenerator={dataGenerator}
-                selector=".jtk-chatbot-palette-item"
-                container={paletteContainer.current}
-                />)
-
-        const i = createRoot(inspectorContainer.current)
-        i.render(<InspectorComponent surface={surfaceComponent.current.surface}/>)
-
-        const m = createRoot(miniviewContainer.current)
-        m.render(<JsPlumbToolkitMiniviewComponent surface={surfaceComponent.current.surface}/>)
-
-        toolkit.load({
+        surface.current = surfaceComponent.current.getSurface()
+        toolkit.current = surface.current.toolkitInstance
+        toolkit.current.load({
             url:`/dataset.json?q=${uuid()}`
         })
     }, [])
 
 
     return <div style={{width:"100%",height:"100%",display:"flex"}}>
-<div className="jtk-demo-canvas">
-        <JsPlumbToolkitSurfaceComponent renderParams={renderParams} toolkit={toolkit} view={view} ref={ surfaceComponent }/>
-    <div className="jtk-controls-container" ref={ controlsContainer }/>
-    <div className="miniview" ref={ miniviewContainer }/>
-    </div>
-    <div className="jtk-demo-rhs">
-        <div className="sidebar node-palette" ref={paletteContainer}/>
-    <div id="inspector" ref={inspectorContainer}/>
-    <div className="description">
-        <p></p>
-    </div>
-    </div>
+        <div className="jtk-demo-canvas">
+            <SurfaceComponent surfaceId={SURFACE_ID}
+                    renderParams={renderParams} toolkitParams={toolkitParams}
+                    view={view} ref={ surfaceComponent }>
+
+                <ControlsComponent/>
+                <MiniviewComponent/>
+            </SurfaceComponent>
+        </div>
+        <div className="jtk-demo-rhs">
+            <div className="sidebar node-palette">
+                <SurfaceDropComponent surfaceId={SURFACE_ID} dataGenerator={dataGenerator} selector=".jtk-chatbot-palette-item">
+                    {nodeTypes.map(nt => <div key={nt.type} className="jtk-chatbot-palette-item" data-type={nt.type}>{nt.label}</div>)}
+                </SurfaceDropComponent>
+
+                <InspectorComponent surfaceId={SURFACE_ID}/>
+                <div className="description"></div>
+            </div>
+        </div>
     </div>
 }
