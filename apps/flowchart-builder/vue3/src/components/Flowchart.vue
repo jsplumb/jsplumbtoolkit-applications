@@ -41,10 +41,11 @@
 
     import edgeMappings from "../edge-mappings";
 
-    let toolkitComponent
     let toolkit
     let surface
     let edgeEditor
+
+    let foo
 
     const shapeLibrary = new ShapeLibraryImpl([FLOWCHART_SHAPES, BASIC_SHAPES])
 
@@ -59,8 +60,6 @@
         name:"flowchart",
         components:{ ControlsComponent, InspectorComponent },
         mounted() {
-
-            toolkitComponent = this.$refs.toolkitComponent;
 
             loadSurface("surfaceId", (s) => {
                 surface = s;
@@ -130,7 +129,7 @@
                             connector: {
                                 type:OrthogonalConnector.type,
                                 options:{
-                                    cornerRadius: 3,
+                                    //cornerRadius: 3,
                                     alwaysRespectStubs:true
                                 }
                             },
@@ -234,7 +233,7 @@
 
         <ControlsComponent surface-id="surfaceId"/>
 
-        <div class="jtk-export">
+        <div class="jtk-export" ref="foo">
             <span>Export:</span>
             <a href="#" id="exportSvg" v-on:click="exportSvg()">SVG</a>
             <a href="#" id="exportPng" v-on:click="exportPng()">PNG</a>
@@ -243,8 +242,7 @@
 
         <div class="jtk-demo-canvas">
 
-            <jsplumb-toolkit ref="toolkitComponent"
-                             surface-id="surfaceId"
+            <jsplumb-toolkit surface-id="surfaceId"
                              :render-params="this.renderParams()"
                              :view="this.viewParams()"
                              :toolkit-params="this.toolkitParams()"
