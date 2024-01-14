@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import {
-    newInstance,
     DEFAULT,
     AnchorLocations,
     BlankEndpoint,
@@ -11,7 +10,7 @@ import {
 } from "@jsplumbtoolkit/browser-ui"
 
 import {
-    JsPlumbToolkitSurfaceComponent
+    SurfaceComponent, MiniviewComponent
 } from "@jsplumbtoolkit/browser-ui-react";
 
 
@@ -21,10 +20,10 @@ import WorldComponent from './WorldComponent'
 
 export default function HelloWorldComponent({ctx}) {
 
+    const initialized = useRef(false)
     const [msg, setMsg] = useState('')
+    const toolkit = useRef(null)
     const surfaceComponent = useRef(null)
-
-    const toolkit = newInstance()
 
     const renderParams= {
         layout:{
@@ -43,7 +42,7 @@ export default function HelloWorldComponent({ctx}) {
         },
         events:{
             [EVENT_CANVAS_CLICK]:() => {
-                toolkit.clearSelection()
+                toolkit.current.clearSelection()
             }
         }
     }
@@ -55,7 +54,7 @@ export default function HelloWorldComponent({ctx}) {
                 events:{
                     tap:(p) => {
                         setMsg(`You clicked on node ${p.obj.id}`)
-                        toolkit.setSelection(p.obj)
+                        toolkit.current.setSelection(p.obj)
                     }
                 }
             },
@@ -90,26 +89,37 @@ export default function HelloWorldComponent({ctx}) {
 
     useEffect(() => {
 
+        if (!initialized.current) {
 
+            initialized.current = true
 
-        toolkit.load({
-            data:{
-                nodes:[
-                    { id:"1", type:"hello", label:"Hello", left:50, top:50 },
-                    { id:"2", type:"world", label:"World", left:350, top:50 }
-                ],
-                edges:[
-                    { source:"1", target:"2", data:{label:"a label", color:"purple"} }
-                ]
-            }
-        })
+            toolkit.current = surfaceComponent.current.getToolkit()
+
+            toolkit.current.load({
+                data: {
+                    nodes: [
+                        {id: "1", type: "hello", label: "Hello", left: 50, top: 50},
+                        {id: "2", type: "world", label: "World", left: 350, top: 50}
+                    ],
+                    edges: [
+                        {source: "1", target: "2", data: {label: "a label", color: "purple"}}
+                    ]
+                }
+            })
+
+        }
     }, [])
 
 
     return <div style={{width:"100%",height:"100%",display:"flex"}}>
                 <div className="jtk-demo-canvas">
-                <div className="hello-world-message">{msg}</div>
-                    <JsPlumbToolkitSurfaceComponent renderParams={renderParams} toolkit={toolkit} view={view} ref={ surfaceComponent }/>
+
+                    <div className="hello-world-message">{msg}</div>
+
+                    <SurfaceComponent renderParams={renderParams} view={view} ref={ surfaceComponent }>
+                        <MiniviewComponent/>
+                    </SurfaceComponent>
+
                 </div>
             </div>
 }
