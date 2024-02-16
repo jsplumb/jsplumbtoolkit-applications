@@ -1,0 +1,722 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "type": "process",
+      "text": "Select Material",
+      "left": -300,
+      "top": -500,
+      "width": 350,
+      "height": 150,
+      "fill": "#FF2299",
+      "outline": "#000000"
+    },
+    {
+      "id": "2",
+      "type": "decision",
+      "text": "Is it in the public domain?",
+      "left": -550,
+      "top": -250,
+      "width": 250,
+      "height": 250,
+      "fill": "#FFFFFF",
+      "outline": "#000000"
+    },
+    {
+      "id": "3",
+      "type": "decision",
+      "text": "Is it Creative Commons?",
+      "left": 100,
+      "top": -300,
+      "width": 250,
+      "height": 250,
+      "fill": "#FFFFFF",
+      "outline": "#000000"
+    },
+    {
+      "id": "4",
+      "type": "decision",
+      "text": "Is it available from the publisher?",
+      "left": 600,
+      "top": -250,
+      "width": 250,
+      "height": 250,
+      "fill": "#FFFFFF",
+      "outline": "#000000"
+    },
+    {
+      "id": "5",
+      "type": "decision",
+      "text": "Can it be linked online?",
+      "left": 300,
+      "top": 100,
+      "width": 250,
+      "height": 250,
+      "fill": "#FFFFFF",
+      "outline": "#000000"
+    },
+    {
+      "id": "6",
+      "type": "process",
+      "text": "Provide link to material",
+      "left": 0,
+      "top": 500,
+      "width": 300,
+      "height": 160,
+      "fill": "#FFFF00",
+      "outline": "#000000"
+    },
+    {
+      "id": "7",
+      "type": "process",
+      "text": "Send request to IPO for usage permission",
+      "left": 850,
+      "top": 50,
+      "width": 300,
+      "height": 200,
+      "fill": "#FFFFFF",
+      "outline": "#000000"
+    },
+    {
+      "id": "8",
+      "type": "process",
+      "text": "Review license and comply with terms",
+      "left": -250,
+      "top": 0,
+      "width": 300,
+      "height": 160,
+      "fill": "#FFFFFF",
+      "outline": "#000000"
+    },
+    {
+      "id": "9",
+      "type": "decision",
+      "text": "Can IPO identify the rights holder?",
+      "left": 550,
+      "top": 500,
+      "width": 300,
+      "height": 200,
+      "fill": "#FFFFFF",
+      "outline": "#000000"
+    },
+    {
+      "id": "10",
+      "type": "terminus",
+      "text": "Copyright cleared",
+      "left": -500,
+      "top": 700,
+      "width": 300,
+      "height": 150,
+      "fill": "#FFFFFF",
+      "outline": "#000000"
+    }
+  ],
+  "edges": [
+    {
+      "source": "1",
+      "target": "2",
+      "data": {
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": -125,
+            "y": -320
+          },
+          {
+            "x": -125,
+            "y": -300
+          },
+          {
+            "x": -425,
+            "y": -300
+          },
+          {
+            "x": -425,
+            "y": -280
+          }
+        ],
+        "source": {
+          "curX": -125,
+          "curY": -350,
+          "x": 0.5,
+          "y": 1,
+          "ox": 0,
+          "oy": 1
+        },
+        "target": {
+          "curX": -425,
+          "curY": -250,
+          "x": 0.5,
+          "y": 0,
+          "ox": 0,
+          "oy": -1
+        }
+      }
+    },
+    {
+      "source": "2",
+      "target": "10",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": -580,
+            "y": -125
+          },
+          {
+            "x": -583,
+            "y": -125
+          },
+          {
+            "x": -583,
+            "y": 775
+          },
+          {
+            "x": -530,
+            "y": 775
+          }
+        ],
+        "source": {
+          "curX": -550,
+          "curY": -125,
+          "x": 0,
+          "y": 0.5,
+          "ox": -1,
+          "oy": 0
+        },
+        "target": {
+          "curX": -500,
+          "curY": 775,
+          "x": 0,
+          "y": 0.5,
+          "ox": -1,
+          "oy": 0
+        }
+      }
+    },
+    {
+      "source": "2",
+      "target": "3",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": -270,
+            "y": -125
+          },
+          {
+            "x": 20,
+            "y": -125
+          },
+          {
+            "x": 20,
+            "y": -175
+          }
+        ],
+        "source": {
+          "curX": -300,
+          "curY": -125,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        },
+        "target": {
+          "curX": 50,
+          "curY": -175,
+          "x": 0,
+          "y": 0.5,
+          "ox": -1,
+          "oy": 0
+        }
+      }
+    },
+    {
+      "source": "3",
+      "target": "4",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 225,
+            "y": -330
+          },
+          {
+            "x": 725,
+            "y": -330
+          },
+          {
+            "x": 725,
+            "y": -280
+          }
+        ],
+        "source": {
+          "curX": 225,
+          "curY": -300,
+          "x": 0.5,
+          "y": 0,
+          "ox": 0,
+          "oy": -1
+        },
+        "target": {
+          "curX": 725,
+          "curY": -250,
+          "x": 0.5,
+          "y": 0,
+          "ox": 0,
+          "oy": -1
+        }
+      }
+    },
+    {
+      "source": "3",
+      "target": "8",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 225,
+            "y": -20
+          },
+          {
+            "x": 225,
+            "y": 80
+          },
+          {
+            "x": 80,
+            "y": 80
+          }
+        ],
+        "source": {
+          "curX": 225,
+          "curY": -50,
+          "x": 0.5,
+          "y": 1,
+          "ox": 0,
+          "oy": 1
+        },
+        "target": {
+          "curX": 50,
+          "curY": 80,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        }
+      }
+    },
+    {
+      "source": "4",
+      "target": "1",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 880,
+            "y": -125
+          },
+          {
+            "x": 992,
+            "y": -125
+          },
+          {
+            "x": 992,
+            "y": -550
+          },
+          {
+            "x": -125,
+            "y": -550
+          }
+        ],
+        "source": {
+          "curX": 850,
+          "curY": -125,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        },
+        "target": {
+          "curX": -125,
+          "curY": -500,
+          "x": 0.5,
+          "y": 0,
+          "ox": 0,
+          "oy": -1
+        }
+      }
+    },
+    {
+      "source": "4",
+      "target": "5",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 725,
+            "y": 30
+          },
+          {
+            "x": 725,
+            "y": 50
+          },
+          {
+            "x": 425,
+            "y": 50
+          },
+          {
+            "x": 425,
+            "y": 70
+          }
+        ],
+        "source": {
+          "curX": 725,
+          "curY": 0,
+          "x": 0.5,
+          "y": 1,
+          "ox": 0,
+          "oy": 1
+        },
+        "target": {
+          "curX": 425,
+          "curY": 100,
+          "x": 0.5,
+          "y": 0,
+          "ox": 0,
+          "oy": -1
+        }
+      }
+    },
+    {
+      "source": "5",
+      "target": "6",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 425,
+            "y": 380
+          },
+          {
+            "x": 425,
+            "y": 580
+          },
+          {
+            "x": 330,
+            "y": 580
+          }
+        ],
+        "source": {
+          "curX": 425,
+          "curY": 350,
+          "x": 0.5,
+          "y": 1,
+          "ox": 0,
+          "oy": 1
+        },
+        "target": {
+          "curX": 300,
+          "curY": 580,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        }
+      }
+    },
+    {
+      "source": "5",
+      "target": "7",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 580,
+            "y": 225
+          },
+          {
+            "x": 700,
+            "y": 225
+          },
+          {
+            "x": 700,
+            "y": 150
+          },
+          {
+            "x": 820,
+            "y": 150
+          }
+        ],
+        "source": {
+          "curX": 550,
+          "curY": 225,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        },
+        "target": {
+          "curX": 850,
+          "curY": 150,
+          "x": 0,
+          "y": 0.5,
+          "ox": -1,
+          "oy": 0
+        }
+      }
+    },
+    {
+      "source": "6",
+      "target": "8",
+      "data": {
+        "label": "",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "blue"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": -30,
+            "y": 580
+          },
+          {
+            "x": -100,
+            "y": 580
+          },
+          {
+            "x": -100,
+            "y": 190
+          }
+        ],
+        "source": {
+          "curX": 0,
+          "curY": 580,
+          "x": 0,
+          "y": 0.5,
+          "ox": -1,
+          "oy": 0
+        },
+        "target": {
+          "curX": -100,
+          "curY": 160,
+          "x": 0.5,
+          "y": 1,
+          "ox": 0,
+          "oy": 1
+        }
+      }
+    },
+    {
+      "source": "7",
+      "target": "9",
+      "data": {
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 1000,
+            "y": 280
+          },
+          {
+            "x": 1000,
+            "y": 470
+          },
+          {
+            "x": 700,
+            "y": 470
+          }
+        ],
+        "source": {
+          "curX": 1000,
+          "curY": 250,
+          "x": 0.5,
+          "y": 1,
+          "ox": 0,
+          "oy": 1
+        },
+        "target": {
+          "curX": 700,
+          "curY": 500,
+          "x": 0.5,
+          "y": 0,
+          "ox": 0,
+          "oy": -1
+        }
+      }
+    },
+    {
+      "source": "8",
+      "target": "10",
+      "data": {
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": -280,
+            "y": 80
+          },
+          {
+            "x": -350,
+            "y": 80
+          },
+          {
+            "x": -350,
+            "y": 670
+          }
+        ],
+        "source": {
+          "curX": -250,
+          "curY": 80,
+          "x": 0,
+          "y": 0.5,
+          "ox": -1,
+          "oy": 0
+        },
+        "target": {
+          "curX": -350,
+          "curY": 700,
+          "x": 0.5,
+          "y": 0,
+          "ox": 0,
+          "oy": -1
+        }
+      }
+    },
+    {
+      "source": "9",
+      "target": "1",
+      "data": {
+        "label": "no",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 880,
+            "y": 600
+          },
+          {
+            "x": 1209,
+            "y": 600
+          },
+          {
+            "x": 1209,
+            "y": -425
+          },
+          {
+            "x": 80,
+            "y": -425
+          }
+        ],
+        "source": {
+          "curX": 850,
+          "curY": 600,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        },
+        "target": {
+          "curX": 50,
+          "curY": -425,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        }
+      }
+    },
+    {
+      "source": "9",
+      "target": "10",
+      "data": {
+        "label": "yes",
+        "type": "response",
+        "lineStyle": "targetArrow",
+        "color": "#000000"
+      },
+      "geometry": {
+        "segments": [
+          {
+            "x": 700,
+            "y": 730
+          },
+          {
+            "x": 700,
+            "y": 775
+          },
+          {
+            "x": -170,
+            "y": 775
+          }
+        ],
+        "source": {
+          "curX": 700,
+          "curY": 700,
+          "x": 0.5,
+          "y": 1,
+          "ox": 0,
+          "oy": 1
+        },
+        "target": {
+          "curX": -200,
+          "curY": 775,
+          "x": 1,
+          "y": 0.5,
+          "ox": 1,
+          "oy": 0
+        }
+      }
+    }
+  ]
+}
