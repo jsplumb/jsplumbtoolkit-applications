@@ -1,0 +1,510 @@
+:root {
+
+    --jtk-component-outline: #1b1b1b;
+    --jtk-component-select: yellowgreen;
+
+    /*
+    The space between the frame around a selected node and the node itself. Specify this as a negative value if you change it. Unless you want the
+    frame inside the element, I guess.
+  */
+    --jtk-draw-skeleton-padding:-0.6rem;
+
+    --flowchartBuilderDragHover:orangered;
+    --flowchartBuilderShapeOutline:var(--jtk-component-outline);
+    --flowchartBuilderDeleteButtonBackground:#d83f3f;
+    --flowchartBuilderDeleteButtonForeground:white;
+    --flowchartBuilderConnectButtonBackground:#84acb3;
+    --flowchartBuilderConnectButtonForeground:white;
+
+    --flowchartBuilderGridLine:#aaa;
+
+    --flowchartBuilderPaletteBorder:var(--jtk-component-outline);
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.jtk-demo-main {
+    display: flex;
+    height: 100vh;
+}
+
+.jtk-demo-canvas {
+    background-color: white;
+    display: flex;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden !important;
+}
+
+.jtk-demo-rhs {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f9f9f9;
+    flex: 0 0 250px;
+    padding: 20px 5px 0 5px;
+}
+
+.node-palette {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.miniview {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 100;
+}
+
+.jtk-demo-main .description {
+    font-size: 13px;
+    padding: 13px;
+}
+
+.jtk-demo-main .description ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+
+.jtk-demo-main .description li {
+    list-style-type: disc !important;
+    margin: 3px 0;
+}
+
+.jtk-controls-container {
+    top: 25px;
+    position: absolute;
+    left: 25px;
+    z-index: 1;
+    font-size:14px;
+}
+
+.jtk-export {
+    left: 25px;
+    position: absolute;
+    top: 60px;
+    z-index: 100;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+/* ----------------------- drag/drop interactions -------------- */
+.drop-hover {
+    background-color: #FCCCCC !important;
+}
+
+/* ----------------------- node styles ------------------------- */
+.jtk-node svg * {
+    vector-effect: non-scaling-stroke;
+}
+
+.jtk-surface-selected-element {
+    border:none !important;
+}
+
+.flowchart-object {
+    z-index: 11;
+    border: none;
+    overflow: visible;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color:transparent;
+}
+
+.flowchart-object svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.flowchart-object span {
+    font-family: sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    z-index:12;
+    white-space: nowrap;
+}
+
+.flowchart-object .node-action {
+    display: none;
+    position: absolute;
+    top: -1rem;
+    cursor: pointer;
+    z-index: 12;
+    left: auto;
+    color:white;
+    transition:transform 0.1s;
+    font-family: sans-serif;
+    text-align: center;
+    opacity:0.9;
+
+}
+
+.flowchart-object .node-action:hover {
+    transform: scale(1.3, 1.3);
+}
+
+.flowchart-object .node-delete {
+    right: 4px;
+    background-color: #d83f3f;
+}
+
+.flowchart-object.jtk-surface-selected-element .node-action {
+    display: block;
+    width: 15px;
+    height: 15px;
+    top:-20px;
+    cursor:pointer;
+    line-height: 15px;
+
+}
+
+.flowchart-object .connect {
+    position:absolute;
+    left:50%;
+    margin-left:-7.5px;
+    background-color:rgb(132, 172, 179);
+    transition:transform 0.1s;
+}
+
+.flowchart-object .connect:hover {
+    transform: scale(1.2, 1.2);
+    opacity:1;
+}
+
+.flowchart-object .delete:after {
+    content:"x";
+    text-transform: uppercase;
+}
+
+.flowchart-object .node-edit:after {
+    content:"✎";
+    text-transform: uppercase;
+}
+
+.connection-drop svg {
+    fill:#CCC;
+}
+
+.connection-drop text {
+    fill:black;
+}
+
+/* --------------------------- overlays --------------------------------- */
+
+
+.jtk-label-overlay {
+    background-color:white;
+    padding:2px;
+    border-radius:5px;
+    z-index:10;
+}
+
+/* --------------------------- / overlays --------------------------------- */
+
+
+/* --------------------- edge styles ----------------------------------- */
+
+/*
+    style for the delete button. this is in fact supplied in the editable connectors css as a default but on our own site
+    the cascade conspires to elide the background color and foreground color. Without wanting to mark the style as `!important` in our defaults stylesheet,
+    we instead supply them again here.
+ */
+.jtk-edge-delete {
+    background-color: orangered;
+    color:white;
+}
+/**
+Styles for a dashed edge.
+ */
+.jtk-flowchart-dashed-edge path {
+    stroke-dasharray: 2 4;
+}
+
+/* styles for drag + drop */
+
+.jtk-surface.jtk-drag-drop-active {
+    outline:6px dotted #4ea758 !important;
+}
+
+.jtk-surface.jtk-drag-drop-hover {
+    outline: 6px solid #f7a45d !important;
+}
+
+svg.jtk-drag-drop-hover, svg.jtk-drag-drop-active {
+    outline:none !important;
+}
+
+svg.jtk-drag-drop-active path {
+    stroke:#4ea758;
+    stroke-width:3px;
+    stroke-dasharray:2 0 2 5;
+}
+
+svg.jtk-drag-drop-hover path {
+    stroke:#f7a45d;
+    stroke-width:4px;
+    stroke-dasharray:0;
+}
+
+.jtk-drag-drop-current {
+    outline:2px solid pink;
+}
+
+
+
+
+/*
+  The small discs from which the user can drag new connections. TODO not scoped to flowchart really.
+ */
+.jtk-connect {
+    cursor: pointer;
+    background-color: var(--jtk-component-select);
+    transition: transform 0.1s;
+    position:absolute;
+    z-index:1; /* to ensure it appears above the draw skeleton */
+    width: 1.5rem;
+    height: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--flowchartBuilderConnectButtonForeground);
+    border-radius: 50%;
+    opacity:0.8;
+    display: none;
+}
+
+.jtk-connect-left {
+    left:0;
+    top:50%;
+    transform: translate(-50%, -50%);
+}
+
+.jtk-connect-right {
+    right:0;
+    top:50%;
+    transform: translate(50%, -50%);
+}
+
+.jtk-connect-top {
+    left:50%;
+    top:0;
+    transform: translate(-50%, -50%);
+}
+
+.jtk-connect-bottom {
+    left:50%;
+    bottom:0;
+    transform: translate(-50%, 50%);
+}
+
+/**
+  Show connect elements on hover
+ */
+.jtk-node:hover .jtk-connect, .jtk-drag-selected .jtk-connect, .jtk-surface-touch-device .jtk-connect {
+    display: flex;
+}
+
+/**
+    Hide connect elements if an edge is currently being dragged
+ */
+.jtk-surface-edge-dragging .jtk-connect {
+    display:none !important;
+}
+
+/**
+    Show an outline around a node when it is the current edge drop target
+ */
+.jtk-drag-hover {
+    outline:1px solid orangered;
+    outline-offset:5px;
+}
+
+/**
+    When editing a path, show its anchor placeholder on top of any connect elements.
+ */
+.jtk-anchor-placeholder {
+    z-index:2;
+}
+
+
+/*
+ * A group of shapes.
+ */
+.jtk-shape-library-palette-set {
+    display:flex;
+    flex-wrap:wrap;
+}
+
+/*
+ * A shape in the palette/canvas. Note that since the shapes are dragged to the canvas, if we want to specify any styles for
+ * these that should only apply when being rendered in the palette, we need to narrow down the selector by including
+ * the parent's class (see the rule below). If we did not split the rules out this way, we'd get all of these rules applying
+ * to shapes that were being dragged to the canvas, which is usually undesirable (one key problem being margins: an element that
+ * is being dragged should have no margins).
+ */
+.jtk-shape-library-palette-shape {
+    fill: white;
+    stroke: var(--flowchartBuilderShapeOutline);
+    /*stroke-width: 2;(*/
+}
+
+/**
+* Shapes in the palette. Note the use of the parent selector here: these rules only apply to shapes when they are
+* in the palette, not when they are being dragged.
+ */
+.jtk-shape-library-palette-set .jtk-shape-library-palette-shape {
+    width: 4rem;
+    margin: 0.5rem;
+}
+
+/*
+ * Required to ensure the SVG elements fill their parent elements.
+ */
+.jtk-shape-library-palette-shape > svg {
+    width:100%;
+    height:100%;
+}
+
+.jtk-shape-library-palette-shape svg * {
+    vector-effect:non-scaling-stroke;
+}
+
+/**
+  Style applied to a palette shape while it is being dragged onto the canvas (it is a direct parent of the body at this point)
+ */
+body > .jtk-shape-library-palette-shape {
+    border:none;
+    width:150px;
+    height:100px;
+}
+
+/**
+Applied to the drop down that lets the user pick their current shape set.
+ */
+.jtk-shape-library-palette-filter {
+    width: 90%;
+    padding: 3px;
+    margin: 3px;
+}
+
+.jtk-background-grid-major {
+    stroke:#ddd;
+}
+
+/* ---------------------------------------------------------------------------------------------- */
+/* --------------------------- selected vertices ------------------------------ */
+/* ---------------------------------------------------------------------------------------------- */
+
+/*
+    Assigned to the element that is drawn around some other element when a drawing operation is taking place.
+*/
+.jtk-draw-skeleton {
+    position: absolute;
+    left: var(--jtk-draw-skeleton-padding);
+    right: -0.6rem;
+    top: -0.6rem;
+    bottom: -0.6rem;
+    outline: 0.125rem solid var(--jtk-component-select);
+    opacity: 0.8;
+}
+
+/*
+    Assigned to every handle (top left, top right, bottom left, bottom right, center) in a draw skeleton.
+*/
+.jtk-draw-handle {
+    position: absolute;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius:50%;
+    background-color: var(--jtk-component-select);
+}
+
+/*
+    Assigned to the top left handle in a draw skeleton
+*/
+.jtk-draw-handle-tl {
+    left: -0.3rem;
+    top: -0.3rem;
+    cursor: nw-resize;
+}
+
+/*
+    Assigned to the top right handle in a draw skeleton
+*/
+.jtk-draw-handle-tr {
+    right: -0.3rem;
+    top: -0.3rem;
+    cursor: ne-resize;
+}
+
+/*
+    Assigned to the bottom left handle in a draw skeleton
+*/
+.jtk-draw-handle-bl {
+    left: -0.3rem;
+    bottom: -0.3rem;
+    cursor: sw-resize;
+}
+
+/*
+    Assigned to the bottom right handle in a draw skeleton
+*/
+.jtk-draw-handle-br {
+    bottom: -0.3rem;
+    right: -0.3rem;
+    cursor: se-resize;
+}
+
+.jtk-anchor-placeholder {
+    z-index:13;
+}
+
+/* ------------------ INSPECTOR ------------------------------------------------- */
+
+.jtk-inspector {
+    display:flex;
+    flex-direction: column;
+    padding:1rem;
+    background-color: #e7e7e7;
+    margin: 5px;
+}
+
+.jtk-inspector input {
+    width:100%;
+    height: 1.5rem;
+    margin:5px 0;
+}
+
+.jtk-edge-type-picker {
+    display:flex;
+    flex-direction:column;
+    flex-grow:1;
+}
+
+.jtk-edge-type-picker > div {
+    margin:5px 0;
+    height:1.5rem;
+    width:100%;
+    position:relative;
+}
+
+.jtk-edge-type-picker > div > div {
+    top:5px;
+    bottom:5px;
+    position:absolute;
+}
+
+.jtk-edge-type-picker > svg {
+    z-index:1;
+}
+
+.jtk-edge-type-picker-selected {
+    background-color:white;
+}
+
