@@ -1,11 +1,11 @@
 {
-    "version": "6.13.0",
+    "version": "6.14.0",
     "scripts": {
         "build": "set -e;./node_modules/.bin/tsc;./node_modules/.bin/rollup -c rollup.config.js",
         "serve": "./node_modules/.bin/http-server ."
     },
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.13.0"
+        "@jsplumbtoolkit/browser-ui": "^6.14.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.4.4",
