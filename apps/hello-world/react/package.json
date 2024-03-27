@@ -1,9 +1,9 @@
 {
     "name": "react-app",
-    "version": "6.16.0",
+    "version": "6.17.0",
     "private": true,
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui-react": "^6.16.0",
+        "@jsplumbtoolkit/browser-ui-react": "^6.17.0",
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
