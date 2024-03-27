@@ -1,7 +1,7 @@
 {
   "name": "jsplumbtoolkit-applications",
-  "version": "6.14.0",
-  "description": "Starter applications built with the jsPlumb Toolkit, for use with Toolkit version 6.9.1 or later.",
+  "version": "6.15.0",
+  "description": "Starter applications built with JsPlumb",
   "main": "index.js",
   "scripts": {
     "clean": "node ./scripts/clean.js",
