@@ -1,6 +1,6 @@
 {
     "name": "mindmap-builder",
-    "version": "6.15.0",
+    "version": "6.16.0",
     "description": "",
     "scripts": {
         "build-es6": "./node_modules/.bin/esbuild demo.js --target=es2016 --bundle --format=iife --outfile=bundle.js",
@@ -22,7 +22,7 @@
     },
     "homepage": "https://github.com/jsplumb/jsplumbtoolkit-application#readme",
     "dependencies": {
-        "@jsplumbtoolkit/browser-ui": "^6.15.0",
+        "@jsplumbtoolkit/browser-ui": "^6.16.0",
         "babel-cli": "^6.26.0",
         "babel-preset-env": "^1.7.0",
         "esbuild": "0.17.18"
