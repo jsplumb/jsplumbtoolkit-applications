@@ -1,4 +1,13 @@
+# NOTE
+
+As of April 2024 this repository is being archived. We're now serving starter apps and feature demonstrations from the [https://github.com/jsplumb-demonstrations](https://github.com/jsplumb-demonstrations) organisation, since it's easier for people to clone individual apps or demos that way, and we can make incremental changes to individual apps/demos without affecting the whole repo.
+
+
+
+
 # jsplumbtoolkit-applications
+
+
 
 Starter applications and feature demos built with the jsPlumb Toolkit. Starter applications are fully featured apps and most of them come in Vanilla JS, Angular, Vue 2, Vue 3, React and Svelte versions. Feature demonstrations are smaller demos that are focused on some specific aspect of the Toolkit's functionality, and do not use one of the library integrations, but the concepts are easily ported to an app that does use Angular etc.
 
